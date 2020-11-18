@@ -108,7 +108,7 @@ cd ~/jd/shell
 cp git_pull.sh.sample git_pull.sh  # 复制git_pull.sh.sample为git_pull.sh
 nano git_pull.sh
 ```
-参数清单：[Parameter](Parameter.md)，如何修改请见`git_pull.sh`中的注释。
+[参数清单](参数清单)，如何修改请见`git_pull.sh`中的注释。
 
 你可以按上面方式直接在nano中修改参数，但可通过其他途径将必要的信息复制过来粘贴（Ctrl + O 保存，Ctrl + X 退出）；
 
