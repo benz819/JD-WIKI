@@ -32,7 +32,7 @@ cd至你想存放脚本的路径之后运行一键安装脚本，假如为`/home
 
 ```
 cd /home/myid/jd
-wget https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh
+wget --no-check-certificate https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh
 
 # wget如果出错，要么你自己改善网络，要么你自己手动下载好first_run.sh，放在这个目录下，没有问题再运行下面的命令
 bash first_run.sh
