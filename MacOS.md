@@ -46,7 +46,7 @@ bash -c "$(wget https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_r
 
 - *请不要直接修改`git_pull.sh.sample`！而只修改`git_pull.sh`。*
 
-- [参数清单](Parameter.md)，**如何修改请仔细阅读`git_pull.sh`中的注释。**
+- [参数清单](参数清单)，**如何修改请仔细阅读`git_pull.sh`中的注释。**
 
 ## 初始化
 
