@@ -1,3 +1,12 @@
+## 互助码相关
+
+1. 填法
+
+    互助码是填在My系列变量中的，ForOther系统变量中只要填入My系列的变量名即可，按注释中的例子拼接。
+
+
+## 日志报错
+
 1. 日志报以下错误：
     ```
     TypeError: (intermediate value)(...).catch(...).finally is not a function
