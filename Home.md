@@ -27,3 +27,13 @@
     docker rmi evinedeng/jd-base
     ```
     无需重新配置，直接按原来的`docker run`命令重新部署即可恢复原有内容。
+
+## 教程
+
+- [Armbian/OpenWrt/Debian/OpenMediaVault/Ubuntu/CentOS/Fedora/RedHat等Linux系统](Linux系统直装)
+
+- [Android](Android)
+
+- [MacOS](MacOS)
+
+- [Docker](Docker)
