@@ -74,7 +74,6 @@ pkg install git perl nodejs-lts wget curl nano cronie
         ```
     3. 一键下载并运行脚本（可能需要科学上网条件）：
         ```
-        cd /home/myid/jd
         wget --no-check-certificate https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh
 
         # wget如果出错，要么你科学上网github，要么你手动下载好first_run.sh，放在这个目录下，没有问题再运行下面的命令
