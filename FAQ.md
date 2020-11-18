@@ -1,13 +1,22 @@
-## 互助码相关
+## first_run.sh
 
-1. 填法
+- Failed connect to raw.githubusercontent.com:443; 拒绝连接
+
+    要么自己想办法科学上网，并且让Github通过代理访问；要么自己手动下载first_run.sh这个文件放在该目录下运行。
+
+## git_pull.sh
+
+- 互助码填法
 
     互助码是填在My系列变量中的，ForOther系统变量中只要填入My系列的变量名即可，按注释中的例子拼接。
+    
+- 修改了配置但日志显示修改的内容未生效
 
+    修改了git_pull.sh想要立马生效，你要手动运行一次它。
 
 ## 日志报错
 
-1. 日志报以下错误：
+- 日志报以下错误：
     ```
     TypeError: (intermediate value)(...).catch(...).finally is not a function
     at Object. (/home/bobotoy/jd/scripts/jd_bean_sign.js:52:13)
@@ -20,4 +29,4 @@
     at startup (bootstrap_node.js:188:16)
     at bootstrap_node.js:609:3
     ```
-    可能是Node.js某些版本的问题，你可以使用`node -v`或`nodejs -v`查看Node.js的版本，问题及详细的解决措施见[nodejs/help#1877](https://github.com/nodejs/help/issues/1877)。
+    首先，需要保证Node.js大版本>=10，其次，在>=10的某些小版本也有此问题（你可以使用`node -v`或`nodejs -v`查看Node.js的版本），问题及详细的解决措施见[nodejs/help#1877](https://github.com/nodejs/help/issues/1877)。
