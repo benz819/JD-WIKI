@@ -20,12 +20,10 @@ cd至你想存放脚本的路径之后运行一键安装脚本，假如为`/User
 
 ```
 cd /Users/用户名/jd
+wget --no-check-certificate https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh
 
-# 使用curl
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh)"
-
-# 或者使用wget
-bash -c "$(wget https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh -O -)"
+# wget如果出错，要么你自己改善网络，要么你自己手动下载好first_run.sh，放在这个目录下，没有问题再运行下面的命令
+bash first_run.sh
 ```
 
 *注：物理机如需多账号并发，需要创建多个文件夹，然后分别进入每个文件夹后运行上述命令，然后在每个创建的文件夹下都按下面说明配置一下，并且在制定定时任务时，你配置了多少个文件夹，那么同一条定时任务就要重复几次（因为.sh脚本路径不一样）。*
