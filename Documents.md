@@ -1,4 +1,4 @@
-- [ArmBian/OpenWRT/Debian/Ubuntu/OpenMediaVault/CentOS/Fedora/RHEL](Linux系统直装)
+- [ArmBian/OpenWRT/Debian/Ubuntu/OpenMediaVault/CentOS/Fedora/RHEL](Linux)
 
 - [[Android]]
 
