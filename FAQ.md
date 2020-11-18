@@ -20,4 +20,4 @@
     at startup (bootstrap_node.js:188:16)
     at bootstrap_node.js:609:3
     ```
-    可能是Node.js v10.15.2版本的问题，你可以使用`node -v`或`nodejs -v`查看Node.js的版本，问题及详细的解决措施见[nodejs/help#1877](https://github.com/nodejs/help/issues/1877)。
+    可能是Node.js某些版本的问题，你可以使用`node -v`或`nodejs -v`查看Node.js的版本，问题及详细的解决措施见[nodejs/help#1877](https://github.com/nodejs/help/issues/1877)。
