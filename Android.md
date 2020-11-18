@@ -74,11 +74,11 @@ pkg install git perl nodejs-lts wget curl nano cronie
         ```
     3. 一键下载并运行脚本（可能需要科学上网条件）：
         ```
-        # 使用curl
-        bash -c "$(curl -fsSL https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh)"
+        cd /home/myid/jd
+        wget --no-check-certificate https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh
 
-        # 或者使用wget
-        bash -c "$(wget https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh -O -)"
+        # wget如果出错，要么你自己改善网络，要么你自己手动下载好first_run.sh，放在这个目录下，没有问题再运行下面的命令
+        bash first_run.sh
         ```
         如果实在下载不下来，建议去[这个链接](https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh)手动复制，然后粘贴在手机外置存储的一个文件中，并将文件命名为`first_run.sh`。比如你已经将这个文件存放在外置存储的`Download`文件夹中，那么以下命令可以将它复制到家目录中`jd`文件夹下：
         ```
