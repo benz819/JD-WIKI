@@ -1,7 +1,7 @@
 * **[[Home]]**
 * **[[FAQ]]**
 * **教程**
-  + [[Linux直装]]
+  + [[Linux系统直装]]
   + [[Android]]
   + [[MacOS]]
   + [[Docker]]
