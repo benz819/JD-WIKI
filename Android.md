@@ -231,9 +231,9 @@ nano git_pull.sh
         ```
         nano crontab.list
         ```
-        **请注意将`crontab.list`这个文件中的`/root`目录替换为`/data/data/com.termux/files/home/jd`。** 路径主要还是为PC考虑的，手机就请自己修改下吧。以下命令可以批量修改：
+        **请注意将`crontab.list`这个文件中的`/root`目录替换为`~/jd`。** 路径主要还是为PC考虑的，手机就请自己修改下吧。以下命令可以批量修改：
         ```
-        perl -i -pe "s|/root|/data/data/com.termux/files/home/jd|g" crontab.list
+        perl -i -pe "s|/root|~/jd|g" crontab.list
         ```
     3. 添加定时任务。
 
