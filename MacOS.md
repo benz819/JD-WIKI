@@ -18,7 +18,7 @@ cd至你想存放脚本的路径之后运行一键安装脚本，假如为`/User
 
 **以下全文均以此路径`/Users/用户名/jd`进行举例，请自行修改为你自己的路径！**
 
-```
+```shell
 cd /Users/用户名/jd
 wget --no-check-certificate https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh
 
@@ -54,7 +54,7 @@ bash first_run.sh
 
 1. 完成所有信息修改以后，先检查一下git_pull.sh能否正常运行。
 
-    ```
+    ```shell
     cd /Users/用户名/jd/shell
     chmod +x *.sh       
     bash git_pull.sh
@@ -74,21 +74,21 @@ bash first_run.sh
     
     如果`npm install`失败，请尝试手动运行，可按如下操作，如果失败，可运行多次：
 
-    ```
+    ```shell
     cd /Users/用户名/jd/scripts
     npm install || npm install --registry=https://registry.npm.taobao.org
     ```
 
 2. 看看js脚本的信息替换是否正常。
 
-    ```
+    ```shell
     cd /Users/用户名/jd/scripts
     git diff    # 请使用上下左右键、Page Down、Page Up进行浏览，按q退出
     ```
 
 3. 然后你可以手动运行一次任何一个以`jd_`开头并以`.sh`结尾的脚本（有些脚本会运行很长时间，sh本身不输入任何内容在屏幕上，而把日志全部记录在日志文件中）。
 
-    ```
+    ```shell
     cd /Users/用户名/myjd/jd/shell
     bash jd_bean_sign.sh
     ```
@@ -97,7 +97,7 @@ bash first_run.sh
 
 4. 如何想在终端中看到输出，那么可如下操作：
 
-    ```
+    ```shell
     cd /Users/用户名/jd/scripts
     node jd_bean_sign.js
     ```
@@ -108,7 +108,7 @@ bash first_run.sh
 
 2. 编辑定时任务并自己根据你的需要调整，也可以使用其他可视化工具编辑。**请注意将`crontab.list`这个文件中的`/root`目录替换为自己的目录。**
 
-    ```
+    ```shell
     nano crontab.list
     ```
 
@@ -130,7 +130,7 @@ bash first_run.sh
 
     **如果你害怕你其他的任务被脚本覆盖，那么请将git_pull.sh中的`AutoAddCron`和`AutoDelCron`都设置为`false`！！！这样脚本就不会自动增删任务了！！！**
 
-    ```
+    ```shell
     crontab crontab.list
     ```
 **说明：**
@@ -144,20 +144,20 @@ bash first_run.sh
 - 当`git_pull.sh`中的`AutoAddCron`设置为`false`时（不自动增加新的定时任务），如何手动添加新增js脚本的定时任务：
 
     1. 检查有没有新增脚本：
-        ```
+        ```shell
         cd /Users/用户名/jd  # 先cd至你存放脚本的目录
         cat log/js-add.list
         ```
     2. 如果上一条命令不为空说明有新的定时任务待添加，把内容记下来，比如有个新增的任务叫为`jd_test`，那么就运行以下命令:
-        ```
+        ```shell
         cp shell/jd.sh.sample shell/jd_test.sh
         ```
      3. 再次提醒不要忘记赋予可执行权限：
-        ```
+        ```shell
         chmod +x shell/jd_test.sh
         ```
     4. 编辑crontab.list，并添加进crontab
-        ```
+        ```shell
         nano crontab.list
         crontab crontab.list
         ```
@@ -170,7 +170,7 @@ bash first_run.sh
 
 1. 复制一份rm_log.sh，并赋予可执行权限：
 
-    ```
+    ```shell
     cd /Users/用户名/jd/shell
     cp rm_log.sh.sample rm_log.sh
     chmod +x rm_log.sh
@@ -187,7 +187,7 @@ bash first_run.sh
 - 如果想要重新调整定时任务运行时间，请不要直接使用`crontab -e`命令修改，而是编辑`/Users/用户名/jd/crontab.list`这个文件，然后使用`crontab /Users/用户名/jd/crontab.list`命令覆盖。这样的好处脚本会自动依靠这个文件来增加新的定时任务和删除失效的定时任务。
 
 - 如果shell脚本有更新，需要你手动复制一份`git_pull.sh.sample`，并重新修改必须的信息，然后命名为`git_pull.sh`，流程如下：
-    ```
+    ```shell
     cd /Users/用户名/jd/shell
     cp git_pull.sh.sample git_pull_2.sh
 

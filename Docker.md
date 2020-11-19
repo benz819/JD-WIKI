@@ -1,7 +1,7 @@
 ## 更新日志
 
 - 2020-11-15：为保持跨平台兼容性，把`Docker`的`shell`也更换为`bash`，Docker用户需要删除原来的镜像重新部署方可正常使用。
-    ```
+    ```shell
     docker stop jd                # 停止名为jd的容器
     docker rm jd                  # 删除名为jd的容器
     docker rmi evinedeng/jd-base  # 删除名为evinedeng/jd-base的镜像
@@ -14,7 +14,7 @@
 
 安装好docker([中文教程](https://mirrors.bfsu.edu.cn/help/docker-ce/))，然后在ssh工具中创建容器：
 
-```
+```shell
 docker run -dit \
   -v /Host主机上的目录/:/root `#冒号左边请更改为你docker所在主机上的原始路径` \
   --name jd \
@@ -32,7 +32,7 @@ docker run -dit \
 
 安装`containrrr/watchtower`可以自动更新容器，它也是一个容器，但这个容器可以监视你安装的所有容器的原始镜像的更新情况，如有更新，它将使用你原来的配置自动重新部署容器。部署`containrrr/watchtower`最简单的方式如下：
 
-```
+```shell
 docker run -d \
     --name watchtower \
     -v /var/run/docker.sock:/var/run/docker.sock \
@@ -44,7 +44,7 @@ docker run -d \
 
 1. 检查容器安装日志
 
-    ```
+    ```shell
     docker logs -f jd
     ```
 
@@ -60,13 +60,13 @@ docker run -d \
 
     **本Readme中所有docker部分的命令均需要在进入容器后运行！！**
 
-    ```
+    ```shell
     docker exec -it jd /bin/bash
     ```
     
     成功进入后光标处应变为下面这样，如果没有，那么请检查容器安装日志。
     
-    ```
+    ```shell
     bash-5.0# 
     ```
     
@@ -82,7 +82,7 @@ docker run -d \
 
 1. 复制`git_pull.sh.sample`为`git_pull.sh`:
 
-    ```
+    ```shell
     cp /root/shell/git_pull.sh.sample /root/shell/git_pull.sh  # 
     ```
 
@@ -102,7 +102,7 @@ docker run -d \
 
 1. 完成所有信息修改以后，先检查一下git_pull.sh能否正常运行。
 
-    ```
+    ```shell
     cd /root/shell
     chmod +x *.sh
     bash git_pull.sh
@@ -124,21 +124,21 @@ docker run -d \
 
     如果`npm install`失败，请尝试手动运行，可按如下操作，如果失败，可运行多次：
 
-    ```
+    ```shell
     cd /root/scripts
     npm install || npm install --registry=https://registry.npm.taobao.org
     ```
 
 2. 看看js脚本的信息替换是否正常。
 
-    ```
+    ```shell
     cd /root/scripts
     git diff          # 请使用上下左右键、Page Down、Page Up进行浏览，按q退出
     ```
 
 3. 然后你可以手动运行一次任何一个以`jd_`开头并以`.sh`结尾的脚本（有些脚本会运行很长时间，sh本身不输入任何内容在屏幕上，而把日志全部记录在日志文件中）。
 
-    ```
+    ```shell
     cd /root/shell
     bash jd_bean_sign.sh
     ```
@@ -149,7 +149,7 @@ docker run -d \
 
 1. 复制一份`crontab.list`到`/root`目录下。
 
-    ```
+    ```shell
     cp /root/shell/crontab.list.sample /root/crontab.list
     ```
 
@@ -157,7 +157,7 @@ docker run -d \
 
 3. 添加定时任务。
 
-    ```
+    ```shell
     crontab /root/crontab.list
     ```
 
@@ -174,19 +174,19 @@ docker run -d \
 - 当`git_pull.sh`中的`AutoAddCron`设置为`false`时（不自动增加新的定时任务），如何手动添加新增js脚本的定时任务：
 
     1. 检查有没有新增脚本：
-        ```
+        ```shell
         cat /root/log/js-add.list
         ```
     2. 如果上一条命令不为空说明有新的定时任务待添加，把内容记下来，比如有个新增的任务叫为`jd_test`，那么就运行以下命令:
-        ```
+        ```shell
         cp /root/shell/jd.sh.sample /root/shell/jd_test.sh
         ```
     3. 再次提醒不要忘记赋予可执行权限：
-        ```
+        ```shell
         chmod +x /root/shell/jd_test.sh
         ```
     4. 编辑crontab.list，并添加进crontab
-        ```
+        ```shell
         nano /root/crontab.list
         crontab /root/crontab.list
         ```
@@ -197,7 +197,7 @@ docker run -d \
 
 1. 复制一份rm_log.sh，并赋予可执行权限：
 
-    ```
+    ```shell
     cd /root/shell
     cp rm_log.sh.sample rm_log.sh
     chmod +x rm_log.sh
@@ -222,7 +222,7 @@ exit
 - 如果想要重新调整定时任务运行时间，请不要直接使用`crontab -e`命令修改，而是编辑`/root/crontab.list`这个文件，然后使用`crontab /root/crontab.list`命令覆盖。这样的好处只要你没有删除容器映射目录`/root`在Host主机上的原始文件夹，重建容器时任务就不丢失，并且，如果重建容器，容器还将在启动时自动从`/root/crontab.list`中恢复定时任务。
 
 - 如果shell脚本有更新，需要你手动复制一份`git_pull.sh.sample`，并重新修改必须的信息，然后命名为`git_pull.sh`，流程如下：
-    ```
+    ```shell
     cd /root/shell
     cp git_pull.sh.sample git_pull_2.sh
 

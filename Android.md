@@ -15,12 +15,12 @@
 ## 更新说明
 
 - 2020-11-15：在2020-11-15之前部署的Android设备，要么手动将`~/jd/shell`文件夹下所有的`.sh`文件的第一行内容从`#!/bin/sh`更改为`#!/bin/bash`，要么重新删除整个`~/jd`文件夹后重新按下面教程部署一下。经测试，原来的解释器`#!/bin/sh`在安卓下面无法正常运行定时任务，因此必须改为`#!/bin/bash`。
-    ```
+    ```shell
     cp ~/jd/shell/git_pull.sh ~/git_pull.sh   # 把原来的git_pull.sh复制到家目录下备份
     rm -rf ~/jd/shell                         # 删除整个shell目录
     ```
     然后重新按下面`下载脚本`章节内容重新下载脚本部署以后，把git_pull.sh复制回去，并修改解释器
-    ```
+    ```shell
     cp ~/git_pull.sh ~/jd/shell/git_pull.sh
     nano ~/jd/shell/git_pull.sh    # 将第一行内容从`#!/bin/sh`更改为`#!/bin/bash`，按Ctrl+O保存，Ctrl+X退出
     ```
@@ -36,7 +36,7 @@
 ## 安装依赖
 
 切换为国内安装源后，在`Termux`中输入：
-```
+```shell
 pkg upgrade
 pkg install git perl nodejs-lts wget curl nano cronie
 ```
@@ -55,7 +55,7 @@ pkg install git perl nodejs-lts wget curl nano cronie
 
     **经测试，在没有ROOT时，本脚本只能在内置存储中运行，在外置存储中无法正常运行。而在ROOT以后，脚本可以在外置存储运行，但需要额外安装一个包：**
 
-        ```
+        ```shell
         pkg install tsu
         ```
 
@@ -65,26 +65,26 @@ pkg install git perl nodejs-lts wget curl nano cronie
 - **脚本下载：**
 
     1. 在家目录下创建一个用于存放脚本的文件夹：
-        ```
+        ```shell
         mkdir jd
         ```
     2. 进入刚创建好的文件夹：
-        ```
+        ```shell
         cd jd
         ```
     3. 一键下载并运行脚本（可能需要科学上网条件）：
-        ```
+        ```shell
         wget --no-check-certificate https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh
 
         # wget如果出错，要么你科学上网github，要么你手动下载好first_run.sh，放在这个目录下，没有问题再运行下面的命令
         bash first_run.sh
         ```
         如果实在下载不下来，建议去[这个链接](https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh)手动复制，然后粘贴在手机外置存储的一个文件中，并将文件命名为`first_run.sh`。比如你已经将这个文件存放在外置存储的`Download`文件夹中，那么以下命令可以将它复制到家目录中`jd`文件夹下：
-        ```
+        ```shell
         cp ~/storage/shared/Download/first_run.sh ~/jd/first_run.sh
         ```
         然后手动运行它：
-        ```
+        ```shell
         bash first_run.sh
         ```
 
@@ -102,7 +102,7 @@ pkg install git perl nodejs-lts wget curl nano cronie
 
 ## 修改配置
 
-```
+```shell
 cd ~/jd/shell
 cp git_pull.sh.sample git_pull.sh  # 复制git_pull.sh.sample为git_pull.sh
 nano git_pull.sh
@@ -123,7 +123,7 @@ nano git_pull.sh
 
 1. 完成所有信息修改以后，先检查一下git_pull.sh能否正常运行。
 
-    ```
+    ```shell
     cd ~/jd/shell
     chmod +x *.sh
     bash git_pull.sh
@@ -145,40 +145,42 @@ nano git_pull.sh
 
     如果`npm install`失败，请尝试手动运行，可按如下操作，如果失败，可运行多次：
 
-    ```
+    ```shell
     cd ~/jd/scripts
     npm install || npm install --registry=https://registry.npm.taobao.org
     ```
 
 2. 看看js脚本的信息替换是否正常。
 
-    ```
+    ```shell
     cd ~/jd/scripts
     git diff    # 请使用上下左右键、Page Down、Page Up进行浏览，按q退出
     ```
 
 3. 然后你可以手动运行一次任何一个以`jd_`开头并以`.sh`结尾的脚本（有些脚本会运行很长时间，sh本身不输入任何内容在屏幕上，而把日志全部记录在日志文件中）。
 
-    ```
+    ```shell
     cd ~/jd/shell
     bash jd_bean_sign.sh
     ```
 
     去`~/jd/log/jd_bean_sign`文件夹下查看日志，查看结果是否正常，如不正常，请从头检查。
-    ```
+
+    ```shell
     cd ~/jd/log/jd_bean_sign
     ls   # 列出文件
     cat 2020-11-13-12-00-00.log  # 假如ls列出的文件名是这个的话
     ```
+
     如需要使用手机的文本编辑器打开这些日志，在没有ROOT时，可以先将其复制到外置存储后，在文本编辑器中打开。假如要查看上面这个日志`~/jd/log/jd_bean_sign/2020-11-13-12-00-00`，可按如下操作：
-    ```
+    ```shell
     cp ~/jd/log/jd_bean_sign/2020-11-13-12-00-00.log ~/storage/shared/Documents/
     ```
     上述命令会将这个日志文件复制到外置存储的Documents文件夹下（这个文件夹必须事先存在）。文件名长就多使用`Tab`~~
 
 
 4. 如果不想写入日志文件，想直接在`Termux`中看到输出，那么可以如下操作：
-    ```
+    ```shell
     cd ~/jd/scripts
     node jd_bean_sign.js
     ```
@@ -187,7 +189,7 @@ nano git_pull.sh
 
 - 在添加定时任务之前，请先熟悉一下手机上cronie这个软件的用法（你也可以随时输入`crond -h`查看此帮助）：
 
-    ```
+    ```shell
     ~/jd/shell/ crond -h
     Usage:
     crond [options]
@@ -207,13 +209,13 @@ nano git_pull.sh
 
     ```
     根据帮助文档，如果想要以`deamon`形式启动`cronie`，那么可以输入：
-    ```
+    ```shell
     crond -ipP
     ```
     **请注意：每次重启手机或重启`Termux`后需要重新输入上述命令。**
 
     如果输入上述命令后显示类似以下内容的错误，那么表示cronie已经启动好了，无需再次启动：
-    ```
+    ```shell
     crond: can't lock /data/data/com.termux/files/usr/var/run/crond.pid, otherpid may be 3087: Try again
     ```
 
@@ -221,23 +223,23 @@ nano git_pull.sh
 
     1. 复制一份`crontab.list`到`~/jd`目录下。
 
-        ```
+        ```shell
         cd ~/jd
         cp shell/crontab.list.sample crontab.list
         ```
 
     2. 编辑定时任务并自己根据你的需要调整，
 
-        ```
+        ```shell
         nano crontab.list
         ```
         **请注意将`crontab.list`这个文件中的`/root`目录替换为`~/jd`。** 路径主要还是为PC考虑的，手机就请自己修改下吧。以下命令可以批量修改：
-        ```
+        ```shell
         perl -i -pe "s|/root|~/jd|g" crontab.list
         ```
     3. 添加定时任务。
 
-        ```
+        ```shell
         crontab crontab.list
         ```
     4. 做到这里，请再次回过头去查看`申明`部分，请理解在安卓手机下，定时任务不一定准时运行，并且还要注意不要被手机杀掉`Termux`后台进程。
@@ -246,24 +248,24 @@ nano git_pull.sh
 
     1. 先在家目录创建一个文件：
 
-        ```
+        ```shell
         touch ~/date.log
         ```
     2. 然后在你编辑好的`crontab.list`中再编辑一下，额外增加一条定时任务如下：
 
-        ```
+        ```shell
         * * * * * date >> ~/date.log
         ```
 
     3. 更新`crontab`:
 
-        ```
+        ```shell
         crontab ~/jd/crontab.list
         ```
 
     4. 增加的这一条定时任务如果正常运行，会在每分钟的第0秒将当前时间写入`~/date.log`这个文件。你可以在手机在各种情况下都存在过一段时间以后，查看这个文件：
 
-        ```
+        ```shell
         cat ~/date.log
         ```
         仔细看看定时任务的运行情况。
@@ -279,20 +281,20 @@ nano git_pull.sh
 - 当`git_pull.sh`中的`AutoAddCron`设置为`false`时（不自动增加新的定时任务），如何手动添加新增js脚本的定时任务：
 
     1. 检查有没有新增脚本：
-        ```
+        ```shell
         cd ~/jd  # 先cd至你存放脚本的目录
         cat log/js-add.list
         ```
     2. 如果上一条命令不为空说明有新的定时任务待添加，把内容记下来，比如有个新增的任务叫为`jd_test`，那么就运行以下命令:
-        ```
+        ```shell
         cp shell/jd.sh.sample shell/jd_test.sh
         ```
     3. 再次提醒不要忘记赋予可执行权限：
-        ```
+        ```shell
         chmod +x shell/jd_test.sh
         ```
     4. 编辑crontab.list，并添加进crontab
-        ```
+        ```shell
         nano crontab.list
         crontab crontab.list
         ```
@@ -302,7 +304,7 @@ nano git_pull.sh
 
 1. 复制一份`rm_log.sh`，并赋予可执行权限：
 
-    ```
+    ```shell
     cd ~/jd/shell
     cp rm_log.sh.sample rm_log.sh
     chmod +x rm_log.sh
@@ -327,7 +329,7 @@ nano git_pull.sh
 - 如果想要重新调整定时任务运行时间，请不要直接使用`crontab -e`命令修改，而是编辑`~/jd/crontab.list`这个文件，然后使用`crontab ~/jd/crontab.list`命令覆盖。这样的好处脚本会自动依靠这个文件来增加新的定时任务和删除失效的定时任务。
 
 - 如果shell脚本有更新，需要你手动复制一份`git_pull.sh.sample`，并重新修改必须的信息，然后命名为`git_pull.sh`，流程如下：
-    ```
+    ```shell
     cd ~/jd/shell
     cp git_pull.sh.sample git_pull_2.sh
 
@@ -343,7 +345,7 @@ nano git_pull.sh
 
 - 手机上的`git`在运行时总会弹出一个警告如下：
 
-    ```
+    ```shell
     warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following commands sometime before your next pull:
 
     git config pull.rebase false  # merge (the default strategy)
