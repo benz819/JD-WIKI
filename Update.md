@@ -1,4 +1,4 @@
-    只记录大的更新，小修小改不记录。
+> 只记录大的更新，小修小改不记录。
 
 - **2020-11-10：lxk0301/scripts 已被封，新的库为 [lxk0301/jd_scripts](https://github.com/lxk0301/jd_scripts)，所有在这时间之前的老用户请按 [#26](https://github.com/EvineDeng/jd-base/issues/26) 重新配置一下！！**
 
@@ -13,3 +13,5 @@
     docker rmi evinedeng/jd-base
     ```
     无需重新配置，直接按原来的`docker run`命令重新部署即可恢复原有内容。
+
+- 2020-11-20：增加 [799953468](https://github.com/799953468) 大佬开发的脚本，原地址：https://github.com/799953468/Quantumult-X，需要按照新的`git_pull.sh.sample`重新配置为`git_pull.sh`方可使用。
