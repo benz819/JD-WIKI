@@ -233,16 +233,16 @@ nano git_pull.sh
         ```shell
         nano crontab.list
         ```
-        **请注意将`crontab.list`这个文件中的`/root`目录替换为`~/jd`。** 路径主要还是为PC考虑的，手机就请自己修改下吧。以下命令可以批量修改：
+        **请注意将`crontab.list`这个文件中的`/root`目录替换为`/data/data/com.termux/files/home/jd`。** 路径主要还是为PC考虑的，手机就请自己修改下吧。以下命令可以批量修改：
         ```shell
-        perl -i -pe "s|/root|~/jd|g" crontab.list
+        perl -i -pe "s|/root|/data/data/com.termux/files/home/jd|g" crontab.list
         ```
     3. 添加定时任务。
 
         ```shell
         crontab crontab.list
         ```
-    4. 做到这里，请再次回过头去查看`申明`部分，请理解在安卓手机下，定时任务不一定准时运行，并且还要注意不要被手机杀掉`Termux`后台进程。
+    4. 做到这里，请再次回过头去查看 [申明](Android#申明申明申明申明申明申明申明申明申明申明申明) 部分，请理解在安卓手机下，定时任务不一定准时运行，并且还要注意不要被手机杀掉`Termux`后台进程。
 
 - 如何测试定时任务的运行情况。
 
