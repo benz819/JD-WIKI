@@ -3,6 +3,7 @@
 * **[常见问题](FAQ)**
 * **[使用教程](Documents)**
   + [[Linux]]
+  + [OpenWrt](Linux)
   + [[Android]]
   + [[MacOS]]
   + [[Docker]]
