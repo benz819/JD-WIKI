@@ -14,6 +14,32 @@
 
     修改了git_pull.sh想要立马生效，你要手动运行一次它。
 
+## 容器时间
+
+据反馈，arm/v7平台上的Docker容器，时间有问题，怎么改都只能是UTC时间。在这种情况下，直接用你的arm/v7机器，按照我的Dockerfile自行构建一个镜像，那么时间就可以是北京时间。构建流程：
+
+1. cd 至你的一个文件夹下，然后克隆仓库：
+
+    ```shell
+    git clone https://github.com/EvineDeng/jd-base
+    ```
+
+2. 进入刚刚克隆的文件夹内：
+
+     ```shell
+     cd jd-base
+     ```
+
+3. 构建镜像，注意最后有个点，构建好的镜像名称为`jd-base`：
+
+    ```shell
+    docker build -t jd-base:latest -f Docker/Dockerfile .
+    ```
+
+4. 按照你之前创建容器的命令，或者参考 [[Docker]] 教程中的命令，创建容器即可，不过要将原来我的镜像 `evinedeng/jd-base:latest` 切换为你自己刚刚构建的镜像 `jd-base:latest` 。
+
+5. 我如果在 [release](https://github.com/EvineDeng/jd-base/releases) 页面发布了新的 release，那么就意味着你也可以重新构建你的容器了。记得先删除原来的容器和原来的镜像。
+
 ## 日志报错
 
 - 日志报以下错误：
