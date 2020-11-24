@@ -112,15 +112,15 @@ nano git_pull.sh                   # 编辑git_pull.sh，如果不习惯，请�
 
     ```shell
     cd /home/myid/jd/shell
-    bash jd_bean_sign.sh
+    bash jd_unsubscribe.sh
     ```
 
-    去`/home/myid/jd/log/jd_bean_sign`文件夹下查看日志，查看结果是否正常，如不正常，请从头检查。
+    去`/home/myid/jd/log/jd_unsubscribe`文件夹下查看日志，查看结果是否正常，如不正常，请从头检查。
 
 4. 如果不想写入日志文件，想直接在终端中看到输出，那么可以如下操作：
     ```shell
     cd /home/myid/jd/scripts
-    node jd_bean_sign.js
+    node jd_unsubscribe.js
     ```
 
 ## 定时任务

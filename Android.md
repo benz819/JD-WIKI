@@ -141,20 +141,20 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
 
     ```shell
     cd ~/jd/shell
-    bash jd_bean_sign.sh
+    bash jd_unsubscribe.sh
     ```
 
-    去`~/jd/log/jd_bean_sign`文件夹下查看日志，查看结果是否正常，如不正常，请从头检查。
+    去`~/jd/log/jd_unsubscribe`文件夹下查看日志，查看结果是否正常，如不正常，请从头检查。
 
     ```shell
-    cd ~/jd/log/jd_bean_sign
+    cd ~/jd/log/jd_unsubscribe
     ls   # 列出文件
     cat 2020-11-13-12-00-00.log  # 假如ls列出的文件名是这个的话
     ```
 
-    如需要使用手机的文本编辑器打开这些日志，在没有ROOT时，可以先将其复制到外置存储后，在文本编辑器中打开。假如要查看上面这个日志`~/jd/log/jd_bean_sign/2020-11-13-12-00-00`，可按如下操作：
+    如需要使用手机的文本编辑器打开这些日志，在没有ROOT时，可以先将其复制到外置存储后，在文本编辑器中打开。假如要查看上面这个日志`~/jd/log/jd_unsubscribe/2020-11-13-12-00-00`，可按如下操作：
     ```shell
-    cp ~/jd/log/jd_bean_sign/2020-11-13-12-00-00.log ~/storage/shared/Documents/
+    cp ~/jd/log/jd_unsubscribe/2020-11-13-12-00-00.log ~/storage/shared/Documents/
     ```
     上述命令会将这个日志文件复制到外置存储的Documents文件夹下（这个文件夹必须事先存在）。文件名长就多使用`Tab`~~
 
@@ -162,7 +162,7 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
 4. 如果不想写入日志文件，想直接在`Termux`中看到输出，那么可以如下操作：
     ```shell
     cd ~/jd/scripts
-    node jd_bean_sign.js
+    node jd_unsubscribe.js
     ```
 
 ## 添加定时任务

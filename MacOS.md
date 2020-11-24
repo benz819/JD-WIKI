@@ -90,16 +90,16 @@ bash first_run.sh
 
     ```shell
     cd /Users/用户名/myjd/jd/shell
-    bash jd_bean_sign.sh
+    bash jd_unsubscribe.sh
     ```
 
-    去`/Users/用户名/jd/log/jd_bean_sign`文件夹下查看日志，查看结果是否正常，如不正常，请从头检查。
+    去`/Users/用户名/jd/log/jd_unsubscribe`文件夹下查看日志，查看结果是否正常，如不正常，请从头检查。
 
 4. 如何想在终端中看到输出，那么可如下操作：
 
     ```shell
     cd /Users/用户名/jd/scripts
-    node jd_bean_sign.js
+    node jd_unsubscribe.js
     ```
 
 ## 定时任务

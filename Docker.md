@@ -140,10 +140,10 @@ docker run -d \
 
     ```shell
     cd /root/shell
-    bash jd_bean_sign.sh
+    bash jd_unsubscribe.sh
     ```
 
-    去容器中`/root/log/jd_bean_sign`文件夹下查看日志，查看结果是否正常，如不正常，请从头检查。
+    去容器中`/root/log/jd_unsubscribe`文件夹下查看日志，查看结果是否正常，如不正常，请从头检查。
 
 ## 定时任务
 
