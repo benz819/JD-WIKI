@@ -18,7 +18,7 @@
 
 2. 从谷歌商店搜索并安装 `Termux`。
 
-3. 从[这里](https://www.sqlsec.com/2018/05/termux.html)学习 `Termux` 的基础用法，这其中介绍的 `termux-ohmyzsh` 一定要装，能显著减少手机上的输入活动。另外，也建议按照该教程进行：切换为国内源、美化终端、允许访问手机外置存储等操作，其他部分也建议多看多学。
+3. 从 [这里](https://www.sqlsec.com/2018/05/termux.html) 学习 `Termux` 的基础用法，这其中介绍的 `termux-ohmyzsh` 一定要装，能显著减少手机上的输入活动。另外，也建议按照该教程进行：切换为国内源、美化终端、允许访问手机外置存储等操作，其他部分也建议多看多学。
 
 ## 安装依赖
 
@@ -36,7 +36,7 @@ pkg install git perl nodejs-lts wget curl nano cronie
 
     `Termux`的家目录为：`/data/data/com.termux/files/home`，一般家目录用`~`这个符号代替，这个家目录位于手机的内置存储中。
 
-    按照上面`Termux`教程中允许访问手机外置存储的操作后，家目录下会有一个`storage`的软连接（`~/storage`），`storage`中有个`shared`文件夹（`~/storage/shared`），连接的就是手机的外置存储。
+    按照上面`Termux`[教程](https://www.sqlsec.com/2018/05/termux.html) 中允许访问手机外置存储的操作后，家目录下会有一个`storage`的软连接（`~/storage`），`storage`中有个`shared`文件夹（`~/storage/shared`），连接的就是手机的外置存储。
 
     在手机没有进行root的情况下，一般的文件管理器仅能查看外置存储的文件，无法查看内置存储的文件。
 
@@ -93,7 +93,7 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
 
 2. 也可以参考上述复制`first_run.sh`文件的复制过程，将`git_pull.sh`复制到外置存储卡，用其他可视化文件编辑器修改好后，再复制回来；
 
-3. 甚至还可以参考上述`Termux`教程，在运行`sshd`服务程序后，通过局域网内的电脑，使用WinSCP软件连接手机进行修改。
+3. 甚至还可以参考上述`Termux`[教程](https://www.sqlsec.com/2018/05/termux.html)，在运行`sshd`服务程序后，通过局域网内的电脑，使用WinSCP软件连接手机进行修改。
 
 ## 初始化
 
