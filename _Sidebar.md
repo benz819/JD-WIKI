@@ -1,6 +1,5 @@
 * **[使用背景](Home)**
 * **[更新日志](Update)**
-* **[脚本清单](https://github.com/lxk0301/jd_scripts/wiki/JsList)**
 * **[常见问题](FAQ)**
 * **[使用教程](Documents)**
   + [[Linux]]
