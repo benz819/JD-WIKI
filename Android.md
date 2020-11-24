@@ -10,11 +10,7 @@
 
 5. **建议安卓运行脚本只做为其他脚本运行方式的一种补充，比如在有类似家电星推官时，可以在手机上运行以达到`手动准时运行`的效果。**
 
-6. **手机无需Root即可使用本方法。**
-
-## 更新说明
-
-- 2020-11-24：修改安卓相关代码，现在安卓不root也可以正常在外置存储使用本脚本了，如需使用此新功能，需要你在手机上更换路径重新配置，配置后查看日志以及文件更方便了。
+6. **手机无需Root即可使用本方法，只是不Root时，看日志可能不是特别方便，Root后可以通过手机的文件管理器查看。**
 
 ## 准备工作
 
@@ -22,7 +18,7 @@
 
 2. 从谷歌商店搜索并安装 `Termux`。
 
-3. 从 [这里](https://www.sqlsec.com/2018/05/termux.html) 学习 `Termux` 的基础用法，这其中介绍的 `termux-ohmyzsh` 一定要装，能显著减少手机上的输入活动。另外，也建议按照该教程进行：切换为国内源、美化终端、允许访问手机外置存储等操作，其他部分也建议多看多学。
+3. 从[这里](https://www.sqlsec.com/2018/05/termux.html)学习 `Termux` 的基础用法，这其中介绍的 `termux-ohmyzsh` 一定要装，能显著减少手机上的输入活动。另外，也建议按照该教程进行：切换为国内源、美化终端、允许访问手机外置存储等操作，其他部分也建议多看多学。
 
 ## 安装依赖
 
@@ -40,16 +36,24 @@ pkg install git perl nodejs-lts wget curl nano cronie
 
     `Termux`的家目录为：`/data/data/com.termux/files/home`，一般家目录用`~`这个符号代替，这个家目录位于手机的内置存储中。
 
-    按照上面`Termux`[教程](https://www.sqlsec.com/2018/05/termux.html) 中允许访问手机外置存储的操作后，家目录下会有一个`storage`的软连接（`~/storage`），`storage`中有个`shared`文件夹（`~/storage/shared`），连接的就是手机的外置存储。
+    按照上面`Termux`教程中允许访问手机外置存储的操作后，家目录下会有一个`storage`的软连接（`~/storage`），`storage`中有个`shared`文件夹（`~/storage/shared`），连接的就是手机的外置存储。
 
     在手机没有进行root的情况下，一般的文件管理器仅能查看外置存储的文件，无法查看内置存储的文件。
 
+    **经测试，在没有ROOT时，本脚本只能在内置存储中运行，在外置存储中无法正常运行。而在ROOT以后，脚本可以在外置存储运行，但需要额外安装一个包：**
+
+        ```shell
+        pkg install tsu
+        ```
+
+    在手机没有ROOT时，只能在`Termux`命令行中查看日志，或者将日志使用`cp`命令复制到外置存储后查看。
+
+
 - **脚本下载：**
 
-    1. 在外置存储目录下创建一个用于存放脚本的文件夹(前提是按`Trermux`[使用教程](https://www.sqlsec.com/2018/05/termux.html)获取了外置存储权限)，以下命令直接在外置存储根目录下创建`jd`文件夹。你也可以在其他现有文件夹的下一层创建，不过这样的话后面所有的命令你要根据你自己的路径稍微修改一下：
+    1. 在家目录下创建一个用于存放脚本的文件夹：
         ```shell
-        cd ~/storage/shared  ## 进入外置存储根目录
-        mkdir jd             ## 在根目录下创建jd文件夹
+        mkdir jd
         ```
     2. 进入刚创建好的文件夹：
         ```shell
@@ -62,16 +66,20 @@ pkg install git perl nodejs-lts wget curl nano cronie
         # wget如果出错，要么你科学上网github，要么你手动下载好first_run.sh，放在这个目录下，没有问题再运行下面的命令
         bash first_run.sh
         ```
-        如果实在下载不下来，建议去 [这个链接](https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh) 手动复制，然后粘贴在刚刚创建的`jd`文件夹下的一个文本文件中，并将文件命名为`first_run.sh`，然后手动运行它：
+        如果实在下载不下来，建议去[这个链接](https://raw.githubusercontent.com/EvineDeng/jd-base/main/first_run.sh)手动复制，然后粘贴在手机外置存储的一个文件中，并将文件命名为`first_run.sh`。比如你已经将这个文件存放在外置存储的`Download`文件夹中，那么以下命令可以将它复制到家目录中`jd`文件夹下：
+        ```shell
+        cp ~/storage/shared/Download/first_run.sh ~/jd/first_run.sh
+        ```
+        然后手动运行它：
         ```shell
         bash first_run.sh
         ```
 
         *注：手机如需多账号并发，需要创建多个文件夹，然后分别进入每个文件夹后运行上述命令，然后在每个创建的文件夹下都按下面说明配置一下，并且在制定定时任务时，你配置了多少个文件夹，那么同一条定时任务就要重复几次（因为.sh脚本路径不一样）。*
 
-    4. 等待脚本运行完成，成功后会输出：`脚本执行成功，请按照 Readme 教程继续配置...` 如不成功请参考输出日志解决。
+    4. 等待脚本运行完成，成功后会输出：`脚本执行成功，请按照 Readme 教程继续配置...`。如不成功请参考输出日志解决。
 
-    5. 脚本会自动在`jd`下克隆下脚本并创建日志文件夹，分别如下：
+    5. 脚本会自动在`~/jd`下克隆下脚本并创建日志文件夹，分别如下：
 
         - `log`: 记录所有日志的文件夹，其中跑js脚本的日志会建立对应名称的子文件夹，并且js脚本日志会以`年-月-日-时-分-秒`的格式命名。
 
@@ -82,15 +90,15 @@ pkg install git perl nodejs-lts wget curl nano cronie
 ## 修改配置
 
 ```shell
-cd ~/storage/shared/jd/shell
+cd ~/jd/shell
 cp git_pull.sh.sample git_pull.sh  # 复制git_pull.sh.sample为git_pull.sh
-nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
+nano git_pull.sh
 ```
 [参数清单](参数清单)，如何修改请见`git_pull.sh`中的注释。
 
-你可以按上面方式直接在nano中修改参数，但可通过其他途径将必要的信息复制过来粘贴；
+你可以按上面方式直接在nano中修改参数，但可通过其他途径将必要的信息复制过来粘贴（Ctrl + O 保存，Ctrl + X 退出）；
 
-也可以用手机上的其他文件编辑器修改；
+也可以参考上述复制`first_run.sh`文件的复制过程，将`git_pull.sh`复制到外置存储卡，用其他可视化文件编辑器修改好后，再复制回来；
 
 甚至还可以参考上述`Termux`教程，在运行`sshd`服务程序后，通过局域网内的电脑，使用WinSCP软件连接手机进行修改。
 
@@ -103,8 +111,8 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
 1. 完成所有信息修改以后，先检查一下git_pull.sh能否正常运行。
 
     ```shell
-    cd ~/storage/shared/jd/shell
-    chmod +x *.sh    # 赋予脚本可执行权限
+    cd ~/jd/shell
+    chmod +x *.sh
     bash git_pull.sh
     ```
 
@@ -112,7 +120,7 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
 
     **注2：首次运行的日志很重要，如果过程中有任何错误，请参考错误提示来解决问题。主要包括两类问题：一是无法访问github，请想办法改善网络；二是`git_pull.sh`会运行`npm install`，用来安装js指定的依赖，如果你网络不好，日志中会有提示，请注意阅读。**
 
-    **针对首次运行`git_pull.sh`**，出现类似以下字样才表示`npm install`运行成功（第2次运行`git_pull.sh`不会再出现此信息）：
+    **针对首次运行`git_pull.sh`**，出现类似以下字样才表示`npm install`运行成功：
     ```
     audited 205 packages in 3.784s
 
@@ -125,25 +133,25 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
     如果`npm install`失败，请尝试手动运行，可按如下操作，如果失败，可运行多次：
 
     ```shell
-    cd ~/storage/shared/jd/scripts
-    npm install --no-bin-links || npm install --no-bin-links --registry=https://registry.npm.taobao.org
+    cd ~/jd/scripts
+    npm install || npm install --registry=https://registry.npm.taobao.org
     ```
 
 2. 看看js脚本的信息替换是否正常。
 
     ```shell
-    cd ~/storage/shared/jd/scripts
+    cd ~/jd/scripts
     git diff    # 请使用上下左右键、Page Down、Page Up进行浏览，按q退出
     ```
 
 3. 然后你可以手动运行一次任何一个以`jd_`开头并以`.sh`结尾的脚本（有些脚本会运行很长时间，sh本身不输入任何内容在屏幕上，而把日志全部记录在日志文件中）。
 
     ```shell
-    cd ~/storage/shared/jd/shell
+    cd ~/jd/shell
     bash jd_bean_sign.sh
     ```
 
-    去`~/storage/shared/jd/log/jd_bean_sign`文件夹下查看日志，查看结果是否正常，如不正常，请从头检查。
+    去`~/jd/log/jd_bean_sign`文件夹下查看日志，查看结果是否正常，如不正常，请从头检查。
 
     ```shell
     cd ~/jd/log/jd_bean_sign
@@ -151,11 +159,16 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
     cat 2020-11-13-12-00-00.log  # 假如ls列出的文件名是这个的话
     ```
 
-    如果觉得终端查看日志不便，你也可以直接通过手机的文件管理器使用其他文件编辑器打开这些日志文件进行查看。
+    如需要使用手机的文本编辑器打开这些日志，在没有ROOT时，可以先将其复制到外置存储后，在文本编辑器中打开。假如要查看上面这个日志`~/jd/log/jd_bean_sign/2020-11-13-12-00-00`，可按如下操作：
+    ```shell
+    cp ~/jd/log/jd_bean_sign/2020-11-13-12-00-00.log ~/storage/shared/Documents/
+    ```
+    上述命令会将这个日志文件复制到外置存储的Documents文件夹下（这个文件夹必须事先存在）。文件名长就多使用`Tab`~~
+
 
 4. 如果不想写入日志文件，想直接在`Termux`中看到输出，那么可以如下操作：
     ```shell
-    cd ~/storage/shared/jd/scripts
+    cd ~/jd/scripts
     node jd_bean_sign.js
     ```
 
@@ -164,7 +177,7 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
 - 在添加定时任务之前，请先熟悉一下手机上cronie这个软件的用法（你也可以随时输入`crond -h`查看此帮助）：
 
     ```shell
-    crond -h
+    ~/jd/shell/ crond -h
     Usage:
     crond [options]
 
@@ -195,10 +208,10 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
 
 - 启动好cronie后，再按以下流程添加定时任务。
 
-    1. 复制一份`crontab.list`到`~/storage/shared/jd`目录下。
+    1. 复制一份`crontab.list`到`~/jd`目录下。
 
         ```shell
-        cd ~/storage/shared/jd
+        cd ~/jd
         cp shell/crontab.list.sample crontab.list
         ```
 
@@ -207,9 +220,9 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
         ```shell
         nano crontab.list
         ```
-        **请注意将`crontab.list`这个文件中的`/root`目录替换为`/data/data/com.termux/files/home/storage/shared/jd`。** 路径主要还是为PC考虑的，手机就请自己修改下吧。以下命令可以批量修改：
+        **请注意将`crontab.list`这个文件中的`/root`目录替换为`/data/data/com.termux/files/home/jd`。** 路径主要还是为PC考虑的，手机就请自己修改下吧。以下命令可以批量修改：
         ```shell
-        perl -i -pe "s|/root|/data/data/com.termux/files/home/storage/shared/jd|g" crontab.list
+        perl -i -pe "s|/root|/data/data/com.termux/files/home/jd|g" crontab.list
         ```
     3. 添加定时任务。
 
@@ -234,7 +247,7 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
     3. 更新`crontab`:
 
         ```shell
-        crontab ~/storage/shared/jd/crontab.list
+        crontab ~/jd/crontab.list
         ```
 
     4. 增加的这一条定时任务如果正常运行，会在每分钟的第0秒将当前时间写入`~/date.log`这个文件。你可以在手机在各种情况下都存在过一段时间以后，查看这个文件：
@@ -246,17 +259,17 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
 
 **说明**
 
-- `crontab.list`这个文件必须存放在`~/storage/shared/jd`（和 `shell scripts log` 三个文件夹在同一级）下。
+- `crontab.list`这个文件必须存放在`~/jd`（和 `shell scripts log` 三个文件夹在同一级）下。
 
-- 第一条定时任务`/data/data/com.termux/files/home/storage/shared/jd/shell/git_pull.sh`会自动更新js脚本和shell脚本，并完成Cookie、互助码等信息修改，这个任务本身的日志会存在`/data/data/com.termux/files/home/storage/shared/jd/log/git_pull.log`中。更新过程不会覆盖掉你已经修改好的`git_pull.sh`文件。
+- 第一条定时任务`/data/data/com.termux/files/home/jd/shell/git_pull.sh`会自动更新js脚本和shell脚本，并完成Cookie、互助码等信息修改，这个任务本身的日志会存在`/data/data/com.termux/files/home/jd/log/git_pull.log`中。更新过程不会覆盖掉你已经修改好的`git_pull.sh`文件。
 
-- 第二条定时任务`/data/data/com.termux/files/home/storage/shared/jd/shell/rm_log.sh`用来自动删除旧的js脚本日志，如果你未按下一节`自动删除旧日志`中操作的话，这条定时任务不会生效。
+- 第二条定时任务`/data/data/com.termux/files/home/jd/shell/rm_log.sh`用来自动删除旧的js脚本日志，如果你未按下一节`自动删除旧日志`中操作的话，这条定时任务不会生效。
 
 - 当`git_pull.sh`中的`AutoAddCron`设置为`false`时（不自动增加新的定时任务），如何手动添加新增js脚本的定时任务：
 
     1. 检查有没有新增脚本：
         ```shell
-        cd ~/storage/shared/jd  # 先cd至你存放脚本的目录
+        cd ~/jd  # 先cd至你存放脚本的目录
         cat log/js-add.list
         ```
     2. 如果上一条命令不为空说明有新的定时任务待添加，把内容记下来，比如有个新增的任务叫为`jd_test`，那么就运行以下命令:
@@ -279,7 +292,7 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
 1. 复制一份`rm_log.sh`，并赋予可执行权限：
 
     ```shell
-    cd ~/storage/shared/jd/shell
+    cd ~/jd/shell
     cp rm_log.sh.sample rm_log.sh
     chmod +x rm_log.sh
     ```
@@ -292,7 +305,7 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
 
 这就是手机上运行定时任务的难点了，请各位各显神通，授予`Termux`无限制的后台策略，常见的有：允许常驻后台，允许后台联网，无限制的电量优化等等。至于做了这些操作以后，`Termux`是否仍然偶尔抽风，那我就不得而知了。
 
-但即使这样，遇到特殊情况时，不仍然可以进入`~/storage/shared/jd/scripts/`后手动运行js脚本吗？
+但即使这样，遇到特殊情况时，不仍然可以进入`~/jd/scripts/`后手动运行js脚本吗？
 
 如果有个旧的安卓手机，是不是可以考虑一直充电放家中，无限制地运行此脚本？
 
@@ -300,11 +313,11 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
 
 - 其实`shell`目录下所有以`jd_`开头以`.sh`结尾的文件内容全都一样，全都是从`jd.sh.sample`复制来的，它们是依靠它们自身的文件名来找到所对应的`scripts`目录下的js文件并且执行的。所以，有新的任务时，只要你把`jd.sh.sample`复制一份和新增的`.js`脚本名称一样，赋予可执行权限，再增加定时任务就可以了。
 
-- 如果想要重新调整定时任务运行时间，请不要直接使用`crontab -e`命令修改，而是编辑`~/storage/shared/jd/crontab.list`这个文件，然后使用`crontab ~/storage/shared/jd/crontab.list`命令覆盖。这样的好处脚本会自动依靠这个文件来增加新的定时任务和删除失效的定时任务。
+- 如果想要重新调整定时任务运行时间，请不要直接使用`crontab -e`命令修改，而是编辑`~/jd/crontab.list`这个文件，然后使用`crontab ~/jd/crontab.list`命令覆盖。这样的好处脚本会自动依靠这个文件来增加新的定时任务和删除失效的定时任务。
 
 - 如果shell脚本有更新，需要你手动复制一份`git_pull.sh.sample`，并重新修改必须的信息，然后命名为`git_pull.sh`，流程如下：
     ```shell
-    cd ~/storage/shared/jd/shell
+    cd ~/jd/shell
     cp git_pull.sh.sample git_pull_2.sh
 
     # 然后修改git_pull_2.sh
