@@ -85,15 +85,15 @@ pkg install git perl nodejs-lts wget curl nano cronie
 ```shell
 cd ~/jd/shell
 cp git_pull.sh.sample git_pull.sh  # 复制git_pull.sh.sample为git_pull.sh
-nano git_pull.sh
+nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
 ```
-[参数清单](参数清单)，如何修改请见`git_pull.sh`中的注释。
+[参数清单](参数清单)，如何修改请见`git_pull.sh`中的注释部分。
 
-你可以按上面方式直接在nano中修改参数，但可通过其他途径将必要的信息复制过来粘贴（Ctrl + O 保存，Ctrl + X 退出）；
+1. 你可以按上面方式直接在nano终端编辑器中修改参数，但可通过其他途径将必要的信息复制过来粘贴；
 
-也可以参考上述复制`first_run.sh`文件的复制过程，将`git_pull.sh`复制到外置存储卡，用其他可视化文件编辑器修改好后，再复制回来；
+2. 也可以参考上述复制`first_run.sh`文件的复制过程，将`git_pull.sh`复制到外置存储卡，用其他可视化文件编辑器修改好后，再复制回来；
 
-甚至还可以参考上述`Termux`教程，在运行`sshd`服务程序后，通过局域网内的电脑，使用WinSCP软件连接手机进行修改。
+3. 甚至还可以参考上述`Termux`教程，在运行`sshd`服务程序后，通过局域网内的电脑，使用WinSCP软件连接手机进行修改。
 
 ## 初始化
 
@@ -113,7 +113,7 @@ nano git_pull.sh
 
     **注2：首次运行的日志很重要，如果过程中有任何错误，请参考错误提示来解决问题。主要包括两类问题：一是无法访问github，请想办法改善网络；二是`git_pull.sh`会运行`npm install`，用来安装js指定的依赖，如果你网络不好，日志中会有提示，请注意阅读。**
 
-    **针对首次运行`git_pull.sh`**，出现类似以下字样才表示`npm install`运行成功：
+    **针对首次运行`git_pull.sh`**，出现类似以下字样才表示`npm install`运行成功（不是首次运行不会再出现下面的字样）：
     ```
     audited 205 packages in 3.784s
 
