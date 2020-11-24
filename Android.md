@@ -59,6 +59,7 @@ pkg install git perl nodejs-lts wget curl nano cronie
         pkg install tsu
         ```
 
+    **如确需在外置存储中运行，请cd至外置存储scripts文件夹，手动运行`npm install --no-bin-links`**
     在手机没有ROOT时，只能在`Termux`命令行中查看日志，或者将日志使用`cp`命令复制到外置存储后查看。
 
 
@@ -357,6 +358,8 @@ nano git_pull.sh
     如果想要永久消除这个提示，按它说明的操作方式输入一下命令即可：
     ```
     git config --global pull.rebase true
+    git config --global pull.rebase false
+
     ```
 
 - 如有帮助到你，请点亮 star 。
