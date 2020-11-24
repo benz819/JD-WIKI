@@ -99,7 +99,7 @@ nano git_pull.sh
 
 你可以按上面方式直接在nano中修改参数，但可通过其他途径将必要的信息复制过来粘贴（Ctrl + O 保存，Ctrl + X 退出）；
 
-也可以参考上述复制`first_run.sh`文件的复制过程，将`git_pull.sh`复制到外置存储卡，用其他可视化文件编辑器修改好后，再复制回来；
+也可以用手机上的其他可视化文件编辑器修改好后，再复制回来；
 
 甚至还可以参考上述`Termux`教程，在运行`sshd`服务程序后，通过局域网内的电脑，使用WinSCP软件连接手机进行修改。
 
@@ -244,7 +244,7 @@ nano git_pull.sh
     3. 更新`crontab`:
 
         ```shell
-        crontab ~/jd/crontab.list
+        crontab ~/storage/shared/jd/crontab.list
         ```
 
     4. 增加的这一条定时任务如果正常运行，会在每分钟的第0秒将当前时间写入`~/date.log`这个文件。你可以在手机在各种情况下都存在过一段时间以后，查看这个文件：
