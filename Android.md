@@ -336,7 +336,6 @@ nano git_pull.sh   # Ctrl + O 保存，Ctrl + X 退出
     ```
     如果想要永久消除这个提示，按它说明的操作方式输入一下命令即可：
     ```
-    git config --global pull.rebase true
     git config --global pull.rebase false
 
     ```
