@@ -19,7 +19,7 @@ docker run -dit \
   -v /Host主机上的目录/:/root `#冒号左边请更改为你docker所在主机上的原始路径` \
   --name jd \
   --restart unless-stopped \
-  --network host `#如果是OpenWrt的Docker，建议添加上network` \
+  --network host `#如果是旁路由OpenWrt的Docker，建议添加上network` \
   evinedeng/jd-base:latest
 ```
 
