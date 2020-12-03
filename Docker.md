@@ -85,10 +85,17 @@ docker run -d \
 1. 复制`git_pull.sh.sample`为`git_pull.sh`:
 
     ```shell
-    cp /root/shell/git_pull.sh.sample /root/shell/git_pull.sh  # 
+    cd /root/shell
+    cp git_pull.sh.sample git_pull.sh
     ```
 
-2. 编辑`git_pull.sh`，容器中中文为乱码，不要在命令行中直接编辑这个文件，建议Windows用户使用WinSCP工具，以SFTP协议连接机器，前往部署容器时运行的 `-v /Host主机上的目录/:/root` 这个命令中冒号左边的路径下面去找，如何使用WinSCP请自行百度。可定义内容清单：[参数清单](参数清单)
+2. 编辑`git_pull.sh`：
+
+    ```shell
+    nano git_pull.sh   # Ctrl+O 回车保存，Ctrl+X 回车退出
+    ```
+    
+    建议Windows用户使用WinSCP工具，以SFTP协议连接机器，前往部署容器时运行的 `-v /Host主机上的目录/:/root` 这个命令中冒号左边的路径下面去找，如何使用WinSCP请自行百度。可定义内容清单：[参数清单](参数清单)
 
     - *注1：如果在windows下编辑`git_pull.sh`，请使用WinSCP自带编辑器，或 notepad++、VS Code、Sublime Text 3等软件，请不要使用记事本。*
 
