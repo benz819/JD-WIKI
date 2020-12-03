@@ -148,6 +148,8 @@ nano git_pull.sh                   # 编辑git_pull.sh，如果不习惯，请�
     PATH=/usr/local/lib/nodejs/node-v14.15.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     ```
 
+    相关案例见：https://github.com/EvineDeng/jd-base/issues/95
+
 3. 添加定时任务。
 
     **请注意：以下命令会完整覆盖你当前用户的crontab清单，请务必先检查当前用户是否存在其他定时任务！！！**
