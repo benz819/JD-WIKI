@@ -142,7 +142,7 @@ nano git_pull.sh                   # 编辑git_pull.sh，如果不习惯，请�
 
     **注2：物理机请先在命令行中输入`echo $PATH`查看本系统的PATH路径，如果与`crontab.list`中的PATH不一致，请将`crontab.list`中PATH的值改成你系统的值。另外，存在这三种情况的：①使用nvm安装nodejs的、②安装了多个nodejs版本的、③想使用的nodejs所在位置不在系统PATH中的，请注意将你拟使用的nodejs所在路径添加在PATH最前方。**
 
-    举个例子，比如`echo $PATH`输出的是`PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin`，但想使用的nodejs在`/usr/local/lib/nodejs/node-v14.15.1-linux-x64/bin`，那么就将你的`crontab.list`中的PATH定义为：
+    举个例子，比如`echo $PATH`输出的是`PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin`，但想使用的nodejs在`/usr/local/lib/nodejs/node-v14.15.1-linux-x64/bin`（使用`which node`或者`whereis node`查找命令的具体路径），那么就将你的`crontab.list`中的PATH定义为：
 
     ```
     PATH=/usr/local/lib/nodejs/node-v14.15.1-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
