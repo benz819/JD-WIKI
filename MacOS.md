@@ -6,7 +6,7 @@
 2. rm_log.sh 这个用来删除旧日志。
 3. first_run.sh 这个是物理机用来一键克隆的脚本，只需要在第一次运行，或者是重新部署时运行。
 4. jd.sh.sample 这个是样例，当有新的任务时，自动把它复制一份，这个文件自动识别和它同名的js文件并运行js脚本。
-5. git_pull_function.sh是git_pull.sh背后的脚本，你不动它。
+5. git_pull_function.sh是git_pull.sh背后的脚本，你不用管它。
 6. 所有以`.sample`结尾的文件，均不需要你编辑。
 
 ## 部署环境
