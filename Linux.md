@@ -6,7 +6,7 @@
 2. rm_log.sh 这个用来删除旧日志。
 3. first_run.sh 这个是物理机用来一键克隆的脚本，只需要在第一次运行，或者是重新部署时运行。
 4. jd.sh.sample 这个是样例，当有新的任务时，自动把它复制一份，这个文件自动识别和它同名的js文件并运行js脚本。
-5. git_pull_function.sh是git_pull.sh背后的脚本，你不用管它。
+5. git_pull_function.sh是git_pull.sh背后的脚本，你不动它。
 6. 所有以`.sample`结尾的文件，均不需要你编辑。
 
 ## 部署环境
@@ -27,7 +27,9 @@
     ```
     **声明：OpenWrt环境千差万别，不保证一定可用，需要根据自己的环境来配置，如果OpenWrt安装了Docker，也可以使用Docker的方法。Rom小于256M就不要安装了，你空间不够。**
 
-*注：不同系统的包名不一定一样，需保证 node 大版本 >=10，不过有些大于10的小版本也有问题，详见常见问题。安装好后使用`node -v`或`nodejs -v`命令可查看版本。*
+*注1：不同系统的包名不一定一样，需保证 node 大版本 >=10，安装好后使用`node -v`或`nodejs -v`命令可查看版本。*
+
+*注2：如果是按以上命令安装成功，那应该没问题。如果是nvm安装的或其他方式安装的，请确保安装后的命令在 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" 中，如不在，请参考[#21](https://github.com/EvineDeng/jd-base/issues/21)修改。*
 
 ## 克隆脚本
 
