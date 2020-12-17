@@ -26,4 +26,13 @@
 
 - 2020-12-09：将部分临时活动InviteCode修改为我的互助码，已得到lxk0301大佬同意。
 
-- 2020-12-13：rm_log.sh增加删除指定时间以前的git_pull.sh和crond运行日志的功能，MacOS用户请测试功能是否正常。
+- 2020-12-13：rm_log.sh增加删除指定时间以前的git_pull.sh和crond运行日志的功能。
+
+- 2020-12-14：增加定义宠汪汪参加比赛类型的功能，如果需要使用此功能，请重新将`v2.3.11`版本的git_pull.sh.sample配置为git_pull.sh，或者直接在你原来的git_pull.sh中增加`teamLevel`参数。
+
+- 2020-12-16：1. 增加jd_jdzz（京东赚赚）和jd_joy_run（宠汪汪赛跑）的长期定时任务，当`AutoAddCron=true`时，短期任务会自动添加的。2. 将用户提供的所有Cookie中的PIN附加在`jd_joy_run.js`文件中，这样你的各个账号之间将相互助力宠汪汪赛跑，在助力完成你的账号以后，再给我和lxk0301大佬的账号助力，每个Cookie助力可得30g狗粮。
+
+- 2020-12-17：增加jd_watch（京东发现-看一看）的初始任务，该脚本内置了80个body，不过建议有能力者自行抓包，以防止有可能的黑号，抓包教程及使用方法详见该脚本内的注释说明，引用如下：
+
+> 使用 Charles 抓包，使用正则表达式：functionId=disc(AcceptTask|DoTask) 过滤请求
+> 选中所有请求，将所有请求保存为 JSON Session File 名称为 watch.chlsj，将该文件与jd_watch.js放在相同目录中
