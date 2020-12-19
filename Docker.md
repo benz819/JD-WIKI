@@ -62,14 +62,14 @@
 
     - 如果想同时运行多个容器并发，建议使用docker-compose安装(仅支持x86机器)，不过如果docker-compose不支持你平台，或者你不想用docker-compose，按上述方式部署**不同名称不同映射路径**的容器也是可以的，看你个人需要。
 
-    如需使用docker-compose，请前往 [这里](https://github.com/docker/compose/releases/) 下载最新版本的文件，放在本机 `/usr/local/bin`下。
+        如需使用docker-compose，请前往 [这里](https://github.com/docker/compose/releases/) 下载最新版本的文件，放在本机 `/usr/local/bin`下。
 
-    然后参考本仓库的 [docker-compose.yml](docker/docker-compose.yml) 准备好你自己的`docker-compose.yml`，然后部署：
+        然后参考本仓库的 [docker-compose.yml](docker/docker-compose.yml) 准备好你自己的`docker-compose.yml`，然后部署：
 
-    ```shell
-    ## cd 到docker-compose.yml的存放路径下
-    docker-compose up -d
-    ```
+        ```shell
+        ## cd 到docker-compose.yml的存放路径下
+        docker-compose up -d
+        ```
 
 4. 部署完成。
 
