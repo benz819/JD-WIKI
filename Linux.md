@@ -116,11 +116,11 @@
     crontab crontab.list
     ```
 
-    **如果你害怕你其他的任务被脚本覆盖，那么请将git_pull.sh中的`AutoAddCron`和`AutoDelCron`都设置为`false`！！！这样脚本就不会自动增删任务了！！！**
+    **如果你害怕你其他的任务被脚本覆盖，那么请将config.sh中的`AutoAddCron`和`AutoDelCron`都设置为`false`！！！这样脚本就不会自动增删任务了！！！**
 
-    **如果你害怕你其他的任务被脚本覆盖，那么请将git_pull.sh中的`AutoAddCron`和`AutoDelCron`都设置为`false`！！！这样脚本就不会自动增删任务了！！！**
+    **如果你害怕你其他的任务被脚本覆盖，那么请将config.sh中的`AutoAddCron`和`AutoDelCron`都设置为`false`！！！这样脚本就不会自动增删任务了！！！**
 
-    **如果你害怕你其他的任务被脚本覆盖，那么请将git_pull.sh中的`AutoAddCron`和`AutoDelCron`都设置为`false`！！！这样脚本就不会自动增删任务了！！！**
+    **如果你害怕你其他的任务被脚本覆盖，那么请将config.sh中的`AutoAddCron`和`AutoDelCron`都设置为`false`！！！这样脚本就不会自动增删任务了！！！**
 
 5. 部署完成。
 
