@@ -126,6 +126,4 @@ bash jd.sh xxx now  # 无论是否设置了随机延迟，均立即运行
 
 ## 如何更新配置文件
 
-- `config.sh`改完保存好就行，其他啥也不用干，容器也无需重启什么的，改完以后，新的任务就以新配置运行了。
-
-- `crontab.list`改完后要运行一下`docker exec -it crontab /user/用户名/jd/crontab.list`才会立即生效。
+`config.sh`和`crontab.list`两个文件都一样，改完保存好就行，其他啥也不用干，改完以后，新的任务就以新配置运行了。
