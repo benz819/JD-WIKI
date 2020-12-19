@@ -7,7 +7,7 @@
   + [[Android]]
   + [[MacOS]]
   + [[Docker]]
-* **[v2版教程](Doc_v2)**
+* **[v2版教程(v2版脚本已不再维护)](Doc_v2)**
   + [Linux](Linux_v2)
   + [OpenWrt](Linux_v2)
   + [Android](Android_v2)
