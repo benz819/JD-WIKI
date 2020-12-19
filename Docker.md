@@ -16,11 +16,12 @@
 
     ```shell
     cd /appdata/jd
-    wget --no-check-certificate https://gitee.com/evine/jd-base/raw/v3/sample/config.sh.sample -O config.sh
-    wget --no-check-certificate https://gitee.com/evine/jd-base/raw/v3/sample/docker.list.sample -O crontab.list
+    mkdir config
+    wget --no-check-certificate https://gitee.com/evine/jd-base/raw/v3/sample/config.sh.sample -O config/config.sh       # 必须命名为config.sh
+    wget --no-check-certificate https://gitee.com/evine/jd-base/raw/v3/sample/docker.list.sample -O config/crontab.list  # 必须命名为crontab.list
     ```
 
-2. 分别编辑刚刚下载好的两个文件，建议Windows用户使用WinSCP工具连接服务器进行编辑。
+2. 分别编辑刚刚下载到config文件夹下的两个文件，建议Windows用户使用WinSCP工具连接服务器进行编辑。
 
     其中`config.sh`是配置文件，`crontab.list`是定时任务清单。
     
@@ -38,8 +39,7 @@
 
     ```shell
     docker run -dit \
-    -v /appdata/jd/config.sh:/jd/config.sh `# 冒号左边是刚刚修改好的config.sh所在目录` \
-    -v /appdata/jd/crontab.list:/jd/crontab.list `# 冒号左边是刚刚修改好的crontab.list所在目录` \
+    -v /appdata/jd/config:/jd/config `# 冒号左边是刚刚下载的两个文件存放的目录` \
     -v /appdata/jd/log:/jd/log `# 日志保存目录` \
     --name jd \
     --hostname jd \
@@ -52,8 +52,7 @@
     
     ```shell
     docker run -dit \
-    -v /appdata/jd/config.sh:/jd/config.sh `# 冒号左边是刚刚修改好的config.sh所在目录` \
-    -v /appdata/jd/crontab.list:/jd/crontab.list `# 冒号左边是刚刚修改好的crontab.list所在目录` \
+    -v /appdata/jd/config:/jd/config `# 冒号左边是刚刚下载的两个文件存放的目录` \
     -v /appdata/jd/log:/jd/log `# 日志保存目录` \
     --name jd \
     --hostname jd \

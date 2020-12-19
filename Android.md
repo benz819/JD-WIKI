@@ -74,8 +74,9 @@ pkg install git perl nodejs-lts wget curl nano cronie
 
     ```
     cd ~/jd
-    cp sample/config.sh.sample config.sh       # 复制仓库下sample/config.sh.sample到主目录中，并命名为config.sh
-    cp sample/termux.list.sample crontab.list  # 复制仓库下sample//termux.list.sample到主目录中，并命名为crontab.list
+    mkdir config
+    cp sample/config.sh.sample config/config.sh       # 复制仓库下sample/config.sh.sample到config目录中，并命名为config.sh
+    cp sample/termux.list.sample config/crontab.list  # 复制仓库下sample//termux.list.sample到config目录中，并命名为crontab.list
     nano config.sh   # Ctrl + O 保存，Ctrl + X 退出
     nano crontab.list
     ```

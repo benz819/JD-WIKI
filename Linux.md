@@ -58,8 +58,9 @@
 
     ```
     cd /home/myid/jd
-    cp sample/config.sh.sample config.sh         # 复制仓库下sample/config.sh.sample到主目录中，并命名为config.sh
-    cp sample/computer.list.sample crontab.list  # 复制仓库下sample/computer.list.sample到主目录中，并命名为crontab.list
+    mkdir config
+    cp sample/config.sh.sample config/config.sh         # 复制仓库下sample/config.sh.sample到config目录中，并命名为config.sh
+    cp sample/computer.list.sample config/crontab.list  # 复制仓库下sample/computer.list.sample到config目录中，并命名为crontab.list
     ```
     
     其中`config.sh`是配置文件，`crontab.list`是定时任务清单。编辑这两个文件，如何编辑请查看两个文件内的注释。
