@@ -66,7 +66,7 @@
 
         如需使用docker-compose，请前往 [这里](https://github.com/docker/compose/releases/) 下载最新版本的文件，放在本机 `/usr/local/bin`下。
 
-        然后参考本仓库的 [docker-compose.yml](docker/docker-compose.yml) 准备好你自己的`docker-compose.yml`，然后部署：
+        然后参考本仓库的 [docker-compose.yml](https://github.com/EvineDeng/jd-base/blob/v3/docker/docker-compose.yml) 准备好你自己的`docker-compose.yml`，然后部署：
 
         ```shell
         ## cd 到docker-compose.yml的存放路径下
