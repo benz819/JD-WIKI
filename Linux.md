@@ -60,7 +60,7 @@
     cp sample/computer.list.sample crontab.list  # 复制仓库下sample/computer.list.sample到主目录中，并命名为crontab.list
     ```
     
-    其中`config.sh`是配置文件，`crontab.list`是定时任务清单。编辑这个文件，如何编辑请查看两个文件内的注释。
+    其中`config.sh`是配置文件，`crontab.list`是定时任务清单。编辑这两个文件，如何编辑请查看两个文件内的注释。
 
     - *注1：如果在windows下编辑，请使用WinSCP自带编辑器，或 notepad++、VS Code、Sublime Text 3等软件，请不要使用记事本。*
 
