@@ -16,7 +16,7 @@
 
     ```shell
     cd /appdata/jd
-    mkdir config
+    mkdir config  # 必须创建config文件夹
     wget --no-check-certificate https://gitee.com/evine/jd-base/raw/v3/sample/config.sh.sample -O config/config.sh       # 必须命名为config.sh
     wget --no-check-certificate https://gitee.com/evine/jd-base/raw/v3/sample/docker.list.sample -O config/crontab.list  # 必须命名为crontab.list
     ```

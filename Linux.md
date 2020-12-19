@@ -58,7 +58,7 @@
 
     ```
     cd /home/myid/jd
-    mkdir config
+    mkdir config  # 创建一个配置文件保存目录
     cp sample/config.sh.sample config/config.sh         # 复制仓库下sample/config.sh.sample到config目录中，并命名为config.sh
     cp sample/computer.list.sample config/crontab.list  # 复制仓库下sample/computer.list.sample到config目录中，并命名为crontab.list
     ```
@@ -116,7 +116,7 @@
 
     ```shell
     cd /home/myid/jd
-    crontab crontab.list
+    crontab config/crontab.list
     ```
 
     **如果你害怕你其他的任务被脚本覆盖，那么请将config.sh中的`AutoAddCron`和`AutoDelCron`都设置为`false`！！！这样脚本就不会自动增删任务了！！！**
