@@ -116,7 +116,7 @@ pkg install git perl nodejs-lts wget curl nano cronie
     如果`npm install`失败，请尝试手动运行，可按如下操作，如果失败，可运行多次：
 
     ```shell
-    cd /home/myid/jd/scripts
+    cd ~/jd/scripts
     npm install || npm install --registry=https://registry.npm.taobao.org
     ```
 
