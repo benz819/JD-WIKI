@@ -37,7 +37,7 @@
 切换为国内安装源后，在`Termux`中输入：
 ```shell
 pkg upgrade
-pkg install git perl nodejs-lts wget curl nano cronie
+pkg install git perl nodejs-lts wget curl nano cronie moreutils
 ```
 
 针对`Termux`输入麻烦，多多使用`Tab`键自动补全是个好习惯。`termux-ohmyzsh`也是一个神器，启用后可以帮助输入。
@@ -181,7 +181,7 @@ pkg install git perl nodejs-lts wget curl nano cronie
 本环境基于node，所以也只能跑js脚本，但如果你也安装了其他比如python，也可添加py脚本。你可以把你的脚本放在`~/jd/scripts`下（不是js不要放这里，另建其他文件夹），假如有个脚本叫`test.js`，可以在你的配置目录`config`下`crontab.list`中添加如下的定时任务：
 
 ```shell
-15 10 * * * node ~/jd/scripts/test.js | ts "%Y-%m-%d %H:%M:%S" >> ~/jd/log/test.log 2>&1
+15 10 * * * node ~/jd/scripts/test.js | ts "+%Y-%m-%d %H:%M:%S" >> ~/jd/log/test.log 2>&1
 ```
 
 然后运行一下`crontab ~/jd/config/crontab.list`即可。

@@ -14,17 +14,17 @@
 
 - debian/ubuntu/armbian/OpenMediaVault，以及其他debian系：
     ```shell
-    apt update && apt install -y git wget curl nodejs npm perl
+    apt update && apt install -y git wget curl nodejs npm perl moreutils
     ```
 - CentOS/RedHat/Fedora等红帽系
     ```shell
-    yum update && yum install git wget curl perl
+    yum update && yum install git wget curl perl moreutils
     ```
     如果安装源中有nodejs和npm，也安装好，否则请访问 [Node.js官网](https://nodejs.org/zh-cn/download/) 或者 [nodesource@github](https://github.com/nodesource/distributions) 查看如何安装。
 
 - OpenWrt， **需要添加官方软件源，** 如果某个软件包已集成在固件中，则可跳过安装。如果你会编译，可以把下面这些包直接编译在固件中。
     ```shell
-    opkg update && opkg install git git-http wget curl node node-npm perl
+    opkg update && opkg install git git-http wget curl node node-npm perl moreutils
     ```
     **声明：OpenWrt环境千差万别，不保证一定可用，需要根据自己的环境来配置，如果OpenWrt安装了Docker，也可以使用Docker的方法。Rom小于256M就不要安装了，你空间不够。**
 
@@ -144,7 +144,7 @@
 本环境基于node，所以也只能跑js脚本，但如果你也安装了其他比如python，也可添加py脚本。你可以把你的脚本放在`/home/myid/jd/scripts`下（不是js不要放这里，另建其他文件夹），假如有个脚本叫`test.js`，可以在你的配置目录`config`下`crontab.list`中添加如下的定时任务：
 
 ```shell
-15 10 * * * node /home/myid/jd/scripts/test.js | ts "%Y-%m-%d %H:%M:%S" >> /home/myid/jd/log/test.log 2>&1
+15 10 * * * node /home/myid/jd/scripts/test.js | ts "+%Y-%m-%d %H:%M:%S" >> /home/myid/jd/log/test.log 2>&1
 ```
 
 然后运行一下`crontab /home/myid/jd/config/crontab.list`即可。

@@ -14,7 +14,7 @@
 
 1. 在[Node.js官网](https://nodejs.org/zh-cn/download)下载并安装Node.js长期支持版（已包括npm）；
 
-2. 安装git、wget、curl、perl，可能某个软件已经集成在系统中。
+2. 安装git、wget、curl、perl、moreutils，可能某个软件已经集成在系统中。
 
 ## 流程
 
@@ -122,7 +122,7 @@
 本环境基于node，所以也只能跑js脚本，但如果你也安装了其他比如python，也可添加py脚本。你可以把你的脚本放在`/user/用户名/jd/scripts`下（不是js不要放这里，另建其他文件夹），假如有个脚本叫`test.js`，可以在你的配置目录`config`下`crontab.list`中添加如下的定时任务：
 
 ```shell
-15 10 * * * node /user/用户名/jd/scripts/test.js | ts "%Y-%m-%d %H:%M:%S" >> /user/用户名/jd/log/test.log 2>&1
+15 10 * * * node /user/用户名/jd/scripts/test.js | ts "+%Y-%m-%d %H:%M:%S" >> /user/用户名/jd/log/test.log 2>&1
 ```
 
 然后运行一下`crontab /user/用户名/jd/config/crontab.list`即可。

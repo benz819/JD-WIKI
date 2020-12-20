@@ -137,7 +137,7 @@ docker cp /你宿主机上的其他额外的脚本路径/test.js jd:/jd/scripts/
     这种形式要按如下方式添加定时任务(注意cron后有个半角的点)：
 
     ```shell
-    15 14 * * * . /jd/config/config2.sh && node /jd/scripts/test.js | ts "%Y-%m-%d %H:%M:%S" >> /jd/log/test.log 2>&1
+    15 14 * * * . /jd/config/config2.sh && node /jd/scripts/test.js | ts "+%Y-%m-%d %H:%M:%S" >> /jd/log/test.log 2>&1
     ```
 
     **使用这种方式时，无需重启容器，任何时候直接修改好`config2.sh`立即生效。**
