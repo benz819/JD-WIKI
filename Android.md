@@ -74,11 +74,19 @@ pkg install git perl nodejs-lts wget curl nano cronie
 
     ```
     cd ~/jd
-    mkdir config  # 创建一个配置文件保存目录
-    cp sample/config.sh.sample config/config.sh       # 复制仓库下sample/config.sh.sample到config目录中，并命名为config.sh
-    cp sample/termux.list.sample config/crontab.list  # 复制仓库下sample//termux.list.sample到config目录中，并命名为crontab.list
-    nano config.sh   # Ctrl + O 保存，Ctrl + X 退出
-    nano crontab.list
+
+    # 创建一个配置文件保存目录
+    mkdir config
+
+    # 复制仓库下sample/config.sh.sample到config目录中，并命名为config.sh
+    cp sample/config.sh.sample config/config.sh
+
+    # 复制仓库下sample/termux.list.sample到config目录中，并命名为crontab.list
+    cp sample/termux.list.sample config/crontab.list
+    
+    # 编辑刚刚复制后的两个文件，Ctr + O保存，Ctrl + X退出
+    nano config/config.sh
+    nano config/crontab.list
     ```
 
     1. 你可以按上面方式直接在nano终端编辑器中修改参数，但可通过其他途径将必要的信息复制过来粘贴；
@@ -164,6 +172,10 @@ pkg install git perl nodejs-lts wget curl nano cronie
 
 5. 部署完成。
 
+## 如何更新配置文件
+
+`config.sh`和`crontab.list`两个文件都一样，改完保存好就行，其他啥也不用干，改完以后，新的任务就以新配置运行了。
+
 ## 如何手动运行脚本
 
 用法如下(其中`xxx`为lxk0301大佬的脚本名称)：
@@ -181,10 +193,6 @@ bash jd.sh xxx now  # 无论是否设置了随机延迟，均立即运行
 如果lxk0301脚本名不记得也不要紧，输错了也会提示你的：
 
 ![PC2](Picture/PC2.png)
-
-## 如何更新配置文件
-
-`config.sh`和`crontab.list`两个文件都一样，改完保存好就行，其他啥也不用干，改完以后，新的任务就以新配置运行了。
 
 ## 划重点：电量优化策略
 

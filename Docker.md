@@ -16,9 +16,15 @@
 
     ```shell
     cd /appdata/jd
-    mkdir config  # 必须创建config文件夹，用来保存下面要下载的两个配置文件
-    wget --no-check-certificate https://gitee.com/evine/jd-base/raw/v3/sample/config.sh.sample -O config/config.sh       # 必须命名为config.sh
-    wget --no-check-certificate https://gitee.com/evine/jd-base/raw/v3/sample/docker.list.sample -O config/crontab.list  # 必须命名为crontab.list
+
+    # 必须创建config文件夹，用来保存下面要下载的两个配置文件
+    mkdir config
+
+    # 下载本仓库的sample/config.sh.sample，保存到刚刚创建的config文件夹下，并命名为 config.sh（必须是这个名称）
+    wget --no-check-certificate https://gitee.com/evine/jd-base/raw/v3/sample/config.sh.sample -O config/config.sh
+
+    # 下载本仓库的sample/docker.list.sample，保存到刚刚创建的config文件夹下，并命名为 crontab.list（必须是这个名称）
+    wget --no-check-certificate https://gitee.com/evine/jd-base/raw/v3/sample/docker.list.sample -O config/crontab.list
     ```
 
 2. 分别编辑刚刚下载到config文件夹下的两个文件，建议Windows用户使用WinSCP工具连接服务器进行编辑。
@@ -87,6 +93,10 @@
 
     你也可以访问 https://containrrr.dev/watchtower/ 获取更详细的部署说明，包括如何避开某些容器不让它自动更新，如何发更新容器后发送通知，设置检测时间等等。
 
+## 如何更新配置文件
+
+`config.sh`和`crontab.list`两个文件都一样，改完保存好就行，其他啥也不用干，容器也不用重启什么，改完以后，新的任务就以新配置运行了。
+
 ## 如何手动运行脚本
 
 用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)：
@@ -103,7 +113,3 @@ docker exec jd bash jd xxx now  # 无论是否设置了随机延迟，均立即�
 脚本名不记得也不要紧，输错了也会提示你的：
 
 ![Docker2](Picture/Docker2.png)
-
-## 如何更新配置文件
-
-`config.sh`和`crontab.list`两个文件都一样，改完保存好就行，其他啥也不用干，容器也不用重启什么，改完以后，新的任务就以新配置运行了。

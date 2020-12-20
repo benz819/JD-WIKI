@@ -58,20 +58,28 @@
 
     ```
     cd /home/myid/jd
-    mkdir config  # 创建一个配置文件保存目录
-    cp sample/config.sh.sample config/config.sh         # 复制仓库下sample/config.sh.sample到config目录中，并命名为config.sh
-    cp sample/computer.list.sample config/crontab.list  # 复制仓库下sample/computer.list.sample到config目录中，并命名为crontab.list
+
+    # 创建一个配置文件保存目录
+    mkdir config
+
+    # 复制仓库下sample/config.sh.sample到config目录中，并命名为config.sh
+    cp sample/config.sh.sample config/config.sh
+
+    # 复制仓库下sample/computer.list.sample到config目录中，并命名为crontab.list
+    cp sample/computer.list.sample config/crontab.list
+
+    # 然后编辑这两个文件，如需要直接在命令行中编辑，可如下输入（Ctr + O保存，Ctrl + X退出）：
+    nano config/config.sh
+    nano config/crontab.list
     ```
     
-    其中`config.sh`是配置文件，`crontab.list`是定时任务清单。编辑这两个文件，如何编辑请查看两个文件内的注释。
+    其中`config.sh`是配置文件，`crontab.list`是定时任务清单，如何编辑请查看两个文件内的注释。
 
     - *注1：如果在windows下编辑，请使用WinSCP自带编辑器，或 notepad++、VS Code、Sublime Text 3等软件，请不要使用记事本。*
 
-    - *注2：如何修改请仔细阅读文件中的注释部分。*
-
-    - *注3：如果在WinSCP中看不见文件或看见了但不是最新的文件，请点击鼠标右键-刷新来刷新文件清单。*
+    - *注2：如果在WinSCP中看不见文件或看见了但不是最新的文件，请点击鼠标右键-刷新来刷新文件清单。*
     
-    关于`crontab.list`，这里说明一下，除了那些本来就会准时运行的脚本外，如果还有一些脚本你不想随机延迟，要么在`config.sh`中`RandomDelay`不要赋值(所有任务都将不延迟执行)，要么参考下面 [如何手动运行脚本](Linux#如何手动运行脚本) 部分，在`crontab.list`中不想被随机延迟运行的任务后面，添加上 `now`，比如：
+    > 关于`crontab.list`，这里说明一下，除了那些本来就会准时运行的脚本外，如果还有一些脚本你不想随机延迟，要么在`config.sh`中`RandomDelay`不要赋值(所有任务都将不延迟执行)，要么参考下文 [如何手动运行脚本](Linux#如何手动运行脚本) 部分，在`crontab.list`中不想被随机延迟运行的任务后面，添加上 `now`，比如：
     
     ```shell
     20 * * * * bash /home/myid/jd/jd.sh jd_dreamFactory now
@@ -127,6 +135,10 @@
 
 5. 部署完成。
 
+## 如何更新配置文件
+
+`config.sh`和`crontab.list`两个文件都一样，在任何时候改完保存好就行，其他啥也不用干，改完以后，新的任务就以新配置运行了。
+
 ## 如何手动运行脚本
 
 用法如下(其中`xxx`为lxk0301大佬的脚本名称)：
@@ -145,6 +157,3 @@ bash jd.sh xxx now  # 无论是否设置了随机延迟，均立即运行
 
 ![PC2](Picture/PC2.png)
 
-## 如何更新配置文件
-
-`config.sh`和`crontab.list`两个文件都一样，改完保存好就行，其他啥也不用干，容器也无需重启什么的，改完以后，新的任务就以新配置运行了。
