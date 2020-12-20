@@ -188,7 +188,7 @@ pkg install git perl nodejs-lts wget curl nano cronie
 
 ## 如何手动运行脚本
 
-用法如下(其中`xxx`为lxk0301大佬的脚本名称)：
+用法如下(其中`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
 ```
 cd ~/jd
