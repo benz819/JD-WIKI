@@ -99,7 +99,7 @@
 
 ## 如何添加除lxk0301大佬以外的js脚本
 
-本环境基于node，所以也只能跑js脚本，你可以把你的脚本放在`~/jd/scripts`下，使用`docker cp`命令：
+本环境基于node，所以也只能跑js脚本，使用`docker cp`命令将脚本复制到容器中的`/jd/scripts/`目录下：
 
 ```shell
 docker cp /你宿主机上的其他额外的脚本路径/test.js jd:/jd/scripts/
