@@ -151,13 +151,13 @@ docker cp /你宿主机上的其他额外的脚本路径/test.js jd:/jd/scripts/
 1. 手动 git pull 更新脚本
 
     ```shell
-    docker exec jd -it bash git_pull
+    docker exec -it jd bash git_pull
     ```
 
 2. 手动删除指定时间以前的旧日志
 
     ```shell
-    docker exec jd -it bash rm_log
+    docker exec -it jd bash rm_log
     ```
 
 3. 手动执行薅羊毛脚本，用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
