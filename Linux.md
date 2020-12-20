@@ -139,6 +139,16 @@
 
 `config.sh`和`crontab.list`两个文件都一样，在任何时候改完保存好就行，其他啥也不用干，改完以后，新的任务就以新配置运行了。
 
+## 如何添加除lxk0301大佬以外的js脚本
+
+本环境基于node，所以也只能跑js脚本，你可以把你的脚本放在`/home/myid/jd/scripts`下，假如有个脚本叫`test.js`，可以在你的配置目录`config`下`crontab.list`中添加如下的定时任务：
+
+```shell
+15 10 * * * node /user/用户名/jd/scripts/test.js | ts "%Y-%m-%d %H:%M:%S" >> /user/用户名/jd/log/test.log 2>&1
+```
+
+然后运行一下`crontab /home/myid/jd/config/crontab.list`即可。
+
 ## 如何手动运行脚本
 
 用法如下(其中`xxx`为lxk0301大佬的脚本名称)：

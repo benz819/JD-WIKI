@@ -97,6 +97,24 @@
 
 `config.sh`和`crontab.list`两个文件都一样，改完保存好就行，其他啥也不用干，容器也不用重启什么，改完以后，新的任务就以新配置运行了。
 
+## 如何添加除lxk0301大佬以外的js脚本
+
+本环境基于node，所以也只能跑js脚本，你可以把你的脚本放在`~/jd/scripts`下，使用`docker cp`命令：
+
+```shell
+docker cp /你宿主机上的其他额外的脚本路径/test.js jd:/jd/scripts/
+```
+
+然后在你的配置目录`config`下`crontab.list`中添加如下的定时任务（只是举例）：
+
+```shell
+15 10 * * * node /jd/scripts/test.js | ts "%Y-%m-%d %H:%M:%S" >> /jd/log/test.log 2>&1
+```
+
+然后在宿主机上运行一下`docker exec -it jd crontab /jd/config/crontab.list`即可。
+
+**注意：每次更新镜像或重新部署以后要重新运行一下`docker cp`命令，但`crontab.list`不用再改了。**
+
 ## 如何手动运行脚本
 
 用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)：
