@@ -129,18 +129,32 @@
 
 ## 如何手动运行脚本
 
-用法如下(其中`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
+1. 手动 git pull 更新脚本
 
-```
-cd /user/用户名/jd
-bash jd.sh xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
-bash jd.sh xxx now  # 无论是否设置了随机延迟，均立即运行
-```
+    ```shell
+    cd /user/用户名/jd
+    bash git_pull.sh
+    ```
 
-如果你没输lxk0301大佬的脚本名称也不要紧，`jd.sh`会提示你：
+2. 手动删除指定时间以前的旧日志
 
-![PC1](Picture/PC1.png)
+    ```shell
+    cd /user/用户名/jd
+    bash rm_log.sh
+    ```
 
-如果lxk0301脚本名不记得也不要紧，输错了也会提示你的：
+3. 手动执行薅羊毛脚本，用法如下(其中`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
-![PC2](Picture/PC2.png)
+    ```
+    cd /user/用户名/jd
+    bash jd.sh xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
+    bash jd.sh xxx now  # 无论是否设置了随机延迟，均立即运行
+    ```
+
+    如果你没输lxk0301大佬的脚本名称也不要紧，`jd.sh`会提示你：
+
+    ![PC1](Picture/PC1.png)
+
+    如果lxk0301脚本名不记得也不要紧，输错了也会提示你的：
+
+    ![PC2](Picture/PC2.png)

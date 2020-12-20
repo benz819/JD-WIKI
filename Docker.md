@@ -117,17 +117,29 @@ docker cp /你宿主机上的其他额外的脚本路径/test.js jd:/jd/scripts/
 
 ## 如何手动运行脚本
 
-用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
+1. 手动 git pull 更新脚本
 
-```
-docker exec jd bash jd xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
-docker exec jd bash jd xxx now  # 无论是否设置了随机延迟，均立即运行
-```
+    ```shell
+    docker exec -it bash git_pull
+    ```
 
-如果你忘记了命令也不要紧，只要你记得命令`jd`就行，输入后会提示你：
+2. 手动删除指定时间以前的旧日志
 
-![Docker1](Picture/Docker1.png)
+    ```shell
+    docker exec -it bash rm_log
+    ```
 
-脚本名不记得也不要紧，输错了也会提示你的：
+3. 手动执行薅羊毛脚本，用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
-![Docker2](Picture/Docker2.png)
+    ```
+    docker exec jd bash jd xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
+    docker exec jd bash jd xxx now  # 无论是否设置了随机延迟，均立即运行
+    ```
+
+    如果你忘记了命令也不要紧，只要你记得命令`jd`就行，输入后会提示你：
+
+    ![Docker1](Picture/Docker1.png)
+
+    脚本名不记得也不要紧，输错了也会提示你的：
+
+    ![Docker2](Picture/Docker2.png)
