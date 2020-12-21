@@ -178,13 +178,15 @@ pkg install git perl nodejs-lts wget curl nano cronie moreutils
 
 ## 如何添加除lxk0301大佬以外的脚本
 
-本环境基于node，所以也只能跑js脚本，但如果你也安装了其他比如python，也可添加py脚本。你可以把你的脚本放在`~/jd/scripts`下（不是js不要放这里，另建其他文件夹），假如有个脚本叫`test.js`，可以在你的配置目录`config`下`crontab.list`中添加如下的定时任务：
+本环境基于node，所以也只能跑js脚本。你可以把你的后缀为`.js`的脚本放在`/data/data/com.termux/files/home/jd/scripts`下或`/data/data/com.termux/files/home/jd/config`下。比如你在`/data/data/com.termux/files/home/jd/config`下放了个`test.js`，可以在你的`crontab.list`中添加如下的定时任务：
 
 ```shell
-15 10 * * * node ~/jd/scripts/test.js | ts "+%Y-%m-%d %H:%M:%S" >> ~/jd/log/test.log 2>&1
+15 10 * * * bash /data/data/com.termux/files/home/jd/jd.sh test     # 如果不需要准时运行或RandemDelay未设置
+15 10 * * * bash /data/data/com.termux/files/home/jd/jd.sh test now # 如果设置了RandemDelay但又需要它准时运行
 ```
+程序会先检测`/data/data/com.termux/files/home/jd/scripts`下有没有`test.js`，再检测`/data/data/com.termux/files/home/jd/config`有没有，以先检测到的为准。假如两个文件夹下都没有，就会报错。
 
-然后运行一下`crontab ~/jd/config/crontab.list`即可。
+然后运行一下`crontab /data/data/com.termux/files/home/jd/config/crontab.list`更新定时任务即可。
 
 ## 如何手动运行脚本
 

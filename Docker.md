@@ -99,52 +99,30 @@
 
 ## 如何添加除lxk0301大佬以外的脚本
 
-### 如果你其他的脚本不使用环境变量
-
-本环境基于node，所以也只能跑js脚本，使用`docker cp`命令将脚本复制到容器中的`/jd/scripts/`目录下：
+本环境基于node，所以也只能跑js脚本。你可以把你的后缀为`.js`的脚本放在你映射的`config`下即可。比如你放了个`test.js`，可以在你的`crontab.list`中添加如下的定时任务：
 
 ```shell
-docker cp /你宿主机上的其他额外的脚本路径/test.js jd:/jd/scripts/
+15 10 * * * bash jd test     # 如果不需要准时运行或RandemDelay未设置
+15 10 * * * bash jd test now # 如果设置了RandemDelay但又需要它准时运行
 ```
 
-然后在你的配置目录`config`下`crontab.list`中添加如下的定时任务（只是举例）：
+然后如果急你就运行一下`docker exec -it jd crontab /jd/config/crontab.list`更新定时任务即可，如果不急就等着程序自己添加进定时任务。
 
-```shell
-15 10 * * * node /jd/scripts/test.js | ts "%Y-%m-%d %H:%M:%S" >> /jd/log/test.log 2>&1
-```
+**注意事项：**
 
-**注意：每次更新镜像或重新部署以后要重新运行一下`docker cp`命令，但`crontab.list`不用再改了。**
-
-### 如果你其他的脚本用的环境变量
-
-- 有两个办法，分别如下：
-
-1. 直接在创建容器时给容器增加环境变量的命令`-e 变量名="变量值" \`，或者添加到docker-compose.yml中增加`environment:`以docker-compose启动。
-
-    **此办法时，要更新环境变量，必须停止容器-删除容器-修改变量-重新部署容器。**
-    
-    此方式下定时任务直接按上面`不使用环境变量`那种添加方式添加即可。
-
-2. 在`config`配置目录下新建一个配置文件`config2.sh`，以以下形式写入变量：
+1. 如果你额外加的脚本要用到环境变量，直接在你的`config.sh`文件最下方按以下形式添加好变量即可：
 
     ```shell
     export 变量名1="变量值1"
     export 变量名2="变量值2"
     export 变量名3="变量值3"
-    # 以此类推
     ```
 
-    这种形式要按如下方式添加定时任务(注意cron后有个半角的点)：
+2. 如果你额外添加的脚本要用到lxk0301大佬仓库中的`sendNotify.js`来发送通知，建议你直接放在容器内的`/jd/scripts`文件夹下，按以下命令复制进容器（重新部署容器后要再次运行）：
 
     ```shell
-    15 14 * * * . /jd/config/config2.sh && node /jd/scripts/test.js | ts "+%Y-%m-%d %H:%M:%S" >> /jd/log/test.log 2>&1
+    docker cp /宿主机上脚本存放路径/test.js jd:/jd/scripts
     ```
-
-    **使用这种方式时，无需重启容器，任何时候直接修改好`config2.sh`立即生效。**
-
-- 然后按`不使用环境变量`中的`docker cp`命令把脚本复制到容器中。
-
-    **注意：每次更新镜像或重新部署以后要重新运行一下`docker cp`命令，但`crontab.list`不用再改了。**
 
 ## 如何手动运行脚本
 
