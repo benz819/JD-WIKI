@@ -56,6 +56,8 @@ pkg install git perl nodejs-lts wget curl nano cronie moreutils
 
 **如需多账号并发，请在不同文件夹下分别按以下流程操作一遍，并且需要注意：目录虽然是分开的，但每套脚本下的`crontab.list`中，要把每一套脚本的定时任务都写一遍，即你几套账号，就要重复几次。记住，是每套脚本下的`crontab.list`全部要重复多次。**
 
+**看不懂这句话的小白就别折腾多账号并发了...**
+
 1. 克隆本仓库
 
     如需以后从Github更新我的和lxk0301大佬的脚本：
