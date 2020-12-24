@@ -206,7 +206,14 @@ v3版脚本已经可以正常在外置存储运行了，这样查看日志就方
     bash rm_log.sh
     ```
 
-3. 手动执行薅羊毛脚本，用法如下(其中`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
+3. 手动导出所有互助码
+
+    ```shell
+    cd ~/storage/shared/jd
+    bash export_sharecodes.sh
+    ```
+
+4. 手动执行薅羊毛脚本，用法如下(其中`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
     ```
     cd ~/storage/shared/jd

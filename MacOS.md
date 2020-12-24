@@ -65,7 +65,14 @@
     20 * * * * bash /user/用户名/jd/jd.sh jd_dreamFactory now
     ```
 
-3. 初始化
+3. 手动导出所有互助码
+
+    ```shell
+    cd /user/用户名/jd
+    bash export_sharecodes.sh
+    ```
+
+4. 初始化
 
     **在首次编辑好`config.sh`和`crontab.list`后，请务必手动运行一次`git_pull.sh`，不仅是为检查错误，也是为了运行一次`npm install`用以安装js指定的依赖。**
 
