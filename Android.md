@@ -10,7 +10,7 @@
 
 5. **建议安卓运行脚本只做为其他脚本运行方式的一种补充，比如在有类似家电星推官时，可以在手机上运行以达到`手动准时运行`的效果。**
 
-6. **手机无需Root即可使用本方法，只是不Root时，看日志可能不是特别方便，Root后可以通过手机的文件管理器查看。**
+6. **v3版已经可以正常在外置存储运行了。**
 
 ## 脚本可以干什么
 
@@ -44,13 +44,11 @@ pkg install git perl nodejs-lts wget curl nano cronie moreutils
 
 ## 一些重要的前提
 
-`Termux`的家目录为：`/data/data/com.termux/files/home`，一般家目录用`~`这个符号代替，这个家目录位于手机的内置存储中。
+**`Termux`的家目录为：`/data/data/com.termux/files/home`，一般家目录用`~`这个符号代替，这个家目录位于手机的内置存储中。（请注意，日常在终端操作，家目录写为`~`没有问题，但请在crontab.list中写作完整的路径，不要写作`~`）**
 
 按照上面`Termux`[教程](https://www.sqlsec.com/2018/05/termux.html) 中允许访问手机外置存储的操作后，家目录下会有一个`storage`的软连接（`~/storage`），`storage`中有个`shared`文件夹（`~/storage/shared`），连接的就是手机的外置存储。
 
-在手机没有进行root的情况下，一般的文件管理器仅能查看外置存储的文件，无法查看内置存储的文件。
-
-在手机没有ROOT时，只能在`Termux`命令行中查看日志，或者将日志使用`cp`命令复制到外置存储后查看。
+v3版脚本已经可以正常在外置存储运行了，这样查看日志就方便多了。
 
 ## 操作流程
 
@@ -60,22 +58,24 @@ pkg install git perl nodejs-lts wget curl nano cronie moreutils
 
 1. 克隆本仓库
 
+    **按上述`Termux`[教程](https://www.sqlsec.com/2018/05/termux.html) 中允许访问手机外置存储的操作后，下面的命令将在外置存储根目录创建一个jd文件夹保存本仓库脚本。**
+
     如需以后从Github更新我的和lxk0301大佬的脚本：
 
     ```shell
-    git clone -b v3 https://github.com/EvineDeng/jd-base ~/jd
+    git clone -b v3 https://github.com/EvineDeng/jd-base ~/storage/shared/jd
     ```
 
     如需以后从Gitee更新我的和lxk0301大佬的脚本：
 
     ```shell
-    git clone -b v3 https://gitee.com/evine/jd-base ~/jd
+    git clone -b v3 https://gitee.com/evine/jd-base ~/storage/shared/jd
     ```
 
 2. 复制并编辑自己的配置文件
 
     ```
-    cd ~/jd
+    cd ~/storage/shared/jd
 
     # 创建一个配置文件保存目录
     mkdir config
@@ -88,7 +88,7 @@ pkg install git perl nodejs-lts wget curl nano cronie moreutils
     
     # 编辑刚刚复制后的两个文件，Ctr + O保存，Ctrl + X退出
     nano config/config.sh
-    nano config/crontab.list
+    nano config/crontab.list    # 请注意crontab.list中的路径中家目录不要用~代替，必须是完整的路径 
     ```
 
     1. 你可以按上面方式直接在nano终端编辑器中修改参数，但可通过其他途径将必要的信息复制过来粘贴；
@@ -102,7 +102,7 @@ pkg install git perl nodejs-lts wget curl nano cronie moreutils
     > 关于`crontab.list`，这里说明一下，除了那些本来就会准时运行的脚本外，如果还有一些脚本你不想随机延迟，要么在`config.sh`中`RandomDelay`不要赋值(所有任务都将不延迟执行)，要么参考下面 [如何手动运行脚本](Android#如何手动运行脚本) 部分，在`crontab.list`中不想被随机延迟运行的任务后面，添加上 `now`，比如：
     
     ```shell
-    20 * * * * bash /data/data/com.termux/files/home/jd/jd.sh jd_dreamFactory now
+    20 * * * * bash /data/data/com.termux/files/home/storage/shared/jd/jd.sh jd_dreamFactory now
     ```
 
 3. 初始化
@@ -126,7 +126,7 @@ pkg install git perl nodejs-lts wget curl nano cronie moreutils
     如果`npm install`失败，请尝试手动运行，可按如下操作，如果失败，可运行多次：
 
     ```shell
-    cd ~/jd/scripts
+    cd ~/storage/shared/jd/scripts
     npm install || npm install --registry=https://registry.npm.taobao.org
     ```
 
@@ -135,7 +135,7 @@ pkg install git perl nodejs-lts wget curl nano cronie moreutils
 - 在添加定时任务之前，请先熟悉一下手机上cronie这个软件的用法（你也可以随时输入`crond -h`查看此帮助）：
 
     ```shell
-    ~/jd/shell/ crond -h
+    ~/storage/shared/jd/shell/ crond -h
     Usage:
     crond [options]
 
@@ -168,11 +168,11 @@ pkg install git perl nodejs-lts wget curl nano cronie moreutils
 - 启动好cronie后，再执行以下命令：
 
     ```shell
-    cd ~/jd
+    cd ~/storage/shared/jd
     crontab config/crontab.list
     ```
 
-5. 部署完成。
+5. 部署完成。在有定时任务运行过后，日志文件会在`~/storage/shared/jd/log`中。
 
 ## 如何更新配置文件
 
@@ -180,36 +180,36 @@ pkg install git perl nodejs-lts wget curl nano cronie moreutils
 
 ## 如何添加除lxk0301大佬以外的脚本
 
-本环境基于node，所以也只能跑js脚本。你可以把你的后缀为`.js`的脚本放在`/data/data/com.termux/files/home/jd/scripts`下或`/data/data/com.termux/files/home/jd/config`下。比如你在`/data/data/com.termux/files/home/jd/config`下放了个`test.js`，可以在你的`crontab.list`中添加如下的定时任务：
+本环境基于node，所以也只能跑js脚本。你可以把你的后缀为`.js`的脚本放在`~/storage/shared/jd/scripts`下或`~/storage/shared/jd/config`下。比如你在`~/storage/shared/jd/config`下放了个`test.js`，可以在你的`crontab.list`中添加如下的定时任务：
 
 ```shell
-15 10 * * * bash /data/data/com.termux/files/home/jd/jd.sh test     # 如果不需要准时运行或RandemDelay未设置
-15 10 * * * bash /data/data/com.termux/files/home/jd/jd.sh test now # 如果设置了RandemDelay但又需要它准时运行
+15 10 * * * bash /data/data/com.termux/files/home/storage/shared/jd/jd.sh test     # 如果不需要准时运行或RandemDelay未设置
+15 10 * * * bash /data/data/com.termux/files/home/storage/shared/jd/jd.sh test now # 如果设置了RandemDelay但又需要它准时运行
 ```
-程序会先检测`/data/data/com.termux/files/home/jd/scripts`下有没有`test.js`，再检测`/data/data/com.termux/files/home/jd/config`有没有，以先检测到的为准。假如两个文件夹下都没有，就会报错。
+程序会先检测`~/storage/shared/jd/scripts`下有没有`test.js`，再检测`~/storage/shared/jd/config`有没有，以先检测到的为准。假如两个文件夹下都没有，就会报错。
 
-然后运行一下`crontab /data/data/com.termux/files/home/jd/config/crontab.list`更新定时任务即可。
+然后运行一下`crontab ~/storage/shared/jd/config/crontab.list`更新定时任务即可。
 
 ## 如何手动运行脚本
 
 1. 手动 git pull 更新脚本
 
     ```shell
-    cd ~/jd
+    cd ~/storage/shared/jd
     bash git_pull.sh
     ```
 
 2. 手动删除指定时间以前的旧日志
 
     ```shell
-    cd ~/jd
+    cd ~/storage/shared/jd
     bash rm_log.sh
     ```
 
 3. 手动执行薅羊毛脚本，用法如下(其中`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
     ```
-    cd ~/jd
+    cd ~/storage/shared/jd
     bash jd.sh xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
     bash jd.sh xxx now  # 无论是否设置了随机延迟，均立即运行
     ```
@@ -226,7 +226,7 @@ pkg install git perl nodejs-lts wget curl nano cronie moreutils
 
 这就是手机上运行定时任务的难点了，请各位各显神通，授予`Termux`无限制的后台策略，常见的有：允许常驻后台，允许后台联网，无限制的电量优化等等。至于做了这些操作以后，`Termux`是否仍然偶尔抽风，那我就不得而知了。
 
-但即使这样，遇到特殊情况时，不仍然可以进入`~/jd/scripts/`后手动运行js脚本吗？
+但即使这样，遇到特殊情况时，不仍然可以进入`~/storage/shared/jd/scripts/`后手动运行js脚本吗？
 
 如果有个旧的安卓手机，是不是可以考虑一直充电放家中，无限制地运行此脚本？
 
