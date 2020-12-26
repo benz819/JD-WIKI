@@ -118,7 +118,7 @@
     export 变量名3="变量值3"
     ```
 
-2. 如果你额外添加的脚本要用到lxk0301大佬仓库中的`sendNotify.js`来发送通知，建议你直接放在容器内的`/jd/scripts`文件夹下，按以下命令复制进容器（重新部署容器后要再次运行）：
+2. 如果你额外添加的脚本要用到lxk0301大佬仓库中的`sendNotify.js`来发送通知，或者要用到`jdCookie.js`来处理Cookie，建议你直接放在容器内的`/jd/scripts`文件夹下，按以下命令复制进容器（重新部署容器后要再次运行）：
 
     ```shell
     docker cp /宿主机上脚本存放路径/test.js jd:/jd/scripts
