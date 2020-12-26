@@ -1,25 +1,12 @@
-## first_run.sh
 
-- Failed connect to raw.githubusercontent.com:443; 拒绝连接
-
-    要么自己想办法科学上网，并且让Github通过代理访问；要么自己手动下载first_run.sh这个文件放在该目录下运行。
-
-## git_pull.sh
+## 配置文件
 
 - 互助码填法
 
-    互助码是填在My系列变量中的，ForOther系统变量中只要填入My系列的变量名即可，按注释中的例子拼接。
+    互助码是填在My系列变量中的，ForOther系统变量中只要填入My系列的变量名即可，按注释中的例子拼接，如下图所示：
+
+![Sharecodes](Picture/Sharecodes.png)
     
-- 修改了配置但日志显示修改的内容未生效
-
-    修改了git_pull.sh想要立马生效，你要手动运行一次它。
-
-## 脚本相关
-
-- 每个脚本是干嘛的？
-
-    请自己打开每个js文件看最开头的注释部分。
-
 ## 容器时间
 
 据反馈，arm/v7平台上的Docker容器，时间有问题，怎么改都只能是UTC时间。在这种情况下，直接用你的arm/v7机器，按照我的Dockerfile自行构建一个镜像，那么时间就可以是北京时间。构建流程：
