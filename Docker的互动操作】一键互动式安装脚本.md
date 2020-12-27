@@ -1,0 +1,1 @@
+wget -q https://gitee.com/jerrykuku/jd-docker/raw/master/jd-docker.sh -O jd-docker.sh && chmod +x jd-docker.sh && ./jd-docker.sh
