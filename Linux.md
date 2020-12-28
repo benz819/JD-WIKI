@@ -137,15 +137,16 @@
 
 ## 如何添加除lxk0301大佬以外的脚本
 
-本环境基于node，所以也只能跑js脚本。你可以把你的后缀为`.js`的脚本放在`/home/myid/jd/scripts`下或`/home/myid/jd/config`下。比如你在`/home/myid/jd/config`下放了个`test.js`，可以在你的`crontab.list`中添加如下的定时任务：
+本环境基于node，所以也只能跑js脚本。你可以把你的后缀为`.js`的脚本放在`/home/myid/jd/scripts`下。比如你放了个`test.js`，可以在你的`crontab.list`中添加如下的定时任务：
 
 ```shell
 15 10 * * * bash /home/myid/jd/jd.sh test     # 如果不需要准时运行或RandemDelay未设置
 15 10 * * * bash /home/myid/jd/jd.sh test now # 如果设置了RandemDelay但又需要它准时运行
 ```
-程序会先检测`/home/myid/jd/scripts`下有没有`test.js`，再检测`/home/myid/jd/config`有没有，以先检测到的为准。假如两个文件夹下都没有，就会报错。
 
 然后运行一下`crontab /home/myid/jd/config/crontab.list`更新定时任务即可。
+
+**注意：你额外添加的脚本不能以`jd_`开头，以`jd_`开头的任务如果不在lxk0301大佬仓库中，会被删除。**
 
 ## 如何手动运行脚本
 
