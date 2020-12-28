@@ -26,9 +26,6 @@ elif [ $(date "+%w") -eq 3 ] && [ $(date "+%H") -ge 9 ] && [ $(date "+%H") -lt 1
 else
   export PET_NOTIFY_CONTROL="true"    # 其他非上述时间段时，通通不发通知
 fi
-
-![PET_NOTIFY_CONTROL](Picture/PET_NOTIFY_CONTROL.png)
-
 ```
 
 在这里再额外给一些不同时间赋不同的具体例子：
