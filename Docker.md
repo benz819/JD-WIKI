@@ -47,6 +47,7 @@
     docker run -dit \
     -v /appdata/jd/config:/jd/config `# 冒号左边是刚刚下载的两个文件存放的目录` \
     -v /appdata/jd/log:/jd/log `# 日志保存目录` \
+    -p 5678:5678  `# 如果想要智能对比config.sh和config.sh.sample的差异，请保留此行` \
     --name jd \
     --hostname jd \
     --restart always \
@@ -60,6 +61,7 @@
     docker run -dit \
     -v /appdata/jd/config:/jd/config `# 冒号左边是刚刚下载的两个文件存放的目录` \
     -v /appdata/jd/log:/jd/log `# 日志保存目录` \
+    -p 5678:5678  `# 如果想要智能对比config.sh和config.sh.sample的差异，请保留此行` \
     --name jd \
     --hostname jd \
     --restart always \
@@ -96,6 +98,14 @@
 ## 如何更新配置文件
 
 `config.sh`和`crontab.list`两个文件都一样，改完保存好就行，其他啥也不用干，容器也不用重启什么，改完以后，新的任务就以新配置运行了。
+
+其中`config.sh`更新可以运行以下命令，然后根据提示，通过浏览器打开Docker**所在宿主机**的`局域网ip:5678`（如果就是本机则为`127.0.0.1:5678`）即可开始文件比对并修改，注意将版本号也更新。
+
+注意，创建容器时的命令中要有`-p 5678：5678`才有用，详见上面最新的创建命令。
+
+```shell
+docker exec -it jd node diff.js
+```
 
 ## 如何添加除lxk0301大佬以外的脚本
 
