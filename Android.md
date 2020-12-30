@@ -231,7 +231,7 @@ export 变量名3="变量值3"
 
 4. 手动启动挂机程序
 
-`cd`到脚本目录后输入`bash jd.sh hangup`即可，然后挂机脚本就会一直运行。如果你希望每天终止旧的挂机进程，然后启动新的挂机进程，请参考`sample/termux.list.sample`中的挂机定时任务，添加到自己的`crontab.list`中。目前仅一个`jd_crazy_joy_coin.js`为挂机脚本。
+    `cd`到脚本目录后输入`bash jd.sh hangup`即可，然后挂机脚本就会一直运行。如果你希望每天终止旧的挂机进程，然后启动新的挂机进程，请参考`sample/termux.list.sample`中的挂机定时任务，添加到自己的`crontab.list`中。目前仅一个`jd_crazy_joy_coin.js`为挂机脚本。
 
 5. 手动执行薅羊毛脚本，用法如下(其中`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
@@ -239,6 +239,7 @@ export 变量名3="变量值3"
     cd ~/storage/shared/jd
     bash jd.sh xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
     bash jd.sh xxx now  # 无论是否设置了随机延迟，均立即运行
+    bash jd.sh hangup   # 重启挂机程序
     ```
 
     如果你没输lxk0301大佬的脚本名称也不要紧，`jd.sh`会提示你：
