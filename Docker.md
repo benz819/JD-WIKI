@@ -155,8 +155,11 @@ docker exec -it jd node diff.js
     ```shell
     docker exec -it jd bash export_sharecodes
     ```
+4. 手动启动挂机程序
 
-4. 手动执行薅羊毛脚本，用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
+输入`docker exec -it jd bash jd hangup`即可，然后挂机脚本就会一直运行。如果你希望每天终止旧的挂机进程，然后启动新的挂机进程，请参考`sample/docker.list.sample`中的挂机定时任务，添加到自己的`crontab.list`中。目前仅一个`jd_crazy_joy_coin.js`为挂机脚本。
+
+5. 手动执行薅羊毛脚本，用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
     ```
     docker exec jd bash jd xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
