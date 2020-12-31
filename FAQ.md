@@ -111,9 +111,9 @@ else
 fi
 ```
     
-## 日志报错
+## 日志相关
 
-- 日志报以下错误：
+1. 日志报以下错误：
     ```
     TypeError: (intermediate value)(...).catch(...).finally is not a function
     at Object. (/home/bobotoy/jd/scripts/jd_bean_sign.js:52:13)
@@ -127,3 +127,7 @@ fi
     at bootstrap_node.js:609:3
     ```
     首先，需要保证Node.js大版本>=10，其次，在>=10的某些小版本也有此问题（你可以使用`node -v`或`nodejs -v`查看Node.js的版本），问题及详细的解决措施见[nodejs/help#1877](https://github.com/nodejs/help/issues/1877)。
+
+2. 日志能产生但一直是空的
+
+    让你编辑crontab.list是让你真的要编辑并仔细阅读其中的注释，不是让你走过场，遇到此问题的人，请仔细地阅读crontab.list的注释。
