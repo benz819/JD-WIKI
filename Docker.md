@@ -51,9 +51,9 @@
     --name jd \
     --hostname jd \
     --restart always \
-    --network host `#如果是旁路由OpenWrt的Docker，建议添加上此行` \
     evinedeng/jd
     ```
+    如果是旁路由，建议用`--network host \`代替`-p 5678:5678 \`这一行。
 
     - 如果你想从gitee更新脚本：
     
@@ -65,9 +65,9 @@
     --name jd \
     --hostname jd \
     --restart always \
-    --network host `#如果是旁路由OpenWrt的Docker，建议添加上此行` \
     evinedeng/jd:gitee
     ```
+    如果是旁路由，建议用`--network host \`代替`-p 5678:5678 \`这一行。
 
     - 如果想同时运行多个容器并发，建议使用docker-compose安装(仅支持x86机器)，不过如果docker-compose不支持你平台，或者你不想用docker-compose，按上述方式部署**不同名称不同映射路径**的容器也是可以的，看你个人需要。
 
