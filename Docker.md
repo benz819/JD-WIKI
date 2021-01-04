@@ -115,7 +115,7 @@ docker exec -it jd node diff.js
 
 ## 如何添加除lxk0301大佬以外的脚本
 
-本环境基于node，所以也只能跑js脚本。你可以把你的后缀为`.js`的脚本放在你映射的`config`下即可。比如你放了个`test.js`，可以在你的`crontab.list`中添加如下的定时任务：
+本环境基于node，所以也只能跑js脚本。你可以把你的后缀为`.js`的脚本放在你映射的`config`或映射的`scripts`下即可。比如你放了个`test.js`，可以在你的`crontab.list`中添加如下的定时任务：
 
 ```shell
 15 10 * * * bash jd test     # 如果不需要准时运行或RandemDelay未设置
