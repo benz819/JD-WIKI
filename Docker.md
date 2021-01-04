@@ -55,7 +55,9 @@
     --restart always \
     evinedeng/jd
     ```
-    如果是旁路由，建议用`--network host \`代替`-p 5678:5678 \`这一行。
+    **注1：如果是旁路由，建议用`--network host \`代替`-p 5678:5678 \`这一行。**
+
+    **注2：如果想要看到lxk0301大佬的js脚本，并且重新部署也不影响自己添加的额外脚本，可以增加一行`-v /appdata/jd/scripts:/jd/scripts \`，不过这会增加占用约50M空间，并且会在创建时自动克隆lxk0301的js脚本，采用此种做法的人，请在创建后使用`docker logs -f jd`查看创建日志，直到出现`4. 容器启动成功`字样才代表启动成功，启动成功后按`Ctrk+C`退出查看日志。**
 
     - 如果你想从gitee更新脚本：
     
@@ -69,7 +71,9 @@
     --restart always \
     evinedeng/jd:gitee
     ```
-    如果是旁路由，建议用`--network host \`代替`-p 5678:5678 \`这一行。
+    **注1：如果是旁路由，建议用`--network host \`代替`-p 5678:5678 \`这一行。**
+    
+    **注2：如果想要看到lxk0301大佬的js脚本，并且重新部署也不影响自己添加的额外脚本，可以增加一行`-v /appdata/jd/scripts:/jd/scripts \`，不过这会增加占用约50M空间，并且会在创建时自动克隆lxk0301的js脚本，采用此种做法的人，请在创建后使用`docker logs -f jd`查看创建日志，直到出现`4. 容器启动成功`字样才代表启动成功，启动成功后按`Ctrk+C`退出查看日志。**
 
     - 如果想同时运行多个容器并发，建议使用docker-compose安装(仅支持x86机器)，不过如果docker-compose不支持你平台，或者你不想用docker-compose，按上述方式部署**不同名称不同映射路径**的容器也是可以的，看你个人需要。
 
@@ -132,7 +136,7 @@ docker exec -it jd node diff.js
     export 变量名3="变量值3"
     ```
 
-2. 如果你额外添加的脚本要用到lxk0301大佬仓库中的`sendNotify.js`来发送通知，或者要用到`jdCookie.js`来处理Cookie，建议你直接放在容器内的`/jd/scripts`文件夹下，按以下命令复制进容器（重新部署容器后要再次运行）：
+2. 如果你额外添加的脚本要用到lxk0301大佬仓库中的`sendNotify.js`来发送通知，或者要用到`jdCookie.js`来处理Cookie，建议你直接放在容器内的`/jd/scripts`文件夹下，按以下命令复制进容器（如果没有映射`/jd/scripts`出来的话，重新部署容器后要再次运行）：
 
     ```shell
     docker cp /宿主机上脚本存放路径/test.js jd:/jd/scripts
@@ -157,10 +161,12 @@ docker exec -it jd node diff.js
     ```shell
     docker exec -it jd bash export_sharecodes
     ```
-4. 手动启动挂机程序
+4. 手动启动挂机程序（**容器会在启动时立即启动挂机程序，所以你想重启挂机程序，你也可以重启容器，而不采用下面的方法。**）
 
     ```shell
-    docker exec -it jd bash jd hangup
+    docker exec -it jd bash
+    bash jd hangup
+    exit
     ```
 
     然后挂机脚本就会一直运行。如果你希望每天终止旧的挂机进程，然后启动新的挂机进程，请参考`sample/docker.list.sample`中的挂机定时任务，添加到自己的`crontab.list`中。目前仅一个`jd_crazy_joy_coin.js`为挂机脚本。
