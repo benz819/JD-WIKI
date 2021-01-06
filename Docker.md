@@ -62,16 +62,16 @@
 
 ## 如果多容器并发
 
-    多个容器并发，建议使用docker-compose安装(仅支持x86机器)，不过如果docker-compose不支持你平台，或者你不想用docker-compose，按上述方式部署**不同名称不同映射路径**的容器也是可以的，看你个人需要。
+多个容器并发，建议使用docker-compose安装(仅支持x86机器)，不过如果docker-compose不支持你平台，或者你不想用docker-compose，按上述方式部署**不同名称不同映射路径**的容器也是可以的，看你个人需要。
 
-    如需使用docker-compose，请前往 [这里](https://github.com/docker/compose/releases/) 下载最新版本的文件，放在本机 `/usr/local/bin`下，并重命名为`docker-compose`。
+如需使用docker-compose，请前往 [这里](https://github.com/docker/compose/releases/) 下载最新版本的文件，放在本机 `/usr/local/bin`下，并重命名为`docker-compose`。
 
-    然后参考本仓库的 [docker-compose.yml](https://github.com/EvineDeng/jd-base/blob/v3/docker/docker-compose.yml) 准备好你自己的`docker-compose.yml`，然后部署：
+然后参考本仓库的 [docker-compose.yml](https://github.com/EvineDeng/jd-base/blob/v3/docker/docker-compose.yml) 准备好你自己的`docker-compose.yml`，然后部署：
 
-    ```shell
-    ## cd 到docker-compose.yml的存放路径下
-    docker-compose up -d
-    ```
+```shell
+## cd 到docker-compose.yml的存放路径下
+docker-compose up -d
+```
 
 ## 如何自动更新Docker容器
 
@@ -105,7 +105,7 @@ docker run -d \
 15 10 * * * bash jd test now # 如果设置了RandemDelay但又需要它准时运行
 ```
 
-识别顺序：1. /jd/scripts、2. /jd/scripts/backUp、3. /jd/config，如果一个脚本在三个目录下均存在，以先找到的为准。
+识别顺序：`1. /jd/scripts、2. /jd/scripts/backUp、3. /jd/config`，如果一个脚本在多个目录下均存在，以先找到的为准。
 
 如果急你就运行一下`docker exec -it jd crontab /jd/config/crontab.list`更新定时任务即可，如果不急就等着程序自己添加进定时任务。
 
