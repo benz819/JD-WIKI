@@ -167,7 +167,6 @@ export 变量名3="变量值3"
     cd /user/用户名/jd
     bash jd.sh xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
     bash jd.sh xxx now  # 无论是否设置了随机延迟，均立即运行
-    bash jd.sh hangup   # 重启挂机程序
     ```
 
     如果你没输lxk0301大佬的脚本名称也不要紧，`jd.sh`会提示你：

@@ -161,7 +161,6 @@ docker run -d \
     ```
     docker exec jd bash jd xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
     docker exec jd bash jd xxx now  # 无论是否设置了随机延迟，均立即运行
-    docker exec jd bash jd hangup   # 重启挂机程序
     ```
 
     如果你忘记了命令也不要紧，只要你记得命令`jd`就行，输入后会提示你：
