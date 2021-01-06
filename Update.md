@@ -34,7 +34,7 @@
 
 2021-01-04，Docker启动时即自动启动挂机程序，Docker允许将`/jd/scripts`映射出来。
 
-2021-01-06，Docker用户增加在线编辑`config.sh`和`crontab.list`功能，详见最新WIKI。
+2021-01-06，Docker用户增加在线编辑`config.sh`和`crontab.list`功能，启动容器时直接启动，详见最新WIKI。
 
 ## 以下为原v2版脚本的更新日志，后续将不再维护
 
