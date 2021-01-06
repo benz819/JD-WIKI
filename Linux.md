@@ -152,6 +152,12 @@
     yarn install
     ```
 
+- 复制用户名和密码的配置文件到配置目录下
+
+    ```shell
+    cd /home/myid/jd
+    cp sample/auth.json config/auth.json
+
 - 启动在线网页，根据需要选择
 
     ```shell
