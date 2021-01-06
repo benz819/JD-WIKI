@@ -14,104 +14,87 @@
 
 ## 操作流程
 
-1. 下载两个文件，假如下载到`/appdata/jd`下，可以如下操作：
+1. 安装好docker([中文教程](https://mirrors.bfsu.edu.cn/help/docker-ce/))，然后创建容器：
 
-    ```shell
-    cd /appdata/jd
+    **注1：如果是旁路由，建议用`--network host \`代替`-p 5678:5678 \`这一行。**
 
-    # 必须创建config文件夹，用来保存下面要下载的两个配置文件
-    mkdir config
-
-    # 下载本仓库的sample/config.sh.sample，保存到刚刚创建的config文件夹下，并命名为 config.sh（必须是这个名称）
-    wget --no-check-certificate https://gitee.com/evine/jd-base/raw/v3/sample/config.sh.sample -O config/config.sh
-
-    # 下载本仓库的sample/docker.list.sample，保存到刚刚创建的config文件夹下，并命名为 crontab.list（必须是这个名称）
-    wget --no-check-certificate https://gitee.com/evine/jd-base/raw/v3/sample/docker.list.sample -O config/crontab.list
-    ```
-
-2. 分别编辑刚刚下载到config文件夹下的两个文件，建议Windows用户使用WinSCP工具连接服务器进行编辑。
-
-    其中`config.sh`是配置文件，`crontab.list`是定时任务清单。
-    
-    关于`crontab.list`，说明一下，除了那些本来就会准时运行的脚本外，如果还有一些脚本你不想随机延迟，要么在`config.sh`中`RandomDelay`不要赋值(所有任务都将不延迟执行)，要么参考下面 [如何手动运行脚本](Docker#如何手动运行脚本) 部分，在`crontab.list`中不想被随机延迟运行的任务后面，添加上 `now`，比如`20 * * * * bash jd jd_dreamFactory now`
-
-    - *注1：如果在windows下编辑，请使用WinSCP自带编辑器，或 notepad++、VS Code、Sublime Text 3等软件，请不要使用记事本。*
-
-    - *注2：如何修改请仔细阅读文件中的注释部分。*
-
-    - *注3：如果在WinSCP中看不见文件或看见了但不是最新的文件，请点击鼠标右键-刷新来刷新文件清单。*
-
-3. 安装好docker([中文教程](https://mirrors.bfsu.edu.cn/help/docker-ce/))，然后创建容器：
+    **注2：如果想要看到lxk0301大佬的js脚本，并且重新部署也不影响自己添加的额外脚本，可以增加一行`-v /appdata/jd/scripts:/jd/scripts \`，不过这会增加占用约50M空间，并且会在创建时自动克隆lxk0301的js脚本，采用此种做法的人，请在创建后使用`docker logs -f jd`查看创建日志，直到出现`请访问 http://<ip>:5678 以修改配置...`字样才代表启动成功，启动成功后按`Ctrk+C`退出查看日志。**
 
     - 如果你想从github更新脚本：
 
     ```shell
     docker run -dit \
-    -v /appdata/jd/config:/jd/config `# 冒号左边是刚刚下载的两个文件存放的目录` \
-    -v /appdata/jd/log:/jd/log `# 日志保存目录` \
-    -p 5678:5678  `# 如果想要智能对比config.sh和config.sh.sample的差异，请保留此行` \
+    -v /你的本地路径/jd/config:/jd/config `# 配置保存目录，冒号左边请修改为你的本地路径` \
+    -v /你的本地路径/jd/log:/jd/log `# 日志保存目录，冒号左边请修改为你的本地路径` \
+    -p 5678:5678 \
     --name jd \
     --hostname jd \
     --restart always \
     evinedeng/jd
     ```
-    **注1：如果是旁路由，建议用`--network host \`代替`-p 5678:5678 \`这一行。**
-
-    **注2：如果想要看到lxk0301大佬的js脚本，并且重新部署也不影响自己添加的额外脚本，可以增加一行`-v /appdata/jd/scripts:/jd/scripts \`，不过这会增加占用约50M空间，并且会在创建时自动克隆lxk0301的js脚本，采用此种做法的人，请在创建后使用`docker logs -f jd`查看创建日志，直到出现`4. 容器启动成功`字样才代表启动成功，启动成功后按`Ctrk+C`退出查看日志。**
 
     - 如果你想从gitee更新脚本：
     
     ```shell
     docker run -dit \
-    -v /appdata/jd/config:/jd/config `# 冒号左边是刚刚下载的两个文件存放的目录` \
-    -v /appdata/jd/log:/jd/log `# 日志保存目录` \
-    -p 5678:5678  `# 如果想要智能对比config.sh和config.sh.sample的差异，请保留此行` \
+    -v /你的本地路径/jd/config:/jd/config `# 配置保存目录，冒号左边请修改为你的本地路径` \
+    -v /你的本地路径/jd/log:/jd/log `# 日志保存目录，冒号左边请修改为你的本地路径` \
+    -p 5678:5678 \
     --name jd \
     --hostname jd \
     --restart always \
     evinedeng/jd:gitee
     ```
-    **注1：如果是旁路由，建议用`--network host \`代替`-p 5678:5678 \`这一行。**
-    
-    **注2：如果想要看到lxk0301大佬的js脚本，并且重新部署也不影响自己添加的额外脚本，可以增加一行`-v /appdata/jd/scripts:/jd/scripts \`，不过这会增加占用约50M空间，并且会在创建时自动克隆lxk0301的js脚本，采用此种做法的人，请在创建后使用`docker logs -f jd`查看创建日志，直到出现`4. 容器启动成功`字样才代表启动成功，启动成功后按`Ctrk+C`退出查看日志。**
 
-    - 如果想同时运行多个容器并发，建议使用docker-compose安装(仅支持x86机器)，不过如果docker-compose不支持你平台，或者你不想用docker-compose，按上述方式部署**不同名称不同映射路径**的容器也是可以的，看你个人需要。
+2. 访问`http://<ip>:5678`（ip是指你Docker宿主机的局域网ip），初始用户名：`admin`，初始密码：`adminadmin`，请登陆后务必修改密码，并在线编辑`config.sh`和`crontab.list`，其中`config.sh`可以对比修改，**如何修改请仔细阅读各文件注释**。
 
-        如需使用docker-compose，请前往 [这里](https://github.com/docker/compose/releases/) 下载最新版本的文件，放在本机 `/usr/local/bin`下，并重命名为`docker-compose`。
+![home](Picture/home.png)
 
-        然后参考本仓库的 [docker-compose.yml](https://github.com/EvineDeng/jd-base/blob/v3/docker/docker-compose.yml) 准备好你自己的`docker-compose.yml`，然后部署：
+![crontab](Picture/crontab.png)
 
-        ```shell
-        ## cd 到docker-compose.yml的存放路径下
-        docker-compose up -d
-        ```
+![diff](Picture/diff.png)
 
-4. 部署完成。
+# 以下仅供有一定基础的玩家使用，小白勿碰，提问不回，有问题自行根据wiki解决
 
-5. 如何自动更新Docker容器
+# 以下仅供有一定基础的玩家使用，小白勿碰，提问不回，有问题自行根据wiki解决
 
-    安装`containrrr/watchtower`可以自动更新容器，它也是一个容器，但这个容器可以监视你安装的所有容器的原始镜像的更新情况，如有更新，它将使用你原来的配置自动重新部署容器。部署`containrrr/watchtower`最简单的方式如下：
+# 以下仅供有一定基础的玩家使用，小白勿碰，提问不回，有问题自行根据wiki解决
+
+## 如果多容器并发
+
+    多个容器并发，建议使用docker-compose安装(仅支持x86机器)，不过如果docker-compose不支持你平台，或者你不想用docker-compose，按上述方式部署**不同名称不同映射路径**的容器也是可以的，看你个人需要。
+
+    如需使用docker-compose，请前往 [这里](https://github.com/docker/compose/releases/) 下载最新版本的文件，放在本机 `/usr/local/bin`下，并重命名为`docker-compose`。
+
+    然后参考本仓库的 [docker-compose.yml](https://github.com/EvineDeng/jd-base/blob/v3/docker/docker-compose.yml) 准备好你自己的`docker-compose.yml`，然后部署：
 
     ```shell
-    docker run -d \
-        --name watchtower \
-        -v /var/run/docker.sock:/var/run/docker.sock \
-        containrrr/watchtower
+    ## cd 到docker-compose.yml的存放路径下
+    docker-compose up -d
     ```
 
-    你也可以访问 https://containrrr.dev/watchtower/ 获取更详细的部署说明，包括如何避开某些容器不让它自动更新，如何发更新容器后发送通知，设置检测时间等等。
+## 如何自动更新Docker容器
+
+安装`containrrr/watchtower`可以自动更新容器，它也是一个容器，但这个容器可以监视你安装的所有容器的原始镜像的更新情况，如有更新，它将使用你原来的配置自动重新部署容器。部署`containrrr/watchtower`最简单的方式如下：
+
+```shell
+docker run -d \
+    --name watchtower \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    containrrr/watchtower
+```
+
+你也可以访问 https://containrrr.dev/watchtower/ 获取更详细的部署说明，包括如何避开某些容器不让它自动更新，如何发更新容器后发送通知，设置检测时间等等。
 
 ## 如何更新配置文件
 
-`config.sh`和`crontab.list`两个文件都一样，改完保存好就行，其他啥也不用干，容器也不用重启什么，改完以后，新的任务就以新配置运行了。
+访问`http://<ip>:5678`并编辑保存好即可，其他啥也不用干，容器也不用重启。
 
-其中`config.sh`更新可以运行以下命令，然后根据提示，通过浏览器打开Docker**所在宿主机**的`http://局域网ip:5678/diff`即可开始文件比对并修改，注意将版本号也更新。
+## 如何重置控制面板用户名和密码
 
-注意，创建容器时的命令中要有`-p 5678:5678`才有用，详见上面最新的创建命令。
-
-```shell
-docker exec -it jd node diff.js
-```
+    ```shell
+    docker exec -it jd bash jd resetpwd
+    ```
 
 ## 如何添加除lxk0301大佬以外的脚本
 
@@ -122,7 +105,9 @@ docker exec -it jd node diff.js
 15 10 * * * bash jd test now # 如果设置了RandemDelay但又需要它准时运行
 ```
 
-然后如果急你就运行一下`docker exec -it jd crontab /jd/config/crontab.list`更新定时任务即可，如果不急就等着程序自己添加进定时任务。
+识别顺序：1. /jd/scripts、2. /jd/scripts/backUp、3. /jd/config，如果一个脚本在三个目录下均存在，以先找到的为准。
+
+如果急你就运行一下`docker exec -it jd crontab /jd/config/crontab.list`更新定时任务即可，如果不急就等着程序自己添加进定时任务。
 
 **注意：你额外添加的脚本不能以`jd_`开头，以`jd_`开头的任务如果不在lxk0301大佬仓库中，会被删除。**
 

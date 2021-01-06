@@ -105,7 +105,12 @@
 
     ```shell
     cd /home/myid/jd/scripts
+
+    # 如果只安装了npm
     npm install || npm install --registry=https://registry.npm.taobao.org
+
+    # 如果安装了yarn
+    yarn install
     ```
 
 4. 添加定时任务
@@ -129,12 +134,39 @@
 
 `config.sh`和`crontab.list`两个文件都一样，在任何时候改完保存好就行，其他啥也不用干，改完以后，新的任务就以新配置运行了。
 
-其中`config.sh`更新可以运行以下命令，然后根据提示，通过浏览器打开你脚本所在电脑的`http://局域网ip:5678/diff`（如果就是本机则为`http://127.0.0.1:5678/diff`）即可开始文件比对并修改，注意将版本号也更新。
+可以用文件编辑器编辑，也可以在线编辑，如需要在线编辑，请按以下流程操作：
 
-```shell
-cd /user/用户名/jd
-node diff.js
-```
+- 进入目录
+
+    ```shell
+    cd /home/myid/jd/panel
+    ```
+
+- 安装依赖，以下二选一
+
+    ```shell
+    # 如果只安装了npm
+    npm install || npm install --registry=https://registry.npm.taobao.org
+
+    # 如果安装了yarn
+    yarn install
+    ```
+
+- 启动在线网页，根据需要选择
+
+    ```shell
+    # 如需要编辑保存好就结束掉在线页面(保存好后按Ctrl+C结束)
+    node server.js
+
+    # 如需一直后台运行，以方便随时编辑
+    npm install -g pm2    # npm和yarn二选一
+    yarn global add pm2   # npm和yarn二选一
+    pm2 start server.js
+    ```
+
+- 访问`http://<ip>:5678`登陆、编辑并保存即可（初始用户名：`admin`，初始密码：`adminadmin`）。
+
+- 如需要重置密码，请输入`bash /home/myid/jd/jd.sh resetpwd`。
 
 ## 如何添加除lxk0301大佬以外的脚本
 
