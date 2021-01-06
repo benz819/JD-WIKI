@@ -92,9 +92,9 @@ docker run -d \
 
 ## 如何重置控制面板用户名和密码
 
-    ```shell
-    docker exec -it jd bash jd resetpwd
-    ```
+```shell
+docker exec -it jd bash jd resetpwd
+```
 
 ## 如何添加除lxk0301大佬以外的脚本
 
