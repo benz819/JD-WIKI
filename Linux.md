@@ -47,19 +47,19 @@
     如需以后从Github更新我的和lxk0301大佬的脚本：
 
     ```shell
-    git clone -b v3 https://github.com/EvineDeng/jd-base /home/myid/jd
+    cd ~ && git clone -b v3 https://github.com/EvineDeng/jd-base jd
     ```
 
     如需以后从Gitee更新我的和lxk0301大佬的脚本：
 
     ```shell
-    git clone -b v3 https://gitee.com/evine/jd-base /home/myid/jd
+    cd ~ && git clone -b v3 https://gitee.com/evine/jd-base jd
     ```
 
 2. 复制并编辑自己的配置文件
 
     ```
-    cd /home/myid/jd
+    cd ~/jd
 
     # 创建一个配置文件保存目录
     mkdir config
@@ -69,6 +69,8 @@
 
     # 复制仓库下sample/computer.list.sample到config目录中，并命名为crontab.list
     cp sample/computer.list.sample config/crontab.list
+    # 如果本地用户名不是myid，而是linuxuser 可以使用下面命令
+    cat  sample/computer.list.sample |  sed  's/linuxuser/pi/g' > ./config/crontab.list 
 
     # 然后编辑这两个文件，如需要直接在命令行中编辑，可如下输入（Ctr + O保存，Ctrl + X退出）：
     nano config/config.sh
@@ -104,7 +106,7 @@
     如果`npm install`失败，请尝试手动运行，可按如下操作，如果失败，可运行多次：
 
     ```shell
-    cd /home/myid/jd/scripts
+    cd ~/jd/scripts
 
     # 如果只安装了npm
     npm install || npm install --registry=https://registry.npm.taobao.org
@@ -122,7 +124,7 @@
     **请注意：以下命令会完整覆盖你当前用户的crontab清单，请务必按照`crontab.list`中的注释操作！！！**
 
     ```shell
-    cd /home/myid/jd
+    cd ~/jd
     crontab config/crontab.list
     ```
 
@@ -139,7 +141,7 @@
 - 进入目录
 
     ```shell
-    cd /home/myid/jd/panel
+    cd ~/jd/panel
     ```
 
 - 安装依赖，以下二选一
@@ -155,7 +157,7 @@
 - 复制用户名和密码的配置文件到配置目录下
 
     ```shell
-    cd /home/myid/jd
+    cd ~/jd
     cp sample/auth.json config/auth.json
 
 - 启动在线网页，根据需要选择
@@ -200,21 +202,21 @@ export 变量名3="变量值3"
 1. 手动 git pull 更新脚本
 
     ```shell
-    cd /home/myid/jd
+    cd ~/jd
     bash git_pull.sh
     ```
 
 2. 手动删除指定时间以前的旧日志
 
     ```shell
-    cd /home/myid/jd
+    cd ~/jd
     bash rm_log.sh
     ```
 
 3. 手动导出所有互助码
 
     ```shell
-    cd /home/myid/jd
+    cd ~/jd
     bash export_sharecodes.sh
     ```
 
@@ -225,7 +227,7 @@ export 变量名3="变量值3"
 5. 手动执行薅羊毛脚本，用法如下(其中`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
     ```
-    cd /home/myid/jd
+    cd ~/jd
     bash jd.sh xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
     bash jd.sh xxx now  # 无论是否设置了随机延迟，均立即运行
     ```
