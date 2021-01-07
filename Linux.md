@@ -70,7 +70,7 @@
     # 复制仓库下sample/computer.list.sample到config目录中，并命名为crontab.list
     cp sample/computer.list.sample config/crontab.list
     # 如果本地用户名不是myid，而是linuxuser 可以使用下面命令
-    cat  sample/computer.list.sample |  sed  's/linuxuser/pi/g' > ./config/crontab.list 
+    cat  sample/computer.list.sample |  sed  's/myid/linuxuser/g' > ./config/crontab.list 
 
     # 然后编辑这两个文件，如需要直接在命令行中编辑，可如下输入（Ctr + O保存，Ctrl + X退出）：
     nano config/config.sh
