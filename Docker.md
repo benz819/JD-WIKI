@@ -61,6 +61,8 @@ docker run -d \
     containrrr/watchtower
 ```
 
+你也可以访问 https://containrrr.dev/watchtower/ 获取更详细的部署说明，包括如何避开某些容器不让它自动更新，如何发更新容器后发送通知，设置检测时间等等。
+
 ![home](Picture/home.png)
 
 ![crontab](Picture/crontab.png)
@@ -85,8 +87,6 @@ docker run -d \
 ## cd 到docker-compose.yml的存放路径下
 docker-compose up -d
 ```
-
-你也可以访问 https://containrrr.dev/watchtower/ 获取更详细的部署说明，包括如何避开某些容器不让它自动更新，如何发更新容器后发送通知，设置检测时间等等。
 
 ## 如何更新配置文件
 
