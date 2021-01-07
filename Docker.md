@@ -48,13 +48,9 @@
 
 2. 访问`http://<ip>:5678`（ip是指你Docker宿主机的局域网ip），初始用户名：`admin`，初始密码：`adminadmin`，请登陆后务必修改密码，并在线编辑`config.sh`和`crontab.list`，其中`config.sh`可以对比修改，**如何修改请仔细阅读各文件注释**。
 
-![home](Picture/home.png)
+3. 只有Cookie是必填项，其他根据你自己需要填。编辑好后，如果需要启动挂机程序（目前只有一个疯狂的JOY需要挂机），请重启容器：`docker restart jd`。**在创建容器前config.sh中就有有效Cookie的，无需重启容器。**
 
-![crontab](Picture/crontab.png)
-
-![diff](Picture/diff.png)
-
-## 如何自动更新Docker容器
+4. 如何自动更新Docker容器
 
 安装`containrrr/watchtower`可以自动更新容器，它也是一个容器，但这个容器可以监视你安装的所有容器的原始镜像的更新情况，如有更新，它将使用你原来的配置自动重新部署容器。部署`containrrr/watchtower`最简单的方式如下：
 
@@ -64,6 +60,12 @@ docker run -d \
     -v /var/run/docker.sock:/var/run/docker.sock \
     containrrr/watchtower
 ```
+
+![home](Picture/home.png)
+
+![crontab](Picture/crontab.png)
+
+![diff](Picture/diff.png)
 
 # 以下仅供有一定基础的玩家使用，小白勿碰，提问不回，有问题自行根据wiki解决
 
