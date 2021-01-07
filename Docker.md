@@ -18,7 +18,7 @@
 
     **注1：如果是旁路由，建议用`--network host \`代替`-p 5678:5678 \`这一行。**
 
-    **注2：如果想要看到lxk0301大佬的js脚本，并且重新部署也不影响自己添加的额外脚本，可以增加一行`-v /appdata/jd/scripts:/jd/scripts \`，不过这会增加占用约50M空间，并且会在创建时自动克隆lxk0301的js脚本，采用此种做法的人，请在创建后使用`docker logs -f jd`查看创建日志，直到出现`请访问 http://<ip>:5678 以修改配置...`字样才代表启动成功，启动成功后按`Ctrk+C`退出查看日志。**
+    **注2：如果想要看到lxk0301大佬的js脚本，并且重新部署也不影响自己添加的额外脚本，可以增加一行`-v /appdata/jd/scripts:/jd/scripts \`，不过这会增加占用约50M空间，并且会在创建时自动克隆lxk0301的js脚本。**
 
     - 如果你想从github更新脚本：
 
@@ -46,11 +46,13 @@
     evinedeng/jd:gitee
     ```
 
-2. 访问`http://<ip>:5678`（ip是指你Docker宿主机的局域网ip），初始用户名：`admin`，初始密码：`adminadmin`，请登陆后务必修改密码，并在线编辑`config.sh`和`crontab.list`，其中`config.sh`可以对比修改，**如何修改请仔细阅读各文件注释**。
+2. 请在创建后使用`docker logs -f jd`查看创建日志，直到出现`请访问 http://<ip>:5678 以修改配置...`字样才代表启动成功（不是以此结束的请更新镜像），启动成功后按`Ctrk+C`退出查看日志。
 
-3. 只有Cookie是必填项，其他根据你自己需要填。编辑好后，如果需要启动挂机程序（目前只有一个疯狂的JOY需要挂机），请重启容器：`docker restart jd`。**在创建容器前config.sh中就有有效Cookie的，无需重启容器。**
+3. 访问`http://<ip>:5678`（ip是指你Docker宿主机的局域网ip），初始用户名：`admin`，初始密码：`adminadmin`，请登陆后务必修改密码，并在线编辑`config.sh`和`crontab.list`，其中`config.sh`可以对比修改，**如何修改请仔细阅读各文件注释**。
 
-4. 如何自动更新Docker容器
+4. 只有Cookie是必填项，其他根据你自己需要填。编辑好后，如果需要启动挂机程序（目前只有一个疯狂的JOY需要挂机），请重启容器：`docker restart jd`。**在创建容器前config.sh中就有有效Cookie的，无需重启容器。**
+
+5. 如何自动更新Docker容器
 
 安装`containrrr/watchtower`可以自动更新容器，它也是一个容器，但这个容器可以监视你安装的所有容器的原始镜像的更新情况，如有更新，它将使用你原来的配置自动重新部署容器。部署`containrrr/watchtower`最简单的方式如下：
 
