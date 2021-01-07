@@ -46,7 +46,7 @@
     evinedeng/jd:gitee
     ```
 
-2. 请在创建后使用`docker logs -f jd`查看创建日志，直到出现`请访问 http://<ip>:5678 以修改配置...`字样才代表启动成功（不是以此结束的请更新镜像），启动成功后按`Ctrk+C`退出查看日志。
+2. 请在创建后使用`docker logs -f jd`查看创建日志，直到出现`请访问 http://<ip>:5678 以修改配置...`字样才代表启动成功（不是以此结束的请更新镜像），按`Ctrl+C`退出查看日志。
 
 3. 访问`http://<ip>:5678`（ip是指你Docker宿主机的局域网ip），初始用户名：`admin`，初始密码：`adminadmin`，请登陆后务必修改密码，并在线编辑`config.sh`和`crontab.list`，其中`config.sh`可以对比修改，**如何修改请仔细阅读各文件注释**。
 
@@ -139,7 +139,7 @@ docker exec -it jd bash jd resetpwd
     docker exec -it jd bash git_pull
     ```
 
-2. 使用京东 APP 扫码登录，自动获取 Cookie (pt_key=xxx;pt_pin=xxx;)
+2. 使用京东 APP 扫码登录，自动获取 Cookie (pt_key=xxx;pt_pin=xxx;)**暂时未提供此功能**
 
     ```shell
     docker exec -it jd bash jd cookie
