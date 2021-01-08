@@ -29,7 +29,7 @@
     # 1. 如需要编辑保存好就结束掉在线页面(保存好后按Ctrl+C结束)
     node server.js
 
-    # 2. 如需一直后台运行，以方便随时编辑
+    # 2. 如需一直后台运行，以方便随时在线编辑
     npm install -g pm2    # npm和yarn二选一
     yarn global add pm2   # npm和yarn二选一
     pm2 start server.js
