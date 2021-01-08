@@ -39,3 +39,15 @@
 5. 访问`http://<ip>:5678`登陆、编辑并保存即可（初始用户名：`admin`，初始密码：`adminadmin`）。
 
 6. 如需要重置密码，在本仓库目录下输入`bash jd.sh resetpwd`。
+
+## 效果图
+
+![home](Picture/home.png)
+
+![GetCookie1](Picture/GetCookie1.png)
+
+![GetCookie2](Picture/GetCookie2.png)
+
+![crontab](Picture/crontab.png)
+
+![diff](Picture/diff.png)

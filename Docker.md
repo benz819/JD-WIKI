@@ -58,6 +58,10 @@ docker run -d \
 
 ![home](Picture/home.png)
 
+![GetCookie1](Picture/GetCookie1.png)
+
+![GetCookie2](Picture/GetCookie2.png)
+
 ![crontab](Picture/crontab.png)
 
 ![diff](Picture/diff.png)
