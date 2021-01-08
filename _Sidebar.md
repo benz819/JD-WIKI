@@ -1,6 +1,7 @@
 * **[使用背景](Home)**
 * **[更新日志](Update)**
 * **[常见问题](FAQ)**
+* **[控制面板](Panel)**
 * **[v3版教程](Doc_v3)**
   + [[Linux]]
   + [OpenWrt](Linux)

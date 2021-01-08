@@ -70,10 +70,10 @@
     # 复制仓库下sample/computer.list.sample到config目录中，并命名为crontab.list
     cp sample/computer.list.sample config/crontab.list
 
-    # 然后编辑这两个文件，如需要直接在命令行中编辑，可如下输入（Ctr + O保存，Ctrl + X退出）：
-    nano config/config.sh
-    nano config/crontab.list
+    # 然后编辑这两个文件：
     ```
+    
+    可以通过控制面板编辑，详见 [控制面板使用教程](Panel) ，也可以自行通过SFTP工具连接编辑。
     
     其中`config.sh`是配置文件，`crontab.list`是定时任务清单，**如何编辑请查看两个文件内的注释，请务必仔细阅读！请务必仔细阅读！请务必仔细阅读！**
 
@@ -133,46 +133,6 @@
 ## 如何更新配置文件
 
 `config.sh`和`crontab.list`两个文件都一样，在任何时候改完保存好就行，其他啥也不用干，改完以后，新的任务就以新配置运行了。
-
-**可以用文件编辑器编辑，也可以在线编辑，如需要在线编辑，请按以下流程操作：**
-
-- 进入目录
-
-    ```shell
-    cd /home/myid/jd/panel
-    ```
-
-- 安装依赖，以下二选一
-
-    ```shell
-    # 如果只安装了npm
-    npm install || npm install --registry=https://registry.npm.taobao.org
-
-    # 如果安装了yarn
-    yarn install
-    ```
-
-- 复制用户名和密码的配置文件到配置目录下
-
-    ```shell
-    cd /home/myid/jd
-    cp sample/auth.json config/auth.json
-
-- 启动在线网页，根据需要选择
-
-    ```shell
-    # 如需要编辑保存好就结束掉在线页面(保存好后按Ctrl+C结束)
-    node server.js
-
-    # 如需一直后台运行，以方便随时编辑
-    npm install -g pm2    # npm和yarn二选一
-    yarn global add pm2   # npm和yarn二选一
-    pm2 start server.js
-    ```
-
-- 访问`http://<ip>:5678`登陆、编辑并保存即可（初始用户名：`admin`，初始密码：`adminadmin`）。
-
-- 如需要重置密码，请输入`bash /home/myid/jd/jd.sh resetpwd`。
 
 ## 如何添加除lxk0301大佬以外的脚本
 

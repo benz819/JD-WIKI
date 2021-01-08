@@ -91,15 +91,17 @@ v3版脚本已经可以正常在外置存储运行了，这样查看日志就方
     nano config/crontab.list    # 请注意crontab.list中的路径中家目录不要用~代替，必须是完整的路径 
     ```
 
-    1. 你可以按上面方式直接在nano终端编辑器中修改参数，但可通过其他途径将必要的信息复制过来粘贴；
-
-    2. 也可以用其他可视化文件编辑器app修改（上述路径在外置存储根目录的jd文件夹下）；
-
-    3. 甚至还可以参考上述`Termux`[教程](https://www.sqlsec.com/2018/05/termux.html)，在运行`sshd`服务程序后，通过局域网内的电脑，使用WinSCP软件连接手机进行修改。
+    1. 你可以通过控制面板编辑，详见 [控制面板使用教程](Panel) ；
     
-    > 其中`config.sh`是配置文件，`crontab.list`是定时任务清单。如何编辑请查看两个文件内的注释。
+    2. 你也可以按上面方式直接在nano终端编辑器中修改参数，但可通过其他途径将必要的信息复制过来粘贴；
+
+    3. 你还可以用其他可视化文件编辑器app修改（上述路径在外置存储根目录的jd文件夹下）；
+
+    4. 你甚至可以参考上述`Termux`[教程](https://www.sqlsec.com/2018/05/termux.html)，在运行`sshd`服务程序后，通过局域网内的电脑，使用WinSCP软件连接手机进行修改。
     
-    > 关于`crontab.list`，这里说明一下，除了那些本来就会准时运行的脚本外，如果还有一些脚本你不想随机延迟，要么在`config.sh`中`RandomDelay`不要赋值(所有任务都将不延迟执行)，要么参考下面 [如何手动运行脚本](Android#如何手动运行脚本) 部分，在`crontab.list`中不想被随机延迟运行的任务后面，添加上 `now`，比如：
+    其中`config.sh`是配置文件，`crontab.list`是定时任务清单。如何编辑请查看两个文件内的注释。
+    
+    关于`crontab.list`，这里说明一下，除了那些本来就会准时运行的脚本外，如果还有一些脚本你不想随机延迟，要么在`config.sh`中`RandomDelay`不要赋值(所有任务都将不延迟执行)，要么参考下面 [如何手动运行脚本](Android#如何手动运行脚本) 部分，在`crontab.list`中不想被随机延迟运行的任务后面，添加上 `now`，比如：
     
     ```shell
     20 * * * * bash /data/data/com.termux/files/home/storage/shared/jd/jd.sh jd_dreamFactory now

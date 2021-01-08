@@ -16,11 +16,15 @@
 
 1. 安装好docker([中文教程](https://mirrors.bfsu.edu.cn/help/docker-ce/))，然后创建容器：
 
-    **注1：如果是旁路由，建议用`--network host \`代替`-p 5678:5678 \`这一行。**
+    注1：如果是旁路由，建议用`--network host \`代替`-p 5678:5678 \`这一行。**
 
-    **注2：如果想要看到lxk0301大佬的js脚本，并且重新部署也不影响自己添加的额外脚本，可以增加一行`-v /appdata/jd/scripts:/jd/scripts \`，不过这会增加占用约50M空间，并且会在创建时自动克隆lxk0301的js脚本。**
+    注2：如果想要看到lxk0301大佬的js脚本，并且重新部署也不影响自己添加的额外脚本，可以增加一行`-v /你的本地路径/jd/scripts:/jd/scripts \`，不过这会增加占用约50M空间，并且会在创建时自动克隆lxk0301的js脚本。
 
-    - 如果你想从github更新脚本：
+    注3：容器本身默认会在启动时自动启动挂机程序，如不想自动启动，请增加一行`-e ENABLE_HANGUP=false \`。
+
+    注4：容器本身默认会在启动时自动启动控制面板，如不想自动启动，请增加一行`-e ENABLE_WEB_PANEL=false \`。
+
+    注5：如果想从gitee更新脚本，请使用`evinedeng/jd:gitee`镜像代替`evinedeng/jd:github`。
 
     ```shell
     docker run -dit \
@@ -30,25 +34,12 @@
     --name jd \
     --hostname jd \
     --restart always \
-    evinedeng/jd
+    evinedeng/jd:github
     ```
 
-    - 如果你想从gitee更新脚本：
-    
-    ```shell
-    docker run -dit \
-    -v /你的本地路径/jd/config:/jd/config `# 配置保存目录，冒号左边请修改为你的本地路径` \
-    -v /你的本地路径/jd/log:/jd/log `# 日志保存目录，冒号左边请修改为你的本地路径` \
-    -p 5678:5678 \
-    --name jd \
-    --hostname jd \
-    --restart always \
-    evinedeng/jd:gitee
-    ```
+2. 请在创建后使用`docker logs -f jd`查看创建日志，直到出现`容器启动成功...`字样才代表启动成功（不是以此结束的请更新镜像），按`Ctrl+C`退出查看日志。
 
-2. 请在创建后使用`docker logs -f jd`查看创建日志，直到出现`请访问 http://<ip>:5678 以修改配置...`字样才代表启动成功（不是以此结束的请更新镜像），按`Ctrl+C`退出查看日志。
-
-3. 访问`http://<ip>:5678`（ip是指你Docker宿主机的局域网ip），初始用户名：`admin`，初始密码：`adminadmin`，请登陆后务必修改密码，并在线编辑`config.sh`和`crontab.list`，其中`config.sh`可以对比修改，**如何修改请仔细阅读各文件注释**。
+3. 访问`http://<ip>:5678`（ip是指你Docker宿主机的局域网ip），初始用户名：`admin`，初始密码：`adminadmin`，请登陆后务必修改密码，并在线编辑`config.sh`和`crontab.list`，其中`config.sh`可以对比修改，**如何修改请仔细阅读各文件注释**。如未启用控制面板自动启动功能，请运行`docker exec -it jd node /jd/panel/server.js`来启动，使用完控制面板后`Ctrl+C`即可结束进程。
 
 4. 只有Cookie是必填项，其他根据你自己需要填。编辑好后，如果需要启动挂机程序（目前只有一个疯狂的JOY需要挂机），请重启容器：`docker restart jd`。**在创建容器前config.sh中就有有效Cookie的，无需重启容器。**
 

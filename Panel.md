@@ -1,0 +1,41 @@
+## 说明
+
+下面内容是针对非Docker用户的，Docker中这些流程都做好了，直接使用即可，请见 [Docker使用教程](Docker)。
+
+## 使用流程
+
+1. cd到本仓库脚本目录下。
+
+2. 安装依赖，npm和yarn二选一。
+
+    ```shell
+    cd panel
+    
+    # 如果只安装了npm
+    npm install || npm install --registry=https://registry.npm.taobao.org
+
+    # 如果安装了yarn，可代替npm
+    yarn install
+    ```
+
+3. 复制用户名和密码的配置文件到配置目录下。
+
+    ```shell
+    cd /home/myid/jd
+    cp sample/auth.json config/auth.json
+
+4. 启动在线网页，根据需要二选一。
+
+    ```shell
+    # 1. 如需要编辑保存好就结束掉在线页面(保存好后按Ctrl+C结束)
+    node server.js
+
+    # 2. 如需一直后台运行，以方便随时编辑
+    npm install -g pm2    # npm和yarn二选一
+    yarn global add pm2   # npm和yarn二选一
+    pm2 start server.js
+    ```
+
+5. 访问`http://<ip>:5678`登陆、编辑并保存即可（初始用户名：`admin`，初始密码：`adminadmin`）。
+
+6. 如需要重置密码，在本仓库目录下输入`bash jd.sh resetpwd`。
