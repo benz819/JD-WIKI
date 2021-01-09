@@ -35,7 +35,7 @@
     pm2 start server.js
     ```
 
-5. 访问`http://<ip>:5678`登陆、编辑并保存即可（初始用户名：`admin`，初始密码：`adminadmin`）。
+5. 访问`http://<ip>:5678`（如果是本机，则为http://127.0.0.1:5678）登陆、编辑并保存即可（初始用户名：`admin`，初始密码：`adminadmin`）。
 
 6. 如需要重置密码，cd到本仓库的目录下输入`bash jd.sh resetpwd`。
 
