@@ -13,13 +13,15 @@
 ## 约定：MyFruit后面的编号为数字的是提供了Cookie的账号所对应的互助码，编号与Cookie编号一一对应，如MyFruit1、MyFruit2
 ## 约定：MyFruit后面的编号为大写字母的是未提供Cookie的账号所对应的互助码（比如你和其他人交换助力时或者多容器之间相互助力时），如MyFruitA、MyFruitB
 ## 这里的码只是为了下面“定义东东农场要为哪些人助力”服务的
-MyFruit1="e6e04602d5e343258873af1651b603ec"
-MyFruit2="52801b06ce2a462f95e1d59d7e856ef4"
-MyFruit3="e2fd1311229146cc9507528d0b054da8"
-MyFruit4="6dc9461f662d490991a31b798f624128"
-MyFruit5="30f29addd75d44e88fb452bbfe9f2110"
-MyFruit6="1d02fc9e0e574b4fa928e84cb1c5e70b"
-MyFruitA="5bc73a365ff74a559bdee785ea97fcc5"
+MyFruit1="e6e04602d5e343258873af1651b603ec"  # 这是Cookie1这个账号的互助码
+MyFruit2="52801b06ce2a462f95e1d59d7e856ef4"  # 这是Cookie2这个账号的互助码
+MyFruit3="e2fd1311229146cc9507528d0b054da8"  # 这是Cookie3这个账号的互助码
+MyFruit4="6dc9461f662d490991a31b798f624128"  # 这是Cookie4这个账号的互助码
+MyFruit5="30f29addd75d44e88fb452bbfe9f2110"  # 这是Cookie5这个账号的互助码
+MyFruit6="1d02fc9e0e574b4fa928e84cb1c5e70b"  # 这是Cookie6这个账号的互助码
+MyFruitA="5bc73a365ff74a559bdee785ea97fcc5"  # 这是我和别人交换互助，另外一个用户A的互助码
+MyFruitB="6d402dcfae1043fba7b519e0d6579a6f"  # 这是我和别人交换互助，另外一个用户B的互助码
+MyFruitC="5efc7fdbb8e0436f8694c4c393359576"  # 这是我和别人交换互助，另外一个用户C的互助码
 
 
 ################################## 定义东东农场要为哪些人助力（选填） ##################################
@@ -28,12 +30,12 @@ MyFruitA="5bc73a365ff74a559bdee785ea97fcc5"
 ## 3.Cookie定义了多少个，ForOtherFruit系列变量就多少个有效（从编号1开始计）
 ## 4.可以不赋值，这种情况下，将自动随机给他人助力
 ## 5.具体填法示例图：https://github.com/EvineDeng/jd-base/wiki/Picture/Sharecodes.png
-ForOtherFruit1="${MyFruit2}@${MyFruit3}@${MyFruit4}@${MyFruitA}@${MyFruit5}@${MyFruit6}"
-ForOtherFruit2="${MyFruit1}@${MyFruit3}@${MyFruit4}@${MyFruitA}@${MyFruit5}@${MyFruit6}"
-ForOtherFruit3="${MyFruit1}@${MyFruit2}@${MyFruit4}@${MyFruitA}@${MyFruit5}@${MyFruit6}"
-ForOtherFruit4="${MyFruit1}@${MyFruit2}@${MyFruit3}@${MyFruitA}@${MyFruit5}@${MyFruit6}"
-ForOtherFruit5="${MyFruit1}@${MyFruit2}@${MyFruit3}@${MyFruit4}@${MyFruit6}@${MyFruitA}"
-ForOtherFruit6="${MyFruit1}@${MyFruit2}@${MyFruit3}@${MyFruit4}@${MyFruit5}@${MyFruitA}"
+ForOtherFruit1="${MyFruit2}@${MyFruit3}@${MyFruitB}@${MyFruit4}"   # Cookie1这个账号助力Cookie2的账号、Cookie3的账号、Cookie4的账号以及和用户B
+ForOtherFruit2="${MyFruit1}@${MyFruit3}@${MyFruitA}@${MyFruit4}"   # Cookie1这个账号助力Cookie2的账号、Cookie3的账号、Cookie4的账号以及和用户A
+ForOtherFruit3="${MyFruit1}@${MyFruit2}@${MyFruitC}@${MyFruit4}@${MyFruitA}@${MyFruit6}"  # 解释同上，东东农场实际上只能助力4次，超出的账号是无效的
+ForOtherFruit4="${MyFruit1}@${MyFruit2}@${MyFruit3}@${MyFruitC}@${MyFruit6}@${MyFruitA}"  # 解释同上，东东农场实际上只能助力4次，超出的账号是无效的
+ForOtherFruit5="${MyFruit1}@${MyFruit2}@${MyFruit3}@${MyFruitB}@${MyFruit4}@${MyFruit6}@${MyFruitC}@${MyFruitA}"
+ForOtherFruit6="${MyFruit1}@${MyFruit2}@${MyFruit3}@${MyFruitA}@${MyFruit4}@${MyFruit5}@${MyFruitC}"
 ```
 
 ![Sharecodes](Picture/Sharecodes.png)
