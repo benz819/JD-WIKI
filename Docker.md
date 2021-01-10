@@ -134,24 +134,18 @@ docker exec -it jd bash jd resetpwd
     docker exec -it jd bash git_pull
     ```
 
-2. 使用京东 APP 扫码登录，自动获取 Cookie (pt_key=xxx;pt_pin=xxx;)**暂时未提供此功能**
-
-    ```shell
-    docker exec -it jd bash jd cookie
-    ```
-
-3. 手动删除指定时间以前的旧日志
+2. 手动删除指定时间以前的旧日志
 
     ```shell
     docker exec -it jd bash rm_log
     ```
 
-4. 手动导出所有互助码
+3. 手动导出所有互助码
 
     ```shell
     docker exec -it jd bash export_sharecodes
     ```
-5. 手动启动挂机程序（**容器会在启动时立即启动挂机程序，所以你想重启挂机程序，你也可以重启容器，而不采用下面的方法。**）
+4. 手动启动挂机程序（**容器会在启动时立即启动挂机程序，所以你想重启挂机程序，你也可以重启容器，而不采用下面的方法。**）
 
     ```shell
     docker exec -it jd bash
@@ -161,7 +155,7 @@ docker exec -it jd bash jd resetpwd
 
     然后挂机脚本就会一直运行。如果你希望每天终止旧的挂机进程，然后启动新的挂机进程，请参考`sample/docker.list.sample`中的挂机定时任务，添加到自己的`crontab.list`中。目前仅一个`jd_crazy_joy_coin.js`为挂机脚本。
 
-6. 手动执行薅羊毛脚本，用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
+5. 手动执行薅羊毛脚本，用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
     ```
     docker exec jd bash jd xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
