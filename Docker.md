@@ -39,7 +39,7 @@
 
 2. 请在创建后使用`docker logs -f jd`查看创建日志，直到出现`容器启动成功...`字样才代表启动成功（不是以此结束的请更新镜像），按`Ctrl+C`退出查看日志。
 
-3. 访问`http://<ip>:5678`（ip是指你Docker宿主机的局域网ip），初始用户名：`admin`，初始密码：`adminadmin`，请登陆后务必修改密码，并在线编辑`config.sh`和`crontab.list`，其中`config.sh`可以对比修改，**如何修改请仔细阅读各文件注释**。如未启用控制面板自动启动功能，请运行`docker exec -it jd node /jd/panel/server.js`来启动，使用完控制面板后`Ctrl+C`即可结束进程。
+3. 访问`http://<ip>:5678`（ip是指你Docker宿主机的局域网ip），初始用户名：`admin`，初始密码：`adminadmin`，请登陆后务必修改密码，并在线编辑`config.sh`和`crontab.list`，其中`config.sh`可以对比修改，**如何修改请仔细阅读各文件注释**。如未启用控制面板自动启动功能，请运行`docker exec -it jd node /jd/panel/server.js`来启动，使用完控制面板后`Ctrl+C`即可结束进程。如无法访问，请从防火墙、端口转发、网络方面着手解决。
 
 4. 只有Cookie是必填项，其他根据你自己需要填。编辑好后，如果需要启动挂机程序（目前只有一个疯狂的JOY需要挂机），请重启容器：`docker restart jd`。**在创建容器前config.sh中就有有效Cookie的，无需重启容器。**
 
