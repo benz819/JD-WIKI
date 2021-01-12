@@ -19,12 +19,24 @@
 
 4. 安装依赖，npm和yarn二选一。
 
+   - 计算机：
+
     ```shell
     # 如果只安装了npm
     npm install || npm install --registry=https://registry.npm.taobao.org
 
     # 如果安装了yarn，可代替npm
     yarn install
+    ```
+
+    - 安卓Termux：
+
+    ```shell
+    # 如果只安装了npm
+    npm install --no-bin-links || npm install --no-bin-links --registry=https://registry.npm.taobao.org
+
+    # 如果安装了yarn，可代替npm
+    yarn install --no-bin-links
     ```
 
 5. 启动在线网页，根据需要二选一。
