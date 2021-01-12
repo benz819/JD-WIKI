@@ -5,7 +5,7 @@
 
 | 游戏    | 可助力他人次数 | 需要被助力次数 | 备注                         |
 | --------- | ------------------ | ------------------ | ------------------------------ |
-| 东东农场 | 4                  | 5                  |                                |
+| 东东农场 | 3                  | 5                  |                                |
 | 种豆得豆 | 3                  | 9                  |                                |
 | 东东萌宠 | 5                  | 5                  |                                |
 | 京喜工厂 | 3                  | 8+                 | 需要被助力次数随等级提升而增加 |
@@ -45,7 +45,7 @@ MyFruitC="5efc7fdbb8e0436f8694c4c393359576"  # 这是我和别人交换互助，
 ## 4.可以不赋值，这种情况下，将自动随机给他人助力
 ## 5.具体填法示例图：https://github.com/EvineDeng/jd-base/wiki/Picture/Sharecodes.png
 ForOtherFruit1="${MyFruit2}@${MyFruit3}@${MyFruitB}@${MyFruit4}"   # Cookie1这个账号助力Cookie2的账号、Cookie3的账号、Cookie4的账号以及和用户B
-ForOtherFruit2="${MyFruit1}@${MyFruit3}@${MyFruitA}@${MyFruit4}"   # Cookie1这个账号助力Cookie2的账号、Cookie3的账号、Cookie4的账号以及和用户A
+ForOtherFruit2="${MyFruit1}@${MyFruit3}@${MyFruitA}@${MyFruit4}"   # Cookie2这个账号助力Cookie1的账号、Cookie3的账号、Cookie4的账号以及和用户A
 ForOtherFruit3="${MyFruit1}@${MyFruit2}@${MyFruitC}@${MyFruit4}@${MyFruitA}@${MyFruit6}"  # 解释同上，东东农场实际上只能助力4次，超出的账号是无效的
 ForOtherFruit4="${MyFruit1}@${MyFruit2}@${MyFruit3}@${MyFruitC}@${MyFruit6}@${MyFruitA}"  # 解释同上，东东农场实际上只能助力4次，超出的账号是无效的
 ForOtherFruit5="${MyFruit1}@${MyFruit2}@${MyFruit3}@${MyFruitB}@${MyFruit4}@${MyFruit6}@${MyFruitC}@${MyFruitA}"
