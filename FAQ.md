@@ -18,16 +18,12 @@
 
 ### 互助码填法
 
-互助码是填在My系列变量中的，ForOther系统变量中只要填入My系列的变量名即可，按注释中的例子拼接，以东东农场为例，如下所示：
+**互助码是填在My系列变量中的，ForOther系统变量中只要填入My系列的变量名即可，按注释中的例子拼接，以东东农场为例，如下所示。**
 
 **实际上东东农场一个账号只能给别人助力4次，我多写的话，只有前几个会被助力。**
 
 ```shell
-################################## 定义东东农场每个人自己的互助码（选填） ##################################
-## 东东农场每个Cookie自己的互助码，可以在运行一次东东农场脚本（jd_fruit）后从日志中查看
-## 约定：MyFruit后面的编号为数字的是提供了Cookie的账号所对应的互助码，编号与Cookie编号一一对应，如MyFruit1、MyFruit2
-## 约定：MyFruit后面的编号为大写字母的是未提供Cookie的账号所对应的互助码（比如你和其他人交换助力时或者多容器之间相互助力时），如MyFruitA、MyFruitB
-## 这里的码只是为了下面“定义东东农场要为哪些人助力”服务的
+################################## 定义东东农场互助（选填） ##################################
 MyFruit1="e6e04602d5e343258873af1651b603ec"  # 这是Cookie1这个账号的互助码
 MyFruit2="52801b06ce2a462f95e1d59d7e856ef4"  # 这是Cookie2这个账号的互助码
 MyFruit3="e2fd1311229146cc9507528d0b054da8"  # 这是Cookie3这个账号的互助码
@@ -38,13 +34,6 @@ MyFruitA="5bc73a365ff74a559bdee785ea97fcc5"  # 这是我和别人交换互助，
 MyFruitB="6d402dcfae1043fba7b519e0d6579a6f"  # 这是我和别人交换互助，另外一个用户B的互助码
 MyFruitC="5efc7fdbb8e0436f8694c4c393359576"  # 这是我和别人交换互助，另外一个用户C的互助码
 
-
-################################## 定义东东农场要为哪些人助力（选填） ##################################
-## 1.每个Cookie要为谁助力，填入对应MyFruit系列变量名即可，用 @ 分隔每个变量名
-## 2.比如：ForOtherFruit1="${MyFruit2}@${MyFruit3}@${MyFruit5}@${MyFruitA}"，含义是Cookie1的账户将为Cookie2、Cookie3、Cookie5的账户以及没有提供Cookie只提供了助力码的A用户提供助力
-## 3.Cookie定义了多少个，ForOtherFruit系列变量就多少个有效（从编号1开始计）
-## 4.可以不赋值，这种情况下，将自动随机给他人助力
-## 5.具体填法示例图：https://github.com/EvineDeng/jd-base/wiki/Picture/Sharecodes.png
 ForOtherFruit1="${MyFruit2}@${MyFruit3}@${MyFruitB}@${MyFruit4}"   # Cookie1这个账号助力Cookie2的账号、Cookie3的账号、Cookie4的账号以及和用户B
 ForOtherFruit2="${MyFruit1}@${MyFruit3}@${MyFruitA}@${MyFruit4}"   # Cookie2这个账号助力Cookie1的账号、Cookie3的账号、Cookie4的账号以及和用户A
 ForOtherFruit3="${MyFruit1}@${MyFruit2}@${MyFruitC}@${MyFruit4}@${MyFruitA}@${MyFruit6}"  # 解释同上，东东农场实际上只能助力4次，超出的账号是无效的
