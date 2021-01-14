@@ -24,7 +24,7 @@
     ```
     如果安装源中有nodejs和npm，也安装好，否则请访问 [Node.js官网](https://nodejs.org/zh-cn/download/) 或者 [nodesource@github](https://github.com/nodesource/distributions) 查看如何安装。
 
-- OpenWrt， **需要添加官方软件源，** 如果某个软件包已集成在固件中，则可跳过安装。如果你会编译，可以把下面这些包直接编译在固件中。
+- OpenWrt， **需要添加官方软件源！！需要添加官方软件源！！需要添加官方软件源！！需要添加官方软件源！！这么粗的字你是瞎子？？？** 如果某个软件包已集成在固件中，则可跳过安装。如果你会编译，可以把下面这些包直接编译在固件中。
     ```shell
     opkg update && opkg install git git-http wget curl node node-npm perl moreutils
     ```
