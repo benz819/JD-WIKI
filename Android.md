@@ -60,14 +60,6 @@ v3版脚本已经可以正常在外置存储运行了，这样查看日志就方
 
     **按上述`Termux`[教程](https://www.sqlsec.com/2018/05/termux.html) 中允许访问手机外置存储的操作后，下面的命令将在外置存储根目录创建一个jd文件夹保存本仓库脚本。**
 
-    如需以后从Github更新我的和lxk0301大佬的脚本：
-
-    ```shell
-    git clone -b v3 https://github.com/EvineDeng/jd-base ~/storage/shared/jd
-    ```
-
-    如需以后从Gitee更新我的和lxk0301大佬的脚本：
-
     ```shell
     git clone -b v3 https://gitee.com/evine/jd-base ~/storage/shared/jd
     ```
