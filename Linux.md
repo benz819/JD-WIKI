@@ -24,13 +24,19 @@
     ```
     如果安装源中有nodejs和npm，也安装好，否则请访问 [Node.js官网](https://nodejs.org/zh-cn/download/) 或者 [nodesource@github](https://github.com/nodesource/distributions) 查看如何安装。
 
-- OpenWrt， **需要添加官方软件源！！需要添加官方软件源！！需要添加官方软件源！！需要添加官方软件源！！这么粗的字你是瞎子？？？** 如果某个软件包已集成在固件中，则可跳过安装。如果你会编译，可以把下面这些包直接编译在固件中。
+- OpenWrt， 
+
+    **需要添加官方软件源！！需要添加官方软件源！！需要添加官方软件源！！需要添加官方软件源！！这么粗的字你是瞎子？？？** 
+    
+    如果某个软件包已集成在固件中，则可跳过安装。如果你会编译，可以把下面这些包直接编译在固件中。
+
     ```shell
     opkg update && opkg install git git-http wget curl node node-npm perl moreutils
     ```
+
     **声明：OpenWrt环境千差万别，不保证一定可用，需要根据自己的环境来配置，如果OpenWrt安装了Docker，也可以使用Docker的方法。Rom小于256M就不要安装了，你空间不够。**
 
-*注：不同系统的包名不一定一样，需保证 node 大版本 >=10，安装好后使用`node -v`或`nodejs -v`命令可查看版本。*
+    **报错了就自己解决报错问题，报错了你还闭着眼睛只管复制粘贴，连基本英文都看不懂？看不懂就别薅羊毛了。**
 
 ## 流程
 
