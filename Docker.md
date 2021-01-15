@@ -148,12 +148,12 @@ docker exec -it jd bash jd resetpwd
 4. 手动启动挂机程序（**容器会在启动时立即启动挂机程序，所以你想重启挂机程序，你也可以重启容器，而不采用下面的方法。**）
 
     ```shell
-    docker exec -it jd bash
-    bash jd hangup
-    exit
+    docker exec -it jd bash jd hangup
     ```
 
     然后挂机脚本就会一直运行。如果你希望每天终止旧的挂机进程，然后启动新的挂机进程，请参考`sample/docker.list.sample`中的挂机定时任务，添加到自己的`crontab.list`中。目前仅一个`jd_crazy_joy_coin.js`为挂机脚本。
+
+    如需查看挂机脚本日志，请进入容器后输入`pm2 monit`或`pm2 logs`查看。因挂机程序日志过多，不再记录在log文件中。
 
 5. 手动执行薅羊毛脚本，用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
