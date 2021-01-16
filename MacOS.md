@@ -30,6 +30,14 @@
 
 1. 克隆本仓库
 
+    如需以后从Github更新我的和lxk0301大佬的脚本：
+
+    ```shell
+    git clone -b v3 https://github.com/EvineDeng/jd-base /user/用户名/jd
+    ```
+
+    如需以后从Gitee更新我的和lxk0301大佬的脚本：
+
     ```shell
     git clone -b v3 https://gitee.com/evine/jd-base /user/用户名/jd
     ```

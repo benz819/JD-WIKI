@@ -24,6 +24,8 @@
 
     注4：容器本身默认会在启动时自动启动控制面板，如不想自动启动，请增加一行`-e ENABLE_WEB_PANEL=false \`。
 
+    注5：如果想从gitee更新脚本，请使用`evinedeng/jd:gitee`镜像代替`evinedeng/jd:github`。
+
     ```shell
     docker run -dit \
     -v /你想存放的路径/jd/config:/jd/config `# 配置保存目录，冒号左边请修改为你想存放的路径` \
@@ -32,7 +34,7 @@
     --name jd \
     --hostname jd \
     --restart always \
-    evinedeng/jd:gitee
+    evinedeng/jd:github
     ```
 
 2. 请在创建后使用`docker logs -f jd`查看创建日志，直到出现`容器启动成功...`字样才代表启动成功（不是以此结束的请更新镜像），按`Ctrl+C`退出查看日志。

@@ -89,7 +89,7 @@ pkg install git perl nodejs-lts wget curl nano cronie
 
         - `log`: 记录所有日志的文件夹，其中跑js脚本的日志会建立对应名称的子文件夹，并且js脚本日志会以`年-月-日-时-分-秒`的格式命名。
 
-        - `scripts`: 从 [lxk0301/jd_scripts](https://github.com/lxk0301/jd_scripts) 克隆的js脚本。
+        - `scripts`: 从 [lxk0301/jd_scripts](https://github.com/LXK9301/jd_scripts) 克隆的js脚本。
 
         - `shell`: 从 [EvineDeng/jd-base](https://github.com/EvineDeng/jd-base) 克隆的shell脚本。
 
