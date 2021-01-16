@@ -53,13 +53,13 @@
     如需以后从Github更新我的和lxk0301大佬的脚本：
 
     ```shell
-    cd ~ && git clone -b v3 https://github.com/EvineDeng/jd-base jd
+    cd /home/myid && git clone -b v3 https://github.com/EvineDeng/jd-base jd
     ```
 
     如需以后从Gitee更新我的和lxk0301大佬的脚本：
 
     ```shell
-    cd ~ && git clone -b v3 https://gitee.com/evine/jd-base jd
+    cd /home/myid && git clone -b v3 https://gitee.com/evine/jd-base jd
     ```
 
 2. 复制并编辑自己的配置文件
@@ -75,10 +75,11 @@
 
     # 复制仓库下sample/computer.list.sample到config目录中，并命名为crontab.list
     cp sample/computer.list.sample config/crontab.list
-    # 如果本地用户名不是myid，而是linuxuser 可以使用下面命令
-    cat  sample/computer.list.sample |  sed  's/myid/linuxuser/g' > ./config/crontab.list 
 
-    # 然后编辑这两个文件：
+    # 如果本地用户名不是myid，而是 linuxuser 可以使用下面命令批量替换 crontab.list 中的路径
+    cat sample/computer.list.sample |  sed  's/myid/linuxuser/g' > ./config/crontab.list 
+
+    # 然后编辑这两个文件
     ```
     
     可以通过控制面板编辑，详见 [控制面板使用教程](Panel) ，也可以自行通过SFTP工具连接编辑。
