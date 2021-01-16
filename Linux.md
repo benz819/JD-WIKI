@@ -40,11 +40,11 @@
 
 ## 流程
 
-**以下全文均以此路径`/home/myid/jd`进行举例，请自行修改为你自己的路径！**
+**以下全文均以此路径`~/jd`进行举例，请自行修改为你自己的路径！**
 
-**以下全文均以此路径`/home/myid/jd`进行举例，请自行修改为你自己的路径！**
+**以下全文均以此路径`~/jd`进行举例，请自行修改为你自己的路径！**
 
-**以下全文均以此路径`/home/myid/jd`进行举例，请自行修改为你自己的路径！**
+**以下全文均以此路径`~/jd`进行举例，请自行修改为你自己的路径！**
 
 **注意：需要多账号并发的，请建立多个账户，每个账户各自使用一套脚本。看不懂这句话的小白别碰多账号并发。想要方便简单使用多账号并发的，请使用Docker的方式。**
 
@@ -88,7 +88,7 @@
     关于`crontab.list`，这里说明一下，除了那些本来就会准时运行的脚本外，如果还有一些脚本你不想随机延迟，要么在`config.sh`中`RandomDelay`不要赋值(所有任务都将不延迟执行)，要么参考下文 [如何手动运行脚本](Linux#如何手动运行脚本) 部分，在`crontab.list`中不想被随机延迟运行的任务后面，添加上 `now`，比如：
     
     ```shell
-    20 * * * * bash /home/myid/jd/jd.sh jd_dreamFactory now
+    20 * * * * bash ~/jd/jd.sh jd_dreamFactory now
     ```
 
 3. 初始化
@@ -146,14 +146,14 @@
 
 ## 如何添加除lxk0301大佬以外的脚本
 
-本环境基于node，所以也只能跑js脚本。你可以把你的后缀为`.js`的脚本放在`/home/myid/jd/scripts`下。比如你放了个`test.js`，可以在你的`crontab.list`中添加如下的定时任务：
+本环境基于node，所以也只能跑js脚本。你可以把你的后缀为`.js`的脚本放在`~/jd/scripts`下。比如你放了个`test.js`，可以在你的`crontab.list`中添加如下的定时任务：
 
 ```shell
-15 10 * * * bash /home/myid/jd/jd.sh test     # 如果不需要准时运行或RandemDelay未设置
-15 10 * * * bash /home/myid/jd/jd.sh test now # 如果设置了RandemDelay但又需要它准时运行
+15 10 * * * bash ~/jd/jd.sh test     # 如果不需要准时运行或RandemDelay未设置
+15 10 * * * bash ~/jd/jd.sh test now # 如果设置了RandemDelay但又需要它准时运行
 ```
 
-然后运行一下`crontab /home/myid/jd/config/crontab.list`更新定时任务即可。
+然后运行一下`crontab ~/jd/config/crontab.list`更新定时任务即可。
 
 **注意：你额外添加的脚本不能以“jd_”、“jr_”、“jx_”开头，以“jd_”、“jr_”、“jx_”开头的任务如果不在lxk0301大佬仓库中，会被删除。**
 
