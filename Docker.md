@@ -26,6 +26,8 @@
 
     注5：如果想从gitee更新脚本，请使用`evinedeng/jd:gitee`镜像代替`evinedeng/jd:github`。
 
+    注6：群晖和威联通用户，以及其他非root用户的，请在ssh登陆后，切换为root用户再运行：`sudo -i`。
+
     ```shell
     docker run -dit \
     -v /你想存放的路径/jd/config:/jd/config `# 配置保存目录，冒号左边请修改为你想存放的路径` \
@@ -110,7 +112,7 @@ docker exec -it jd bash jd resetpwd
 
 如果急你就运行一下`docker exec -it jd crontab /jd/config/crontab.list`更新定时任务即可，如果不急就等着程序自己添加进定时任务。
 
-**注意：你额外添加的脚本不能以“jd_”、“jr_”、“jx_”开头，以“jd_”、“jr_”、“jx_”开头的任务如果不在lxk0301大佬仓库中，会被删除。**
+**注意：在crontab.list中，你额外添加的任务不能以“jd_”、“jr_”、“jx_”开头，以“jd_”、“jr_”、“jx_”开头的任务如果不在lxk0301大佬仓库中，那么这个任务会被删除。**
 
 **其他说明：**
 
