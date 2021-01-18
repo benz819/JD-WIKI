@@ -20,7 +20,7 @@
 
     注2：如果想要看到lxk0301大佬的js脚本，并且重新部署也不影响自己添加的额外脚本，可以增加一行`-v /你想存放的路径/jd/scripts:/jd/scripts \`，不过这会增加占用约50M空间，并且会在创建时自动克隆lxk0301的js脚本。
 
-    注3：容器本身默认会在启动时自动启动挂机程序，如不想自动启动，请增加一行`-e ENABLE_HANGUP=false \`。
+    注3：容器本身默认会在启动时自动启动挂机程序（就一个jd_crazy_joy_coin），如不想自动启动，请增加一行`-e ENABLE_HANGUP=false \`。
 
     注4：容器本身默认会在启动时自动启动控制面板，如不想自动启动，请增加一行`-e ENABLE_WEB_PANEL=false \`。
 
@@ -155,9 +155,7 @@ docker exec -it jd bash jd resetpwd
     docker exec -it jd bash jd hangup
     ```
 
-    然后挂机脚本就会一直运行。如果你希望每天终止旧的挂机进程，然后启动新的挂机进程，请参考`sample/docker.list.sample`中的挂机定时任务，添加到自己的`crontab.list`中。目前仅一个`jd_crazy_joy_coin.js`为挂机脚本。
-
-    如需查看挂机脚本日志，请输入`docker exec -it jd pm2 monit`或`docker exec -it jd pm2 logs`查看。因挂机程序日志过多，不再记录在log文件中。
+    然后挂机脚本就会一直运行。如需查看挂机脚本日志，请输入`docker exec -it jd pm2 monit`或`docker exec -it jd pm2 logs`查看。因挂机程序日志过多，不再记录在log文件中。
 
 5. 手动执行薅羊毛脚本，用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
