@@ -14,17 +14,31 @@
 
 ## 脚本可以干什么
 
-1. 自动更新lxk0301的京东薅羊毛脚本，自动更新我的shell脚本（git_pull）。
+### git_pull.sh
 
-2. 自动按设定天数删除旧日志（rm_log）。
+    1. 自动更新lxk0301的京东薅羊毛脚本；
 
-3. 自动添加新的定时任务（git_pull）。
+    2. 自动更新我的shell脚本；
 
-4. 自动删除失效的定时任务（git_pull）。
+    3. 自动删除失效的定时任务，并发送通知；
 
-5. 一键导出所有互助码（export_sharecodes）
+    4. 自动添加新的定时任务，并发送通知；
 
-6. 自动按crontab.list设定的时间去跑各个薅羊毛脚本。
+    5. 检测配置文件模板`config.sh.sample`是否升版，如有升版，发出通知；
+
+    6. 其他还有若干功能，查看 [本文件](https://github.com/EvineDeng/jd-base/blob/v3/git_pull.sh) 注释即可看到。
+
+### export_sharecodes.sh
+
+    从已经产生的日志中导出互助码，注意：是已经产生的日志。
+
+### rm_log.sh
+
+    自动按设定天数（config.sh中设置的）删除旧日志。
+
+### jd.sh
+
+    自动按crontab.list设定的时间去跑各个薅羊毛脚本，需要后本脚本后面提供js脚本名称。
 
 ## 准备工作
 
