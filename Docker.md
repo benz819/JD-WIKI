@@ -174,8 +174,8 @@ docker exec -it jd bash jd resetpwd
 5. 手动执行薅羊毛脚本，用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
     ```
-    docker exec jd bash jd xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
-    docker exec jd bash jd xxx now  # 无论是否设置了随机延迟，均立即运行
+    docker exec -it jd bash jd xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
+    docker exec -it jd bash jd xxx now  # 无论是否设置了随机延迟，均立即运行
     ```
 
     如果你忘记了命令也不要紧，只要你记得命令`jd`就行，输入后会提示你：
