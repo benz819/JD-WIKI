@@ -171,7 +171,7 @@ docker exec -it jd bash jd resetpwd
 
     然后挂机脚本就会一直运行。如需查看挂机脚本日志，请输入`docker exec -it jd pm2 monit`或`docker exec -it jd pm2 logs`查看。因挂机程序日志过多，不再记录在log文件中。
 
-5. 手动执行薅羊毛脚本，用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
+5. 手动执行薅羊毛脚本，用法如下(其中`-it`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
     ```
     docker exec -it jd bash jd xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
