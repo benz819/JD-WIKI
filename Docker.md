@@ -113,7 +113,7 @@ docker-compose up -d
 docker exec -it jd bash jd resetpwd
 ```
 
-## 如何添加除lxk0301大佬以外的脚本
+## 如何添加其他脚本
 
 本环境基于node，所以也只能跑js脚本。你可以把你的后缀为`.js`的脚本放在你映射的`config`或映射的`scripts`下即可。比如你放了个`test.js`，可以在你的`crontab.list`中添加如下的定时任务：
 
@@ -126,7 +126,7 @@ docker exec -it jd bash jd resetpwd
 
 如果急你就运行一下`docker exec -it jd crontab /jd/config/crontab.list`更新定时任务即可，如果不急就等着程序自己添加进定时任务。
 
-**注意：在crontab.list中，你额外添加的任务不能以“jd_”、“jr_”、“jx_”开头，以“jd_”、“jr_”、“jx_”开头的任务如果不在lxk0301大佬仓库中，那么这个任务会被删除。**
+**注意：在crontab.list中，你额外添加的任务不能以“jd_”、“jr_”、“jx_”开头，以“jd_”、“jr_”、“jx_”开头的任务如果不在[https://github.com/LXK9301/jd_scripts](https://github.com/LXK9301/jd_scripts) 和 [https://github.com/shylocks/Loon](https://github.com/shylocks/Loon) 这两个仓库中，那么这个任务会被删除。**
 
 **其他说明：**
 

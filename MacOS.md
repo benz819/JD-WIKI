@@ -131,7 +131,7 @@
 
 如需要在线比对编辑，请参考：[控制面板使用教程](Panel)
 
-## 如何添加除lxk0301大佬以外的脚本
+## 如何添加其他脚本
 
 本环境基于node，所以也只能跑js脚本。你可以把你的后缀为`.js`的脚本放在`/user/用户名/jd/scripts`下。比如你放了个`test.js`，可以在你的`crontab.list`中添加如下的定时任务：
 
@@ -142,7 +142,7 @@
 
 然后运行一下`crontab /user/用户名/jd/config/crontab.list`更新定时任务即可。
 
-**注意：在crontab.list中，你额外添加的任务不能以“jd_”、“jr_”、“jx_”开头，以“jd_”、“jr_”、“jx_”开头的任务如果不在lxk0301大佬仓库中，那么这个任务会被删除。**
+**注意：在crontab.list中，你额外添加的任务不能以“jd_”、“jr_”、“jx_”开头，以“jd_”、“jr_”、“jx_”开头的任务如果不在[https://github.com/LXK9301/jd_scripts](https://github.com/LXK9301/jd_scripts) 和 [https://github.com/shylocks/Loon](https://github.com/shylocks/Loon) 这两个仓库中，那么这个任务会被删除。**
 
 如果你额外加的脚本要用到环境变量，直接在你的`config.sh`文件最下方按以下形式添加好变量即可（单引号或双引号均可）：
 
