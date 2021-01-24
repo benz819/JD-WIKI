@@ -103,9 +103,11 @@ docker-compose up -d
 
 ## 如何更新配置文件
 
-访问`http://<ip>:5678`并编辑保存好即可，其他啥也不用干，容器也不用重启。其中`config.sh`改完立即生效，`crontab.list`会在下一次任何定时薅羊毛任务启动时更新。
+访问`http://<ip>:5678`并编辑保存好即可，其他啥也不用干，容器也不用重启。其中`config.sh`改完立即生效，`crontab.list`会在下一次任何定时薅羊毛任务启动时更新。`config.sh`可以通过控制面板的对比工具对比修改。
 
 如未启用控制面板自动启动功能，请运行`docker exec -it jd node /jd/panel/server.js`来启动，使用完控制面板后`Ctrl+C`即可结束进程。如无法访问，请从防火墙、端口转发、网络方面着手解决。
+
+也可以不通过控制面板，而是通过sftp连接修改，你自己的配置文件`config.sh`可对照仓库中`sample/config.sh.sample`修改。
 
 ## 如何重置控制面板用户名和密码
 
@@ -113,7 +115,7 @@ docker-compose up -d
 docker exec -it jd bash jd resetpwd
 ```
 
-## 如何添加除lxk0301大佬以外的脚本
+## 如何添加其他脚本
 
 本环境基于node，所以也只能跑js脚本。你可以把你的后缀为`.js`的脚本放在你映射的`config`或映射的`scripts`下即可。比如你放了个`test.js`，可以在你的`crontab.list`中添加如下的定时任务：
 
@@ -126,7 +128,7 @@ docker exec -it jd bash jd resetpwd
 
 如果急你就运行一下`docker exec -it jd crontab /jd/config/crontab.list`更新定时任务即可，如果不急就等着程序自己添加进定时任务。
 
-**注意：在crontab.list中，你额外添加的任务不能以“jd_”、“jr_”、“jx_”开头，以“jd_”、“jr_”、“jx_”开头的任务如果不在lxk0301大佬仓库中，那么这个任务会被删除。**
+**注意：在crontab.list中，你额外添加的任务不能以“jd_”、“jr_”、“jx_”开头，以“jd_”、“jr_”、“jx_”开头的任务如果不在[https://github.com/LXK9301/jd_scripts](https://github.com/LXK9301/jd_scripts) 和 [https://github.com/shylocks/Loon](https://github.com/shylocks/Loon) 这两个仓库中，那么这个任务会被删除。**
 
 **其他说明：**
 
@@ -171,11 +173,11 @@ docker exec -it jd bash jd resetpwd
 
     然后挂机脚本就会一直运行。如需查看挂机脚本日志，请输入`docker exec -it jd pm2 monit`或`docker exec -it jd pm2 logs`查看。因挂机程序日志过多，不再记录在log文件中。
 
-5. 手动执行薅羊毛脚本，用法如下(其中`exec`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
+5. 手动执行薅羊毛脚本，用法如下(其中`-it`后面的`jd`为容器名，`bash`后面的`jd`为命令名，`xxx`为lxk0301大佬的脚本名称)，不支持直接以`node xxx.js`命令运行：
 
     ```
-    docker exec jd bash jd xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
-    docker exec jd bash jd xxx now  # 无论是否设置了随机延迟，均立即运行
+    docker exec -it jd bash jd xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
+    docker exec -it jd bash jd xxx now  # 无论是否设置了随机延迟，均立即运行
     ```
 
     如果你忘记了命令也不要紧，只要你记得命令`jd`就行，输入后会提示你：
