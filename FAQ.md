@@ -140,33 +140,33 @@ fi
     首先，需要保证Node.js大版本>=10，其次，在>=10的某些小版本也有此问题（你可以使用`node -v`或`nodejs -v`查看Node.js的版本），问题及详细的解决措施见[nodejs/help#1877](https://github.com/nodejs/help/issues/1877)。
 
 2. 日志报类似以下错误：
-  ```
-  (node:191) UnhandledPromiseRejectionWarning: Error: Cannot find module 'got'
-  Require stack:
-  - /jd/scripts/jd_bean_change.js
-    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
-    at Function.Module._load (internal/modules/cjs/loader.js:725:27)
-    at Module.require (internal/modules/cjs/loader.js:952:19)
-    at require (internal/modules/cjs/helpers.js:88:18)
-    at Object.initGotEnv (/jd/scripts/jd_bean_change.js:266:3667)
-    at Object.post (/jd/scripts/jd_bean_change.js:266:5580)
-    at /jd/scripts/jd_bean_change.js:150:7
-    at new Promise (<anonymous>)
-    at TotalBean (/jd/scripts/jd_bean_change.js:136:10)
-    at /jd/scripts/jd_bean_change.js:61:13
-    (Use `node --trace-warnings ...` to show where the warning was created)
-    (node:191) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
-    (node:191) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
-  ```
+    ```
+    (node:191) UnhandledPromiseRejectionWarning: Error: Cannot find module 'got'
+    Require stack:
+    - /jd/scripts/jd_bean_change.js
+      at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+      at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+      at Module.require (internal/modules/cjs/loader.js:952:19)
+      at require (internal/modules/cjs/helpers.js:88:18)
+      at Object.initGotEnv (/jd/scripts/jd_bean_change.js:266:3667)
+      at Object.post (/jd/scripts/jd_bean_change.js:266:5580)
+      at /jd/scripts/jd_bean_change.js:150:7
+      at new Promise (<anonymous>)
+      at TotalBean (/jd/scripts/jd_bean_change.js:136:10)
+      at /jd/scripts/jd_bean_change.js:61:13
+      (Use `node --trace-warnings ...` to show where the warning was created)
+      (node:191) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+      (node:191) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+    ```
 
-  如果是Docker，请运行`docker exec -it jd bash git_pull`，仔细看输出日志，可运行多次直到不报错为止。
+    如果是Docker，请运行`docker exec -it jd bash git_pull`，仔细看输出日志，可运行多次直到不报错为止。
 
-  如果是非Docker，cd到本仓库脚本目录后执行`bash git_pull.sh`，仔细看输出日志，可运行多次直到不报错为止。
+    如果是非Docker，cd到本仓库脚本目录后执行`bash git_pull.sh`，仔细看输出日志，可运行多次直到不报错为止。
 
-3. 日志能产生但一直是空的
-
-    两个解决办法：
+3. 日志能产生但一直是空的，两个解决办法：
 
     - 放弃使用CentOS；
 
     - 回小学重新学习语文知识，学好再来仔细地读一遍crontab.list中的注释。
+
+    请搞明白PATH的含义：[一文精通crontab](https://zhuanlan.zhihu.com/p/58719487)，出现这个问题绝对是PATH有问题导致的，请将这篇文件理解透后，再来更改你的PATH。注意：PATH中，前面的路径比后面的路径优先级更高。
