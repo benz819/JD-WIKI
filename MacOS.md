@@ -194,3 +194,7 @@ export 变量名3="变量值3"
     如果lxk0301脚本名不记得也不要紧，输错了也会提示你的：
 
     ![PC2](Picture/PC2.png)
+
+## 如有帮助你薅到羊毛，请不吝赏杯茶水费
+
+<div align=center><img width="750" height="250" src="./Picture/thanks.png"/></div>

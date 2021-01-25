@@ -187,3 +187,7 @@ docker exec -it jd bash jd resetpwd
     脚本名不记得也不要紧，输错了也会提示你的：
 
     ![Docker2](Picture/Docker2.png)
+
+## 如有帮助你薅到羊毛，请不吝赏杯茶水费
+
+<div align=center><img width="750" height="250" src="./Picture/thanks.png"/></div>
