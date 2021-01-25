@@ -190,4 +190,4 @@ docker exec -it jd bash jd resetpwd
 
 ## 如有帮助你薅到羊毛，请不吝赏杯茶水费
 
-<div align=center><img width="750" height="250" src="./Picture/thanks.png"/></div>
+![thanks](Picture/thanks.png)
